@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Proof of Concept Micro-Credentials</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/main.css" rel="stylesheet">
+
+    <!--script files-->
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Proof of Concept Micro-credentials</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Call to Action Well -->
+    <div class="card text-white bg-secondary my-4 text-center">
+        <div class="card-body">
+            <p class="text-white m-0">This call to action card is a great place to showcase some important information
+                or display a clever tagline!</p>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Create Issuer</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
+                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                </div>
+
+                <!-- Button trigger modal -->
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#exampleModal">New
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ipfsModal">
+                        From IPFS
+                    </button>
+                </div>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">New issuer creation</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+
+                                    <div class="form-group">
+                                        <label for="issuer-type" class="control-label">Type:</label>
+                                        <input type="text" class="form-control" id="issuer-type">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="issuer-id" class="control-label">Id:</label>
+                                        <input type="text" class="form-control" id="issuer-id">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="issuer-name" class="control-label">Name:</label>
+                                        <input type="text" class="form-control" id="issuer-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="issuer-url" class="control-label">URL:</label>
+                                        <input type="text" class="form-control" id="issuer-url">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="issuer-email" class="control-label">Email:</label>
+                                        <input type="email" class="form-control" id="issuer-email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="issuer-smartcontract-address" class="control-label">Smart Contract Address:</label>
+                                        <input type="text" class="form-control" id="issuer-smartcontract-address">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="issuer-image" class="control-label">Image:</label>
+                                        <input type="file" class="form-control" id="issuer-image">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Send message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Create BadgeClass</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus
+                        at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates
+                        quos eligendi labore.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">New</a>
+                    <a href="#" class="btn btn-primary">From IPFS</a>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Create Recipient</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
+                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">New</a>
+                    <a href="#" class="btn btn-primary">From IPFS</a>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Create MetaData</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
+                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Continue</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../js/modals.js"></script>
+
+
+</body>
+
+</html>
