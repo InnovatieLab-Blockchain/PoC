@@ -2,7 +2,7 @@
     function storeIssuer(){
 
     var issuerType= document.getElementById("issuer-type");
-      sessionStorage.setItem("issuer-type", issuerType.value);
+      sessionStorage.setItem(["issuer-type"], issuerType.value);
    
 
     var issuerId= document.getElementById("issuer-id");
