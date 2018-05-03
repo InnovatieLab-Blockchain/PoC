@@ -1,17 +1,17 @@
 
 function storeIssuer() {
 
-  var issuerType = document.getElementById("issuerType").value;
-  var issuerId = document.getElementById("issuerId").value;
-  var issuerName = document.getElementById("issuerName").value;
-  var issuerUrl = document.getElementById("issuerUrl").value;
-  var issuerEmail = document.getElementById("issuerEmail").value;
-  var issuerSmartcontractAddress = document.getElementById("issuerSmartcontractAddress").value;
-  var issuerImage = document.getElementById("issuerImage").value;
-  var issuerImageUrl = document.getElementById("issuerImageUrl").value;
+  let issuerType = document.getElementById("issuerType").value;
+  let issuerId = document.getElementById("issuerId").value;
+  let issuerName = document.getElementById("issuerName").value;
+  let issuerUrl = document.getElementById("issuerUrl").value;
+  let issuerEmail = document.getElementById("issuerEmail").value;
+  let issuerSmartcontractAddress = document.getElementById("issuerSmartcontractAddress").value;
+  let issuerImage = document.getElementById("issuerImage").value;
+  let issuerImageUrl = document.getElementById("issuerImageUrl").value;
 
 
-  var issuerdata = ["issuerType:" + issuerType, 
+  let issuerdata = ["issuerType:" + issuerType,
                     "issuerId:" + issuerId, 
                     "issuerName:" + issuerName,
                     "issuerUrl:" + issuerUrl, 
@@ -27,7 +27,7 @@ function storeIssuer() {
   sessionStorage.setItem("issuerData", JSON.stringify(issuerdata));
 
   //Use JSON to retrieve the stored data and convert it 
-  var storedData = sessionStorage.getItem("issuerdata");
+  let storedData = sessionStorage.getItem("issuerdata");
   if (storedData) {
     issuerdata = JSON.parse(storedData);
 
