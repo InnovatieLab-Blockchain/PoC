@@ -1,38 +1,38 @@
 
-    function storeIssuer(){
+function storeIssuer() {
 
-    var issuerType= document.getElementById("issuer-type");
-      sessionStorage.setItem("issuer-type", issuerType.value);
-   
+  var issuerType = document.getElementById("issuerType").value;
+  var issuerId = document.getElementById("issuer-id").value;
+  var issuerUrl = document.getElementById("issuer-url").value;
+  var issuerEmail = document.getElementById("issuer-email").value;
+  var issueSmartcontractAddress = document.getElementById("issuer-smartcontract-address").value;
+  var issueImage = document.getElementById("issuer-image").value;
 
-    var issuerId= document.getElementById("issuer-id");
-    sessionStorage.setItem("issuer-id", issuerId.value);
 
-    var issuerUrl= document.getElementById("issuer-url");
-    sessionStorage.setItem("issuer-url", issuerUrl.value);
-    
-    var issuerEmail= document.getElementById("issuer-email");
-    sessionStorage.setItem("issuer-email", issuerEmail.value); 
+  var issuerdata = ["issuerType:" + issuerType, 
+                    "issuerId:" + issuerId, 
+                    "issuerUrl:" + issuerUrl, 
+                    "issuerEmail:" + issuerUrl, 
+                    "issuerSmartcontractAddress:" + issueSmartcontractAddress,
+                    "issuerImage:" + issueImage 
+                  ];
 
-    var issueSmartcontractAddress= document.getElementById("issuer-smartcontract-address");
-    sessionStorage.setItem("issuer-smartcontract-address", issueSmartcontractAddress.value); 
 
-    var issueImage = document.getElementById("issuer-image");
-    sessionStorage.setItem("issuer-image", issueImage.value); 
 
-      // document.getElementById("result").innerHTML = sessionStorage.issuer-id;
+  // store array data to the session storage
+  sessionStorage.setItem("issuerData", JSON.stringify(issuerdata));
 
-   
-    
-     
-  
-      myObj = [issuerType, issuerId  ];
-      myJSON = JSON.stringify(myObj);
-      localStorage.setItem("testJSON", myJSON);
+  //Use JSON to retrieve the stored data and convert it 
+  var storedData = sessionStorage.getItem("issuerdata");
+  if (storedData) {
+    issuerdata = JSON.parse(storedData);
 
-      
 
- }
+}
 
-// document.getElementById("result").innerHTML = localStorage.issuerType;
- 
+}
+
+
+// hulp code
+// sessionStorage.setItem("issuer-image", issueImage.value); 
+//     //console.log("issuerType:",issuerType)
