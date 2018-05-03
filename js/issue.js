@@ -9,7 +9,7 @@ function storeIssuer() {
   let issuerSmartcontractAddress = document.getElementById("issuerSmartcontractAddress").value;
   let issuerImage = document.getElementById("issuerImage").value;
   let issuerImageUrl = document.getElementById("issuerImageUrl").value;
-
+  let issuerIpfsUrl = ipfsUrl;
 
   let issuerdata = [
     "issuerType:" + issuerType,
@@ -19,7 +19,8 @@ function storeIssuer() {
     "issuerEmail:" + issuerUrl,
     "issuerSmartcontractAddress:" + issuerSmartcontractAddress,
     "issuerImage:" + issuerImage,
-    "issuerImageUrl:" + issuerImageUrl
+    "issuerImageUrl:" + issuerImageUrl,
+    "issuerIpfsUrl:" + issuerIpfsUrl
   ];
 
 
