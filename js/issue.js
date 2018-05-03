@@ -2,19 +2,23 @@
 function storeIssuer() {
 
   var issuerType = document.getElementById("issuerType").value;
-  var issuerId = document.getElementById("issuer-id").value;
-  var issuerUrl = document.getElementById("issuer-url").value;
-  var issuerEmail = document.getElementById("issuer-email").value;
-  var issueSmartcontractAddress = document.getElementById("issuer-smartcontract-address").value;
-  var issueImage = document.getElementById("issuer-image").value;
+  var issuerId = document.getElementById("issuerId").value;
+  var issuerName = document.getElementById("issuerName").value;
+  var issuerUrl = document.getElementById("issuerUrl").value;
+  var issuerEmail = document.getElementById("issuerEmail").value;
+  var issuerSmartcontractAddress = document.getElementById("issuerSmartcontractAddress").value;
+  var issuerImage = document.getElementById("issuerImage").value;
+  var issuerImageUrl = document.getElementById("issuerImageUrl").value;
 
 
   var issuerdata = ["issuerType:" + issuerType, 
                     "issuerId:" + issuerId, 
+                    "issuerName:" + issuerName,
                     "issuerUrl:" + issuerUrl, 
                     "issuerEmail:" + issuerUrl, 
-                    "issuerSmartcontractAddress:" + issueSmartcontractAddress,
-                    "issuerImage:" + issueImage 
+                    "issuerSmartcontractAddress:" + issuerSmartcontractAddress,
+                    "issuerImage:" + issuerImage, 
+                    "issuerImageUrl:" + issuerImageUrl
                   ];
 
 
