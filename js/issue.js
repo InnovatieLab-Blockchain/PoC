@@ -1,5 +1,5 @@
 
-function storeIssuer() {
+const storeIssuer = () => {
 
   let issuerType = document.getElementById("issuerType").value;
   let issuerId = document.getElementById("issuerId").value;
@@ -11,7 +11,7 @@ function storeIssuer() {
   let issuerImageUrl = document.getElementById("issuerImageUrl").value;
   let issuerIpfsUrl = ipfsUrl;
 
-  let issuerdata = [
+  issuerdata = [
     "issuerType:" + issuerType,
     "issuerId:" + issuerId,
     "issuerName:" + issuerName,
@@ -26,6 +26,7 @@ function storeIssuer() {
 
 
   // store array data to the session storage
+  
   sessionStorage.setItem("issuerData", JSON.stringify(issuerdata));
 
   //Use JSON to retrieve the stored data and convert it 
@@ -36,11 +37,31 @@ function storeIssuer() {
 
   }
 
+  
+
 }
 
 
+const displayIssuer = () => {
 
-function storeBadge() {
+let displayIssuer = JSON.parse(sessionStorage.issuerData);
+
+const createdIssuer = [...displayIssuer];
+
+let text = "";
+
+
+let i;
+for (i = 0; i < createdIssuer.length; i++) {
+  text += createdIssuer[i] + "<br>";
+}
+  document.getElementById("jan").style.display = "inline";
+document.getElementById("demo").innerHTML = text;
+
+
+}
+
+const storeBadge = () => {
 
   let badgeType = document.getElementById("badgeType").value;
   let badgeId = document.getElementById("badgeId").value;
@@ -74,8 +95,8 @@ function storeBadge() {
 
   }
 
-  
-  function storeRecipient() {
+
+  const storeRecipient = () => {
     let recipientType = document.getElementById("recipienttype").value
 
     let recipientdata = [
@@ -93,6 +114,9 @@ function storeBadge() {
 }
 
 
+
 // hulp code
 // sessionStorage.setItem("issuer-image", issueImage.value); 
-//     //console.log("issuerType:",issuerType)
+//     //console.log("issuerType:",issuerType)issuerType = document.getElementById("issuerType").value;
+
+

@@ -1,8 +1,6 @@
  let ipfsUrl = null;
 
-
-
- function upload() {
+ const upload = () => {
         const reader = new FileReader();
         reader.onloadend = function () {
             const ipfs = window.IpfsApi({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
@@ -23,3 +21,4 @@
         const issuerImage = document.getElementById("issuerImage");
         reader.readAsArrayBuffer(issuerImage.files[0]); // Read Provided File
     }
+
