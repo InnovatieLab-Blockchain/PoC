@@ -8,21 +8,27 @@ const storeIssuer = () => {
   let issuerEmail = document.getElementById("issuerEmail").value;
   let issuerSmartcontractAddress = document.getElementById("issuerSmartcontractAddress").value;
   let issuerImage = document.getElementById("issuerImage").value;
-  let issuerImageUrl = document.getElementById("issuerImageUrl").value;
-  let issuerIpfsUrl = ipfsUrl;
+  let issuerImageUrlSelf = document.getElementById("issuerImageUrlSelf").value;
+  let issuerImageUrlIpfs = ipfsUrl;
+  let issuerImageString = null;
 
-  issuerdata = [
-    "issuerType:" + issuerType,
-    "issuerId:" + issuerId,
-    "issuerName:" + issuerName,
-    "issuerUrl:" + issuerUrl,
-    "issuerEmail:" + issuerUrl,
-    "issuerSmartcontractAddress:" + issuerSmartcontractAddress,
-    "issuerImage:" + issuerImage,
-    "issuerImageUrl:" + issuerImageUrl,
-    "issuerIpfsUrl:" + issuerIpfsUrl
-  ];
-
+  
+  if (issuerImageUrlSelf) {
+    issuerImageUrl = document.getElementById("issuerImageUrlSelf").value;
+      } else {    
+    issuerImageUrl = issuerImageUrlIpfs;
+      } 
+  
+   
+  const issuerdata = {
+    issuerType: issuerType,
+    issuerId: issuerId,
+    issuerName: issuerName, 
+    issuerUrl: issuerName,
+    issuerEmail: issuerEmail,
+    issuerSmartcontractAddress: issuerSmartcontractAddress,
+    issuerImageString: issuerImageUrl,
+  }
 
 
   // store array data to the session storage
