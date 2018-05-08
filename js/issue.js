@@ -55,8 +55,8 @@ let i;
 for (i = 0; i < createdIssuer.length; i++) {
   text += createdIssuer[i] + "<br>";
 }
-  document.getElementById("jan").style.display = "inline";
-document.getElementById("demo").innerHTML = text;
+  document.getElementById("hiddenIssuer").style.display = "inline";
+  document.getElementById("toggleIssuer").innerHTML = text;
 
 
 }
@@ -88,12 +88,33 @@ const storeBadge = () => {
   sessionStorage.setItem("badgeData", JSON.stringify(badgedata));
 
   //Use JSON to retrieve the stored data and convert it 
-  let storedData = sessionStorage.getItem("badgedata");
+  let storedData = sessionStorage.getItem("badgeData");
   if (storedData) {
     badgedata = JSON.parse(storedData);
 
 
   }
+
+}
+
+  const displayBadge = () => {
+    let displayBadge = JSON.parse(sessionStorage.badgeData);
+
+    const createdBadge = [...displayBadge];
+
+    let text = "";
+
+
+    let i;
+    for (i = 0; i < createdBadge.length; i++) {
+      text += createdBadge[i] + "<br>";
+    }
+    document.getElementById("hiddenBadge").style.display = "inline";
+    document.getElementById("toggleBadge").innerHTML = text;
+
+
+  }
+
 
 
   const storeRecipient = () => {
@@ -111,7 +132,7 @@ const storeBadge = () => {
     }
   }
 
-}
+
 
 
 

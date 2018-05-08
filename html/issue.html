@@ -215,7 +215,7 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="displayBadge()">Close</button>
                                     <button type="button" class="btn btn-primary" onclick="storeBadge();">Send message</button>
                                 </div>
                             </div>
@@ -252,88 +252,169 @@
                     </div>
                 </div>
             </div>
-</div>
+        </div>
+        <!-- /.row new created blocks initial hiddenn -->
+        <div class="row">
 
-<div class="row">
-            <!-- /.row -->
-<!--Issuer Created block-->
+            <!--Issuer Created block-->
 
-            <div class="col-md-3 mb-3" style="display:none" id="jan">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">Created Issuer</h2>
-                        <p class="card-text"></p>
-
-                        <span class="collapse" id="demo"></span>
-
-                        </p>
-                    </div>
-
-                    
-                    <div class="card-footer">
-                        <center>
-                            <button class="btn btn-success btn-lg" data-toggle="collapse" data-target="#demo" onclick="displayIssuer();">Show</button>
-                        </center>
+            <div class="col-md-3 mb-3 offset-0">
+                <div style="display:none" id="hiddenIssuer">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Created Issuer</h2>
+                            <p class="card-text"></p>
+                            <span class="collapse" id="toggleIssuer"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <center>
+                                <button class="btn btn-success btn-lg" data-toggle="collapse" data-target="#toggleIssuer" onclick="displayIssuer();">Show</button>
+                            </center>
+                        </div>
                     </div>
                 </div>
             </div>
 
+
+            <!--BadgeClass Created block-->
+            <div class="col-md-3 mb-3">
+                <div style="display:none" id="hiddenBadge">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Created BadgeClass</h2>
+                            <p class="card-text"></p>
+                            <span class="collapse" id="toggleBadge"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <center>
+                                <button class="btn btn-success btn-lg" data-toggle="collapse" data-target="#toggleBadge" onclick="displayBadgeClass();">Show</button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-<div class="row">
-    <!--Create Store Badge block-->
-    <div class="col-md-3 mb-3">
-        <div class="card h-100">
-            <div class="card-body">
-                <h2 class="card-title">Store badge</h2>
-                <p class="card-text">Store the created badge on the ethereum blockchain.</p>
+            <!--Recipient Created block-->
+            <div class="col-md-3 mb-3">
+                <div style="display:none" id="hiddenRecipient">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Created Recipient</h2>
+                            <p class="card-text"></p>
+                            <span class="collapse" id="toggleRecipient"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <center>
+                                <button class="btn btn-success btn-lg" data-toggle="collapse" data-target="#toggleRecipient" onclick="displayRecipient();">Show</button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-footer">
-                <a href="#" onclick="storeBadgeOnBlockchain()" class="btn btn-primary">Store!</a>
+
+
+            <!--MetaData Created block-->
+            <div class="col-md-3 mb-3">
+                <div style="display:none" id="hiddenMetaData">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Created MetaData</h2>
+                            <p class="card-text"></p>
+                            <span class="collapse" id="toggleMetaData"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <center>
+                                <button class="btn btn-success btn-lg" data-toggle="collapse" data-target="#toggleMetaData" onclick="displayMetaData();">Show</button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- /.row -->
+
+        <div class="card text-white bg-info my-4 text-center">
+            <div class="card-body">
+                <p class="text-white m-0">Below you can store the hash of the OpenBadge on the blockchain.</p>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+        <div class="row">
+            <!--Create Store Badge block-->
+            <div class="col-md-6 mb-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Store badge</h2>
+                        <p class="card-text">Store the created badge on the ethereum blockchain.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" onclick="storeBadgeOnBlockchain()" class="btn btn-primary">Store!</a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Create Store Badge block-->
+            <div class="col-md-6 mb-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Check badge</h2>
+                        <p class="card-text">Check the created badge on the ethereum blockchain.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" onclick="#" class="btn btn-primary">Check</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-            
+    <br>
 
 
 
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">InnovatieLab Blockchain 2018</p>
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <!-- /.row -->
+
+        <span class="m-0 text-center text-white"></span>
 
         </div>
         <!-- /.container -->
+    </footer>
 
-        <!-- Footer -->
-        <footer class="py-5 bg-dark">
-            <div class="container">
-                <p class="m-0 text-center text-white">InnovatieLab Blockchain 2018</p>
-
-
-
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/modals.js"></script>
 
 
 
 
 
-       
-
-    </div>
-    <!-- /.row -->
-
-                <span class="m-0 text-center text-white" id="demo"></span>
-
-            </div>
-            <!-- /.container -->
-        </footer>
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript" src="../js/modals.js"></script>
-
-
-    
-    
-    
 </body>
 
 </html>
