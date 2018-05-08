@@ -1,4 +1,3 @@
-
 const storeIssuer = () => {
 
   let issuerType = document.getElementById("issuerType").value;
@@ -12,14 +11,27 @@ const storeIssuer = () => {
   let issuerImageUrlIpfs = ipfsUrl;
   let issuerImageString = null;
 
-  
+  let issuerdatadisplay = [
+    "isssuerType:" + issuerType,
+    "issuerId:" + issuerId,
+    "issuerName:" + issuerName,
+    "issuerUrl:" + issuerUrl,
+    "issurEmail" + issuerEmail,
+    "issuerSmartcontractAddress" + issuerSmartcontractAddress,
+    "issuerImage: " + issuerImage,
+    "issuerImageUrlSelf: " + issuerImageUrlSelf,
+    "issuerImageUrlIpfs: " + issuerImageUrlIpfs,
+    "issuerImageString: " + issuerImageString,
+  ];
+
+ 
   if (issuerImageUrlSelf) {
     issuerImageUrl = document.getElementById("issuerImageUrlSelf").value;
       } else {    
     issuerImageUrl = issuerImageUrlIpfs;
       } 
   
-   
+
   const issuerdata = {
     issuerType: issuerType,
     issuerId: issuerId,
@@ -32,38 +44,29 @@ const storeIssuer = () => {
 
 
   // store array data to the session storage
-  
+  sessionStorage.setItem("issuerDataDisplay", JSON.stringify(issuerdatadisplay));
   sessionStorage.setItem("issuerData", JSON.stringify(issuerdata));
 
   //Use JSON to retrieve the stored data and convert it 
   let storedData = sessionStorage.getItem("issuerdata");
   if (storedData) {
     issuerdata = JSON.parse(storedData);
-
-
   }
-
-  
 
 }
 
 
 const displayIssuer = () => {
+  let displayIssuer = JSON.parse(sessionStorage.issuerDataDisplay);
+  const createdIssuer = [...displayIssuer]  ;
 
-let displayIssuer = JSON.parse(sessionStorage.issuerData);
-
-const createdIssuer = [...displayIssuer];
-
-let text = "";
-
-
-let i;
-for (i = 0; i < createdIssuer.length; i++) {
-  text += createdIssuer[i] + "<br>";
-}
+  let text = "";
+  let i;
+  for (i = 0; i < createdIssuer.length; i++) {
+    text += createdIssuer[i] + "<br>";
+  }
   document.getElementById("hiddenIssuer").style.display = "inline";
   document.getElementById("toggleIssuer").innerHTML = text;
-
 
 }
 
