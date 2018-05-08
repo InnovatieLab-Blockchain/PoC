@@ -1,112 +1,95 @@
 const storeIssuer = () => {
 
-  let issuerType = document.getElementById("issuerType").value;
-  let issuerId = document.getElementById("issuerId").value;
-  let issuerName = document.getElementById("issuerName").value;
-  let issuerUrl = document.getElementById("issuerUrl").value;
-  let issuerEmail = document.getElementById("issuerEmail").value;
-  let issuerSmartcontractAddress = document.getElementById("issuerSmartcontractAddress").value;
-  let issuerImage = document.getElementById("issuerImage").value;
-  let issuerImageUrlSelf = document.getElementById("issuerImageUrlSelf").value;
-  let issuerImageUrlIpfs = ipfsUrl;
-  let issuerImageString = null;
+    let issuerType = document.getElementById("issuerType").value;
+    let issuerId = document.getElementById("issuerId").value;
+    let issuerName = document.getElementById("issuerName").value;
+    let issuerUrl = document.getElementById("issuerUrl").value;
+    let issuerEmail = document.getElementById("issuerEmail").value;
+    let issuerSmartcontractAddress = document.getElementById("issuerSmartcontractAddress").value;
+    let issuerImageUrlSelf = document.getElementById("issuerImageUrlSelf").value;
+    let issuerImageUrlIpfs = ipfsUrl;
 
-  let issuerdatadisplay = [
-    "isssuerType:" + issuerType,
-    "issuerId:" + issuerId,
-    "issuerName:" + issuerName,
-    "issuerUrl:" + issuerUrl,
-    "issurEmail" + issuerEmail,
-    "issuerSmartcontractAddress" + issuerSmartcontractAddress,
-    "issuerImage: " + issuerImage,
-    "issuerImageUrlSelf: " + issuerImageUrlSelf,
-    "issuerImageUrlIpfs: " + issuerImageUrlIpfs,
-    "issuerImageString: " + issuerImageString,
-  ];
+    if (issuerImageUrlSelf) {
+        issuerImageUrl = document.getElementById("issuerImageUrlSelf").value;
+    } else {
+        issuerImageUrl = issuerImageUrlIpfs;
+    }
 
- 
-  if (issuerImageUrlSelf) {
-    issuerImageUrl = document.getElementById("issuerImageUrlSelf").value;
-      } else {    
-    issuerImageUrl = issuerImageUrlIpfs;
-      } 
-  
-
-  const issuerdata = {
-    issuerType: issuerType,
-    issuerId: issuerId,
-    issuerName: issuerName, 
-    issuerUrl: issuerName,
-    issuerEmail: issuerEmail,
-    issuerSmartcontractAddress: issuerSmartcontractAddress,
-    issuerImageString: issuerImageUrl,
-  }
+    let issuerdata = {
+        issuerType: issuerType,
+        issuerId: issuerId,
+        issuerName: issuerName,
+        issuerUrl: issuerUrl,
+        issuerEmail: issuerEmail,
+        issuerSmartcontractAddress: issuerSmartcontractAddress,
+        issuerImageString: issuerImageUrl,
+    };
 
 
-  // store array data to the session storage
-  sessionStorage.setItem("issuerDataDisplay", JSON.stringify(issuerdatadisplay));
-  sessionStorage.setItem("issuerData", JSON.stringify(issuerdata));
+    // store array data to the session storage
+    sessionStorage.setItem("issuerData", JSON.stringify(issuerdata));
 
-  //Use JSON to retrieve the stored data and convert it 
-  let storedData = sessionStorage.getItem("issuerdata");
-  if (storedData) {
-    issuerdata = JSON.parse(storedData);
-  }
 
-}
+    // TODO: Niet nodig?
+    //Use JSON to retrieve the stored data and convert it
+    let storedData = sessionStorage.getItem("issuerData");
+    console.log(storedData);
+    if (storedData !== null) {
+        issuerdata = JSON.parse(storedData);
+    }
+
+};
 
 
 const displayIssuer = () => {
-  let displayIssuer = JSON.parse(sessionStorage.issuerDataDisplay);
-  const createdIssuer = [...displayIssuer]  ;
 
-  let text = "";
-  let i;
-  for (i = 0; i < createdIssuer.length; i++) {
-    text += createdIssuer[i] + "<br>";
-  }
-  document.getElementById("hiddenIssuer").style.display = "inline";
-  document.getElementById("toggleIssuer").innerHTML = text;
+    let displayIssuer = JSON.parse(sessionStorage.issuerData);
+    created_issuer_text = "";
 
-}
+    for (key in displayIssuer) {
+        created_issuer_text += key + ": " + displayIssuer[key] + "<br>";
+    }
+
+    document.getElementById("hiddenIssuer").style.display = "inline";
+    document.getElementById("toggleIssuer").innerHTML = created_issuer_text;
+};
 
 const storeBadge = () => {
 
-  let badgeType = document.getElementById("badgeType").value;
-  let badgeId = document.getElementById("badgeId").value;
-  let badgeName = document.getElementById("badgeName").value;
-  let badgeDescription = document.getElementById("badgeDescription").value;
-  let badgeCriteria = document.getElementById("badgeCriteria").value;
-  let badgeImage = document.getElementById("badgeImage").value;
-  let badgeImageUrl = document.getElementById("badgeImageUrl").value;
+    let badgeType = document.getElementById("badgeType").value;
+    let badgeId = document.getElementById("badgeId").value;
+    let badgeName = document.getElementById("badgeName").value;
+    let badgeDescription = document.getElementById("badgeDescription").value;
+    let badgeCriteria = document.getElementById("badgeCriteria").value;
+    let badgeImage = document.getElementById("badgeImage").value;
+    let badgeImageUrl = document.getElementById("badgeImageUrl").value;
 
 
-  let badgedata = [
-    "badgeType:" + badgeType,
-    "badgeId:" + badgeId,
-    "badgeName:" + badgeName,
-    "badgeDescription:" + badgeDescription,
-    "badgeCriteria:" + badgeCriteria,
-    "badgeImage:" + badgeImage,
-    "badgeImageUrl:" + badgeImageUrl
-  ];
+    let badgedata = [
+        "badgeType:" + badgeType,
+        "badgeId:" + badgeId,
+        "badgeName:" + badgeName,
+        "badgeDescription:" + badgeDescription,
+        "badgeCriteria:" + badgeCriteria,
+        "badgeImage:" + badgeImage,
+        "badgeImageUrl:" + badgeImageUrl
+    ];
 
 
+    // store array data to the session storage
+    sessionStorage.setItem("badgeData", JSON.stringify(badgedata));
 
-  // store array data to the session storage
-  sessionStorage.setItem("badgeData", JSON.stringify(badgedata));
-
-  //Use JSON to retrieve the stored data and convert it 
-  let storedData = sessionStorage.getItem("badgeData");
-  if (storedData) {
-    badgedata = JSON.parse(storedData);
+    //Use JSON to retrieve the stored data and convert it
+    let storedData = sessionStorage.getItem("badgeData");
+    if (storedData) {
+        badgedata = JSON.parse(storedData);
 
 
-  }
+    }
 
 }
 
-  const displayBadge = () => {
+const displayBadge = () => {
     let displayBadge = JSON.parse(sessionStorage.badgeData);
 
     const createdBadge = [...displayBadge];
@@ -116,33 +99,29 @@ const storeBadge = () => {
 
     let i;
     for (i = 0; i < createdBadge.length; i++) {
-      text += createdBadge[i] + "<br>";
+        text += createdBadge[i] + "<br>";
     }
     document.getElementById("hiddenBadge").style.display = "inline";
     document.getElementById("toggleBadge").innerHTML = text;
 
 
-  }
+}
 
 
-
-  const storeRecipient = () => {
+const storeRecipient = () => {
     let recipientType = document.getElementById("recipienttype").value
 
     let recipientdata = [
-      "recipienttype:" + recipientType,
+        "recipienttype:" + recipientType,
     ]
 
     sessionStorage.setItem("recipientData", JSON.stringify(recipientdata));
 
     let storeData = sessionStorage.getItem("recipientdata");
     if (storedData) {
-      recipientdata = JSON.parse(storedData);
+        recipientdata = JSON.parse(storedData);
     }
-  }
-
-
-
+}
 
 
 // hulp code
