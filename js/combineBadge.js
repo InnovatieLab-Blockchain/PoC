@@ -157,7 +157,22 @@ function createBadge() {
     openBadgetemplate['recipient']['salt'] = recipientData['recipientSalt'];
 
     //fill badge part
-    openBadgetemplate['badge']['type'][1] =
+    openBadgetemplate['badge']['type'][1] = badgeData['badgeType'];
+    openBadgetemplate['badge']['id'] = badgeData['badgeId'];
+    openBadgetemplate['badge']['name'] = badgeData['badgeName'];
+    openBadgetemplate['badge']['description'] = badgeData['badgeDescription'];
+    openBadgetemplate['badge']['criteria'] = badgeData['badgeCriteria'];
+
+    if (badgeData['badgeImage'] === "") {
+        openBadgetemplate['badge']['image'] = badgeData['badgeUrl'];
+
+    } else {
+        let badgeImageIpfsUrl = // methode die ipfsurl maakt van createIpfsUrl(badgeData['badgeImage'], "file");
+        openBadgetemplate['badge']['image'] = badgeData['badgeImage'];
+
+    }
+
+
 
 
     //fill issuer part
