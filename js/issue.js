@@ -1,5 +1,4 @@
 const storeIssuer = () => {
-
     let issuerType = document.getElementById("issuerType").value;
     let issuerId = document.getElementById("issuerId").value;
     let issuerName = document.getElementById("issuerName").value;
@@ -9,6 +8,7 @@ const storeIssuer = () => {
     let issuerImageUrlSelf = document.getElementById("issuerImageUrlSelf").value;
     let issuerImageUrlIpfs = ipfsUrl;
 
+    let issuerImageUrl = null;
     if (issuerImageUrlSelf) {
         issuerImageUrl = document.getElementById("issuerImageUrlSelf").value;
     } else {
@@ -25,27 +25,14 @@ const storeIssuer = () => {
         issuerImageString: issuerImageUrl,
     };
 
-
     // store array data to the session storage
     sessionStorage.setItem("issuerData", JSON.stringify(issuerdata));
-
-
-    // TODO: Niet nodig?
-    //Use JSON to retrieve the stored data and convert it
-    let storedData = sessionStorage.getItem("issuerData");
-    console.log(storedData);
-    if (storedData !== null) {
-        issuerdata = JSON.parse(storedData);
-    }
-
 };
 
 const displayIssuer = () => {
-
     let displayIssuer = JSON.parse(sessionStorage.issuerData);
-    created_issuer_text = "";
-
-    for (key in displayIssuer) {
+    let created_issuer_text = "";
+    for (let key in displayIssuer) {
         created_issuer_text += key + ": " + displayIssuer[key] + "<br>";
     }
 
@@ -54,7 +41,6 @@ const displayIssuer = () => {
 };
 
 const storeBadge = () => {
-
     let badgeType = document.getElementById("badgeType").value;
     let badgeId = document.getElementById("badgeId").value;
     let badgeName = document.getElementById("badgeName").value;
@@ -63,48 +49,31 @@ const storeBadge = () => {
     let badgeImage = document.getElementById("badgeImage").value;
     let badgeImageUrl = document.getElementById("badgeImageUrl").value;
 
+    let badgedata = {
+        badgeType: badgeType,
+        badgeId: badgeId,
+        badgeName: badgeName,
+        badgeDescription: badgeDescription,
+        badgeCriteria: badgeCriteria,
+        badgeImage: badgeImage,
+        badgeImageUrl: badgeImageUrl
 
-    let badgedata = [
-        "badgeType:" + badgeType,
-        "badgeId:" + badgeId,
-        "badgeName:" + badgeName,
-        "badgeDescription:" + badgeDescription,
-        "badgeCriteria:" + badgeCriteria,
-        "badgeImage:" + badgeImage,
-        "badgeImageUrl:" + badgeImageUrl
-    ];
-
+    };
 
     // store array data to the session storage
     sessionStorage.setItem("badgeData", JSON.stringify(badgedata));
-
-    //Use JSON to retrieve the stored data and convert it
-    let storedData = sessionStorage.getItem("badgeData");
-    if (storedData) {
-        badgedata = JSON.parse(storedData);
-
-
-    }
-
-}
+};
 
 const displayBadge = () => {
     let displayBadge = JSON.parse(sessionStorage.badgeData);
-
-    const createdBadge = [...displayBadge];
-
-    let text = "";
-
-
-    let i;
-    for (i = 0; i < createdBadge.length; i++) {
-        text += createdBadge[i] + "<br>";
+    let created_badge_text = "";
+    for (let key in displayBadge) {
+        created_badge_text += key + ": " + displayBadge[key] + "<br>";
     }
+
     document.getElementById("hiddenBadge").style.display = "inline";
-    document.getElementById("toggleBadge").innerHTML = text;
-
-
-}
+    document.getElementById("toggleBadge").innerHTML = created_issuer_text;
+};
 
 const storeRecipient = () => {
     let recipientType = document.getElementById("recipientType").value;
@@ -112,36 +81,23 @@ const storeRecipient = () => {
     let recipientSalt = document.getElementById("recipientSalt").value;
     let recipientHashed = document.getElementById("recipientHashed").value;
     let recipientEmail = document.getElementById("recipientEmail").value;
-    
 
     let recipientdata = {
         recipientType: recipientType,
         recipientId: recipientId,
         recipientSalt: recipientSalt,
         recipientHashed: recipientHashed,
-        recipientEmail: recipientEmail,        
-        };
+        recipientEmail: recipientEmail,
+    };
 
     // store array data to the session storage
     sessionStorage.setItem("recipientData", JSON.stringify(recipientdata));
-
-
-
-        // TODO: Niet nodig?
-        //Use JSON to retrieve the stored data and convert it
-
-        let storeData = sessionStorage.getItem("recipientData");
-        if(storedData !== null) {
-            recipientdata = JSON.parse(storedData);
-}
 };
 
 const displayRecipient = () => {
-
     let displayRecipient = JSON.parse(sessionStorage.recipientData);
-    created_recipient_text = "";
-
-    for (key in displayRecipient) {
+    let created_recipient_text = "";
+    for (let key in displayRecipient) {
         created_recipient_text += key + ": " + displayRecipient[key] + "<br>";
     }
 
@@ -153,15 +109,6 @@ const storeMetaData = () => {
     let metadataInput1 = document.getElementById("metadataInput1").value;
     let metadataInput2 = document.getElementById("metadataInput2").value;
 
-    // let metadataImageUrlSelf = document.getElementById("metadataImageUrlSelf").value;
-    // let metadataImageUrlIpfs = ipfsUrl;
-
-    // if (metadataImageUrlSelf) {
-    //     metadataImageUrl = document.getElementById("metadataImageUrlSelf").value;
-    // } else {
-    //     metadataImageUrl = metadataImageUrlIpfs;
-    // }
-
     let metadatadata = {
         metadataInput1: metadataInput1,
         metadataInput2: metadataInput2,
@@ -170,33 +117,15 @@ const storeMetaData = () => {
 
     // store array data to the session storage
     sessionStorage.setItem("metadataData", JSON.stringify(metadatadata));
-
-
-
-    // TODO: Niet nodig?
-    //Use JSON to retrieve the stored data and convert it
-
-    let storeData = sessionStorage.getItem("metadataData");
-    if (storedData !== null) {
-        metadatadata = JSON.parse(storedData);
-    }
 };
 
 const displayMetaData = () => {
-
     let displayMetaData = JSON.parse(sessionStorage.metadataData);
-    created_metadata_text = "";
-
-    for (key in displayMetaData) {
+    let created_metadata_text = "";
+    for (let key in displayMetaData) {
         created_metadata_text += key + ": " + displayMetaData[key] + "<br>";
     }
 
     document.getElementById("hiddenMetaData").style.display = "inline";
     document.getElementById("toggleMetaData").innerHTML = created_metadata_text;
 };
-
-// hulp code
-// sessionStorage.setItem("issuer-image", issueImage.value); 
-//     //console.log("issuerType:",issuerType)issuerType = document.getElementById("issuerType").value;
-
-

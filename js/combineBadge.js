@@ -148,10 +148,26 @@ function createBadge() {
     let issuerData = JSON.parse(sessionStorage.getItem("issuerData"));
     let badgeData = JSON.parse(sessionStorage.getItem("badgeData"));
 
+    //fill assertion part
     openBadgetemplate['type'][1] = metadataData['metadataInput1'];
     openBadgetemplate['id'] = metadataData['metadataInput2'];
+
+    //fill recipient part
     openBadgetemplate['recipient']['identity'] = hashRecipientIdentity(recipientData['recipientId'], recipientData['recipientSalt']);
     openBadgetemplate['recipient']['salt'] = recipientData['recipientSalt'];
+
+    //fill badge part
+    openBadgetemplate['badge']['type'][1] =
+
+
+    //fill issuer part
+    openBadgetemplate['evidence'] = issuerData['issuerSmartcontractAddress'];
+
+
+
+
+
+    openBadgetemplate['issuedOn'] = new Date().toLocaleString();
 
 
 
