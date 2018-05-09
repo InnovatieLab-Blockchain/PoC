@@ -148,10 +148,48 @@ function createBadge() {
     let issuerData = JSON.parse(sessionStorage.getItem("issuerData"));
     let badgeData = JSON.parse(sessionStorage.getItem("badgeData"));
 
-    openBadgetemplate['type'][1] = metadataData['metadataInput1'];
-    openBadgetemplate['id'] = metadataData['metadataInput2'];
+    //fill recipient part
     openBadgetemplate['recipient']['identity'] = hashRecipientIdentity(recipientData['recipientId'], recipientData['recipientSalt']);
     openBadgetemplate['recipient']['salt'] = recipientData['recipientSalt'];
+
+    //fill badge part
+    openBadgetemplate['badge']['type'][1] = badgeData['badgeType'];
+    openBadgetemplate['badge']['id'] = badgeData['badgeId'];
+    openBadgetemplate['badge']['name'] = badgeData['badgeName'];
+    openBadgetemplate['badge']['description'] = badgeData['badgeDescription'];
+    openBadgetemplate['badge']['criteria'] = badgeData['badgeCriteria'];
+
+    if (badgeData['badgeImage'] === "") {
+        openBadgetemplate['badge']['image'] = badgeData['badgeUrl'];
+
+    } else {
+        // let badgeImageIpfsUrl = // methode die ipfsurl maakt van createIpfsUrl(badgeData['badgeImage'], "file");
+        openBadgetemplate['badge']['image'] = badgeData['badgeImage'];
+    }
+
+    //fill issuer part
+    openBadgetemplate['badge']['issuer']['id'] = issuerData['issuerId'];
+    openBadgetemplate['badge']['issuer']['name'] = issuerData['issuerName'];
+    openBadgetemplate['badge']['issuer']['image'] = issuerData['issuerImage'];
+    openBadgetemplate['badge']['issuer']['url'] = issuerData['issuerUrl'];
+    openBadgetemplate['badge']['issuer']['email'] = issuerData['issuerEmail'];
+
+    //fill assertion part
+    openBadgetemplate['type'][1] = metadataData['metadataInput1'];
+    openBadgetemplate['id'] = metadataData['metadataInput2'];
+    openBadgetemplate['evidence'] = issuerData['issuerSmartcontractAddress'];
+    openBadgetemplate['issuedOn'] = new Date().toLocaleString();
+
+
+
+    //fill issuer part
+
+
+
+
+
+
+
 
 
 
