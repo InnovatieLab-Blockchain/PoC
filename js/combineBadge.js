@@ -135,7 +135,12 @@ function getRecipient(recipient_string) {
     return recipientPart
 }
 
-function removeRecipientDataFromOB(open_badge_string) {
+function removeRecipientDataFromOB() {
+    let openBadge = JSON.parse(sessionStorage.getItem("openBadge"));
+    delete openBadge['recipient']['salt'];
+    delete openBadge['recipient']['identity'];
+    console.log(openBadge);
+
 
     return deidentifiedOpenBadge;
 }
@@ -158,14 +163,16 @@ function createBadge() {
     openBadgetemplate['badge']['name'] = badgeData['badgeName'];
     openBadgetemplate['badge']['description'] = badgeData['badgeDescription'];
     openBadgetemplate['badge']['criteria'] = badgeData['badgeCriteria'];
+    openBadgetemplate['badge']['image'] = badgeData['badgeImage'];
 
-    if (badgeData['badgeImage'] === "") {
-        openBadgetemplate['badge']['image'] = badgeData['badgeUrl'];
-
-    } else {
-        // let badgeImageIpfsUrl = // methode die ipfsurl maakt van createIpfsUrl(badgeData['badgeImage'], "file");
-        openBadgetemplate['badge']['image'] = badgeData['badgeImage'];
-    }
+    // if (badgeData['badgeImage'] === "") {
+    //     openBadgetemplate['badge']['image'] = badgeData['badgeUrl'];
+    //
+    // } else {
+    //     let badgeImageIpfsUrl = createIpfsUrl(badgeData['badgeImage'], "file");
+    //     console.log(badgeImageIpfsUrl);
+    //     openBadgetemplate['badge']['image'] = badgeImageIpfsUrl;
+    // }
 
     //fill issuer part
     openBadgetemplate['badge']['issuer']['id'] = issuerData['issuerId'];
@@ -195,6 +202,11 @@ function createBadge() {
 
     console.log(openBadgetemplate);
 
+    sessionStorage.setItem("openBadge", JSON.stringify(openBadgetemplate));
+    removeRecipientDataFromOB();
+
+
+
 
 //    extract assertion part from template
 //
@@ -206,3 +218,4 @@ function createRandomUUID() {
 
     return uuid;
 }
+

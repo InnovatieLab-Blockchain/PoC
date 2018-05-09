@@ -6,7 +6,7 @@ const storeIssuer = () => {
     let issuerEmail = document.getElementById("issuerEmail").value;
     let issuerSmartcontractAddress = document.getElementById("issuerSmartcontractAddress").value;
     let issuerImageUrlSelf = document.getElementById("issuerImageUrlSelf").value;
-    let issuerImageUrlIpfs = ipfsUrl;
+    let issuerImageUrlIpfs = issuerIpfsUrlGlobal;
 
     let issuerImageUrl = null;
     if (issuerImageUrlSelf) {
@@ -46,8 +46,16 @@ const storeBadge = () => {
     let badgeName = document.getElementById("badgeName").value;
     let badgeDescription = document.getElementById("badgeDescription").value;
     let badgeCriteria = document.getElementById("badgeCriteria").value;
-    let badgeImage = document.getElementById("badgeImage").value;
+    // let badgeImage = document.getElementById("badgeImage").value;
     let badgeImageUrl = document.getElementById("badgeImageUrl").value;
+    let badgeImageUrlIpfs = badgeIpfsUrlGlobal;
+
+    let badgeImageUrlBlank = null;
+    if (badgeImageUrl) {
+        badgeImageUrlBlank = document.getElementById("badgeImageUrl").value;
+    } else {
+        badgeImageUrlBlank = badgeImageUrlIpfs;
+    }
 
     let badgedata = {
         badgeType: badgeType,
@@ -55,8 +63,8 @@ const storeBadge = () => {
         badgeName: badgeName,
         badgeDescription: badgeDescription,
         badgeCriteria: badgeCriteria,
-        badgeImage: badgeImage,
-        badgeImageUrl: badgeImageUrl
+        // badgeImage: badgeImage,
+        badgeImage: badgeImageUrlBlank
 
     };
 
@@ -72,7 +80,7 @@ const displayBadge = () => {
     }
 
     document.getElementById("hiddenBadge").style.display = "inline";
-    document.getElementById("toggleBadge").innerHTML = created_issuer_text;
+    document.getElementById("toggleBadge").innerHTML = created_badge_text;
 };
 
 const storeRecipient = () => {
