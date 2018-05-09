@@ -31,9 +31,13 @@ function storeBadgeOnBlockchain() {
 }
 
 function revokeBadgeOnBlockchain() {
-    var hash = prompt("Voer de hash in");
-    var time = "2018-05-07T12:22:30";
-    var reason = "Reden van intrekken";
+    // var hash = prompt("Voer de hash in");
+    // var time = "2018-05-07T12:22:30";
+    // var reason = "Reden van intrekken";
+
+    var hash = document.getElementById("revokeHash").value;
+    var time = document.getElementById("revokeTime").value;
+    var reason = document.getElementById("revokeReason").value;
 
     contract.revoke.sendTransaction(hash, time, reason, {
         from: web3.eth.accounts[0],

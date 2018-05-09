@@ -1,10 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Proof of Concept Micro-Credentials</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/main.css" rel="stylesheet">
+
+    <!--script files-->
+    <script src="../js/issue.js"></script>
+    <script src="../js/combineBadge.js"></script>
+    <script src="../js/hashing.js"></script>
+    <script src="../js/ethereum.js"></script>
+
+    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+        crossorigin="anonymous"></script>
+    <script src="../js/utilities/ipfs.js"></script>
+
 </head>
+
 <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Proof of Concept Micro-credentials</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br>
+        <div class="col-md-6 mb-6 offset-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Verify Badge</h2>
+                    <p class="card-text">
+                        <form>
+
+                            <label for="verifyJson" class="control-label">JSON of Badge</label>
+                            <input type="text" class="form-control" id="verifyJson">
+
+
+                            <label for="verifyId" class="control-label">ID of student</label>
+                            <input type="text" class="form-control" id="verifyId">
+                            
+                            <label for="verifySalt" class="control-label">Salt value of student</label>
+                            <input type="text" class="form-control" id="verifySalt">
+                </div>
+
+
+                <div class="card-footer">
+                    
+                    <button type="button" class="btn btn-primary btn-lg" onclick="verifyBadgeOnBlockchain();">
+                        Verify
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">InnovatieLab Blockchain 2018</p>
+        </div>
+        <!-- /.row -->
+
+        <span class="m-0 text-center text-white"></span>
+
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/modals.js"></script>
+
+
+
+
 
 </body>
+
 </html>
