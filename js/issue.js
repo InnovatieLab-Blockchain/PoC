@@ -22,7 +22,7 @@ const storeIssuer = () => {
         issuerUrl: issuerUrl,
         issuerEmail: issuerEmail,
         issuerSmartcontractAddress: issuerSmartcontractAddress,
-        issuerImageString: issuerImageUrl,
+        issuerImage: issuerImageUrl,
     };
 
     // store array data to the session storage
