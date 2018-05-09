@@ -109,20 +109,56 @@ const displayBadge = () => {
 
 
 const storeRecipient = () => {
-    let recipientType = document.getElementById("recipienttype").value
+    let recipientType = document.getElementById("recipientType").value
+    let recipientId = document.getElementById("recipientId").value;
+    let recipientName = document.getElementById("recipientName").value;
+    let recipientDescription = document.getElementById("recipientDescription").value;
+    let recipientCriteria = document.getElementById("recipientCriteria").value;
+    // let recipientImageUrlSelf = document.getElementById("recipientImageUrlSelf").value;
+    // let recipientImageUrlIpfs = ipfsUrl;
 
-    let recipientdata = [
-        "recipienttype:" + recipientType,
-    ]
+    // if (recipientImageUrlSelf) {
+    //     recipientImageUrl = document.getElementById("recipientImageUrlSelf").value;
+    // } else {
+    //     recipientImageUrl = recipientImageUrlIpfs;
+    // }
 
+    let recipientdata = {
+        recipientType: recipientType,
+        recipientId: recipientId,
+        recipientName: recipientName,
+        recipientDescription: recipientDescription,
+        recipientCriteria: recipientCriteria,
+        // recipientImageUrlSelf: recipientImageUrlSelf,
+        // recipientImageUrlIpfs: recipientImageUrlIpfs,
+    };
+
+    // store array data to the session storage
     sessionStorage.setItem("recipientData", JSON.stringify(recipientdata));
 
-    let storeData = sessionStorage.getItem("recipientdata");
-    if (storedData) {
+
+
+    // TODO: Niet nodig?
+    //Use JSON to retrieve the stored data and convert it
+
+    let storeData = sessionStorage.getItem("recipientData");
+    if (storedData !== null) {
         recipientdata = JSON.parse(storedData);
     }
-}
+};
 
+const displayRecipient = () => {
+
+    let displayRecipient = JSON.parse(sessionStorage.recipientData);
+    created_recipient_text = "";
+
+    for (key in displayRecipient) {
+        created_recipient_text += key + ": " + displayRecipient[key] + "<br>";
+    }
+
+    document.getElementById("hiddenRecipient").style.display = "inline";
+    document.getElementById("toggleRecipient").innerHTML = created_recipient_text;
+};
 
 // hulp code
 // sessionStorage.setItem("issuer-image", issueImage.value); 

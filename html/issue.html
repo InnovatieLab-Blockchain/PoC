@@ -215,7 +215,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="displayBadge()">Close</button>
-                                    <button type="button" class="btn btn-primary" onclick="storeBadge();">Send message</button>
+                                    <button type="button" class="btn btn-primary" onclick="storeBadge();">Store badge info</button>
                                 </div>
                             </div>
                         </div>
@@ -231,12 +231,73 @@
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus
                             quam molestias corporis quod, ea minima accusamus.</p>
                     </div>
+                    <!-- Button trigger modal badge -->
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">New</a>
-                        <a href="#" class="btn btn-primary">From IPFS</a>
+                        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#createRecipientModal">New
+                        </button>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ipfsModal">
+                            From IPFS
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Create recipient Modal -->
+            <div class="modal fade" id="createRecipientModal" tabindex="-1" role="dialog" aria-labelledby="createRecipientModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h4 class="modal-title" id="createrecipientModalLabel">New recipient creation</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipientType" class="control-label">Type:</label>
+                                    <input type="text" class="form-control" id="recipientType">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipientId" class="control-label">Id:</label>
+                                    <input type="text" class="form-control" id="recipientId">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipientName" class="control-label">Name:</label>
+                                    <input type="text" class="form-control" id="recipientName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipientDescription" class="control-label">Description:</label>
+                                    <input type="text" class="form-control" id="recipientDescription">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipientCriteria" class="control-label">Criteria:</label>
+                                    <input type="email" class="form-control" id="recipientCriteria">
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="recipientImage" class="control-label">Image:</label>
+                                    <input type="file" class="form-control" id="recipientImage">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipientImageUrlSelf" class="control-label">Image url:</label>
+                                    <input type="url" class="form-control" id="recipientImageUrlSelf">
+                                </div> -->
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="displayRecipient()">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="storeRecipient();">Send message</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
 
             <!--Create MetaData block-->
             <div class="col-md-3 mb-3">
@@ -247,13 +308,49 @@
                             quam molestias corporis quod, ea minima accusamus.</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Continue</a>
+                        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#createMetaDataModal">New
                     </div>
                 </div>
             </div>
 
         </div>
-        <!-- /.row new created blocks initial hiddenn -->
+
+
+        <!-- Create Meta Data Modal -->
+        <div class="modal fade" id="createMetaDataModal" tabindex="-1" role="dialog" aria-labelledby="createMetaDataModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+        
+                        <h4 class="modal-title" id="createmetadataModalLabel">New metadata creation</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="metadataInput1" class="control-label">Input 1</label>
+                                <input type="text" class="form-control" id="metadataInput1">
+                            </div>
+                            <div class="form-group">
+                                <label for="metadataInput2" class="control-label">Input 2</label>
+                                <input type="text" class="form-control" id="metadataInput2">
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="displaymetadata()">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="storemetadata();">Send message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- /.row new created blocks initial hidden -->
         <div class="row">
 
             <!--Issuer Created block-->
