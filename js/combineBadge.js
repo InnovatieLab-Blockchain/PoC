@@ -2,20 +2,20 @@
 // Use the 'createBadge' function to do that, but with your own jsonstrings.
 
 function getBadgeClass(badgeclass_string) {
-    badgeclass = JSON.parse(badgeclass_string);
-    delete badgeclass["@context"];
-    return badgeclass
+    let badgePart = JSON.parse(badgeclass_string);
+    delete badgePart["@context"];
+    return badgePart;
 }
 
 function getIssuer(issuer_string) {
-    issuer_ipfs = JSON.parse(issuer_string);
-    delete issuer_ipfs["@context"];
-    return issuer_ipfs
+    let issuerPart = JSON.parse(issuer_string);
+    delete issuerPart["@context"];
+    return issuerPart
 }
 
 function getAssertion(assertion_string) {
-    assertion = JSON.parse(assertion_string);
-    return assertion
+    let assertionPart = JSON.parse(assertion_string);
+    return assertionPart
 }
 
 //Function used to get badge parts from (ipfs)url if needed
@@ -26,19 +26,29 @@ function getJsonFromUrl(ipfs_url) {
     return Httpreq.responseText;
 }
 
-function createBadge(assertion_string, issuer_string, badgeclass_string) {
-    unfinished_badge_part = getAssertion(assertion_string);
-    issuer_part = getIssuer(issuer_string);
-    badgeclass_part = getBadgeClass(badgeclass_string);
+function createBadge(assertion_string, issuer_string, badgeclass_string, recipient_string) {
+    let recipient_part = getRecipient(recipient_string);
+    let unfinished_badge_part = getAssertion(assertion_string);
+
+    unfinished_badge_part["recipient"] = recipient_part;
+
+    let issuer_part = getIssuer(issuer_string);
+    let badgeclass_part = getBadgeClass(badgeclass_string);
+
     badgeclass_part["issuer"] = issuer_part;
     unfinished_badge_part["badge"] = badgeclass_part;
-    finished_badge = unfinished_badge_part;
+
+    let finished_badge = unfinished_badge_part;
     console.log("Below the combined OpenBadge");
     console.log(finished_badge);
 
     let test = JSON.parse(this.test_string_json);
     console.log("Below an example of Test OpenBadge");
     console.log(test);
+
+    sessionStorage.setItem("finishedBadge", JSON.stringify(finished_badge));
+
+    return finished_badge;
 }
 
 //Example of assertion part of OpenBadge
@@ -120,6 +130,20 @@ const test_string_json = "{\n" +
     "}";
 
 //Run code
-createBadge(assertion_string, issuer_string, badgeclass_string);
+createBadge(assertion_string, issuer_string, badgeclass_string, recipient_string);
+
+
+function getRecipient(recipient_string) {
+    let recipientPart = JSON.parse(recipient_string);
+    delete recipientPart["@context"];
+    return recipientPart
+}
+
+function removeRecipientDataFromOB(open_badge_string) {
+
+    return deidentifiedOpenBadge;
+}
+
+
 
 
