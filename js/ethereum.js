@@ -1,12 +1,12 @@
 var web3Provider;
 
-
 if (typeof web3 !== 'undefined') {
     web3Provider = web3.currentProvider;
 } else {
-    web3Provider = new Web3.providers.HttpProvider("http://localhost:7545");
+    web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
 }
-
+web3 = new Web3(web3Provider);
+// https://rinkeby.infura.io/LBVMQ0IWWwo6M0X6TrlH infura web3 provider
 
 web3 = new Web3(web3Provider);
 
@@ -16,8 +16,11 @@ var contract = web3.eth.contract(abi).at(contractAddress);
 
 function storeBadgeOnBlockchain() {
     var hash = prompt("Voer de hash in");
-    var time = "2018-05-07T12:22:30";
-    var statistics = "Statistieken voor Bram";
+    var time = new Date().toLocaleString();
+    console.log(time);
+
+    var statistics = sessionStorage.metadataData;
+    // var statistics = "Statistieken voor Bram";
 
     contract.store.sendTransaction(hash, time, statistics, {
         from: web3.eth.accounts[0],
