@@ -111,24 +111,17 @@ const displayBadge = () => {
 const storeRecipient = () => {
     let recipientType = document.getElementById("recipientType").value
     let recipientId = document.getElementById("recipientId").value;
-    let recipientName = document.getElementById("recipientName").value;
-    let recipientDescription = document.getElementById("recipientDescription").value;
-    let recipientCriteria = document.getElementById("recipientCriteria").value;
-    // let recipientImageUrlSelf = document.getElementById("recipientImageUrlSelf").value;
-    // let recipientImageUrlIpfs = ipfsUrl;
-
-    // if (recipientImageUrlSelf) {
-    //     recipientImageUrl = document.getElementById("recipientImageUrlSelf").value;
-    // } else {
-    //     recipientImageUrl = recipientImageUrlIpfs;
-    // }
+    let recipientSalt = document.getElementById("recipientSalt").value;
+    let recipientHashed = document.getElementById("recipientHashed").value;
+    let recipientEmail = document.getElementById("recipientEmail").value;
+    
 
     let recipientdata = {
         recipientType: recipientType,
         recipientId: recipientId,
-        recipientName: recipientName,
-        recipientDescription: recipientDescription,
-        recipientCriteria: recipientCriteria,        
+        recipientSalt: recipientSalt,
+        recipientHashed: recipientHashed,
+        recipientEmail: recipientEmail,        
         }
 
     // store array data to the session storage
