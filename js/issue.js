@@ -128,23 +128,21 @@ const storeRecipient = () => {
         recipientId: recipientId,
         recipientName: recipientName,
         recipientDescription: recipientDescription,
-        recipientCriteria: recipientCriteria,
-        // recipientImageUrlSelf: recipientImageUrlSelf,
-        // recipientImageUrlIpfs: recipientImageUrlIpfs,
-    };
+        recipientCriteria: recipientCriteria,        
+        }
 
     // store array data to the session storage
     sessionStorage.setItem("recipientData", JSON.stringify(recipientdata));
 
 
 
-    // TODO: Niet nodig?
-    //Use JSON to retrieve the stored data and convert it
+        // TODO: Niet nodig?
+        //Use JSON to retrieve the stored data and convert it
 
-    let storeData = sessionStorage.getItem("recipientData");
-    if (storedData !== null) {
-        recipientdata = JSON.parse(storedData);
-    }
+        let storeData = sessionStorage.getItem("recipientData");
+        if(storedData !== null) {
+            recipientdata = JSON.parse(storedData);
+}
 };
 
 const displayRecipient = () => {
@@ -158,6 +156,53 @@ const displayRecipient = () => {
 
     document.getElementById("hiddenRecipient").style.display = "inline";
     document.getElementById("toggleRecipient").innerHTML = created_recipient_text;
+};
+
+
+const storeMetaData = () => {
+    let metadataInput1 = document.getElementById("metadataInput1").value
+    let metadataInput2 = document.getElementById("metadataInput2").value;
+
+    // let metadataImageUrlSelf = document.getElementById("metadataImageUrlSelf").value;
+    // let metadataImageUrlIpfs = ipfsUrl;
+
+    // if (metadataImageUrlSelf) {
+    //     metadataImageUrl = document.getElementById("metadataImageUrlSelf").value;
+    // } else {
+    //     metadataImageUrl = metadataImageUrlIpfs;
+    // }
+
+    let metadatadata = {
+        metadataInput1: metadataInput1,
+        metadataInput2: metadataInput2,
+
+    };
+
+    // store array data to the session storage
+    sessionStorage.setItem("metadataData", JSON.stringify(metadatadata));
+
+
+
+    // TODO: Niet nodig?
+    //Use JSON to retrieve the stored data and convert it
+
+    let storeData = sessionStorage.getItem("metadataData");
+    if (storedData !== null) {
+        metadatadata = JSON.parse(storedData);
+    }
+};
+
+const displayMetaData = () => {
+
+    let displayMetaData = JSON.parse(sessionStorage.metadataData);
+    created_metadata_text = "";
+
+    for (key in displayMetaData) {
+        created_metadata_text += key + ": " + displayMetaData[key] + "<br>";
+    }
+
+    document.getElementById("hiddenMetaData").style.display = "inline";
+    document.getElementById("toggleMetaData").innerHTML = created_metadata_text;
 };
 
 // hulp code
