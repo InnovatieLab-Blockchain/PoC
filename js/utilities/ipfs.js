@@ -18,7 +18,8 @@
                 // document.getElementById("output").src = url
             })
         }
-        const issuerImage = document.getElementById("issuerImage");
-        reader.readAsArrayBuffer(issuerImage.files[0]); // Read Provided File
+        // const issuerImage = document.getElementById("issuerImage");
+        // reader.readAsArrayBuffer(issuerImage.files[0]); // Read Provided File
+
     }
 
