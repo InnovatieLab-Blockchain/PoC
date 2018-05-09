@@ -40,7 +40,6 @@ const storeIssuer = () => {
 
 };
 
-
 const displayIssuer = () => {
 
     let displayIssuer = JSON.parse(sessionStorage.issuerData);
@@ -107,9 +106,8 @@ const displayBadge = () => {
 
 }
 
-
 const storeRecipient = () => {
-    let recipientType = document.getElementById("recipientType").value
+    let recipientType = document.getElementById("recipientType").value;
     let recipientId = document.getElementById("recipientId").value;
     let recipientSalt = document.getElementById("recipientSalt").value;
     let recipientHashed = document.getElementById("recipientHashed").value;
@@ -122,7 +120,7 @@ const storeRecipient = () => {
         recipientSalt: recipientSalt,
         recipientHashed: recipientHashed,
         recipientEmail: recipientEmail,        
-        }
+        };
 
     // store array data to the session storage
     sessionStorage.setItem("recipientData", JSON.stringify(recipientdata));
@@ -151,9 +149,8 @@ const displayRecipient = () => {
     document.getElementById("toggleRecipient").innerHTML = created_recipient_text;
 };
 
-
 const storeMetaData = () => {
-    let metadataInput1 = document.getElementById("metadataInput1").value
+    let metadataInput1 = document.getElementById("metadataInput1").value;
     let metadataInput2 = document.getElementById("metadataInput2").value;
 
     // let metadataImageUrlSelf = document.getElementById("metadataImageUrlSelf").value;

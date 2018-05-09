@@ -14,8 +14,7 @@ function getIssuer(issuer_string) {
 }
 
 function getAssertion(assertion_string) {
-    let assertionPart = JSON.parse(assertion_string);
-    return assertionPart
+    return JSON.parse(assertion_string);
 }
 
 //Function used to get badge parts from (ipfs)url if needed
@@ -26,30 +25,27 @@ function getJsonFromUrl(ipfs_url) {
     return Httpreq.responseText;
 }
 
-function createBadge(assertion_string, issuer_string, badgeclass_string, recipient_string) {
-    let recipient_part = getRecipient(recipient_string);
-    let unfinished_badge_part = getAssertion(assertion_string);
-
-    unfinished_badge_part["recipient"] = recipient_part;
-
-    let issuer_part = getIssuer(issuer_string);
-    let badgeclass_part = getBadgeClass(badgeclass_string);
-
-    badgeclass_part["issuer"] = issuer_part;
-    unfinished_badge_part["badge"] = badgeclass_part;
-
-    let finished_badge = unfinished_badge_part;
-    console.log("Below the combined OpenBadge");
-    console.log(finished_badge);
-
-    let test = JSON.parse(this.test_string_json);
-    console.log("Below an example of Test OpenBadge");
-    console.log(test);
-
-    sessionStorage.setItem("finishedBadge", JSON.stringify(finished_badge));
-
-    return finished_badge;
-}
+//Old createbadge for ref
+// function createBadge(assertion_string, issuer_string, badgeclass_string, recipient_string) {
+//     let recipient_part = getRecipient(recipient_string);
+//     let unfinished_badge_part = getAssertion(assertion_string);
+//
+//     unfinished_badge_part["recipient"] = recipient_part;
+//
+//     let issuer_part = getIssuer(issuer_string);
+//     let badgeclass_part = getBadgeClass(badgeclass_string);
+//
+//     badgeclass_part["issuer"] = issuer_part;
+//     unfinished_badge_part["badge"] = badgeclass_part;
+//
+//     let finished_badge = unfinished_badge_part;
+//     // console.log("Below the combined OpenBadge");
+//     // console.log(finished_badge);
+//
+//     sessionStorage.setItem("finishedBadge", JSON.stringify(finished_badge));
+//
+//     return finished_badge;
+// }
 
 //Example of assertion part of OpenBadge
 const assertion_string = "{\n" +
@@ -93,44 +89,44 @@ const issuer_string = "{\n" +
     "}";
 
 //Test example of completed OpenBadge for reference
-const test_string_json = "{\n" +
+const openBadgeTemplate = "{\n" +
     "  \"@context\": \"https://w3id.org/openbadges/v2\",\n" +
-    "  \"type\": \"Assertion\",\n" +
-    "  \"id\": \"542135\",\n" +
+    "  \"type\": [\n" +
+    "    \"Assertion\",\n" +
+    "    \"\"\n" +
+    "  ],\n" +
+    "  \"id\": \"\",\n" +
     "  \"recipient\": {\n" +
     "    \"type\": \"uport_client_id\",\n" +
     "    \"hashed\": true,\n" +
-    "    \"salt\": \"deadsea\",\n" +
-    "    \"identity\": \"sha256$a46e865c5c7ef86405ba71b85acd8e2e95166c4b111448089f2e1599f42fe1bb\"\n" +
+    "    \"salt\": \"\",\n" +
+    "    \"identity\": \"\"\n" +
     "  },\n" +
-    "  \"evidence\": \"0x3d4D00cc34Fb4EF84089e0dB78593d3A1dD90E1d\",\n" +
-    "  \"issuedOn\": \"2018-03-15T15:06:59Z\",\n" +
+    "  \"evidence\": \"\",\n" +
+    "  \"issuedOn\": \"\",\n" +
     "  \"badge\": {\n" +
     "    \"type\": [\n" +
     "      \"BadgeClass\",\n" +
-    "      \"https://ipfs.io/ipfs/BadgeClassFormatOpIpfsInJSON\"\n" +
+    "      \"\"\n" +
     "    ],\n" +
-    "    \"id\": \"http://ipfs/BadgeClassTypeForMscEngineeringinJSON\",\n" +
-    "    \"name\": \"MSc in Biomedical Engineering\",\n" +
-    "    \"description\": \"As a biomedical engineer you will develop new methods for the diagnosis and treatment of patients.\",\n" +
-    "    \"image\": \"https://ipfs.io/ipfs/plaatjeBadgeBiomedicalEngineering\",\n" +
-    "    \"criteria\": \"https://ipfs.io/ipfs/vakkencriteriaBestand-Tekst\",\n" +
+    "    \"id\": \"\",\n" +
+    "    \"name\": \"\",\n" +
+    "    \"description\": \"\",\n" +
+    "    \"image\": \"\",\n" +
+    "    \"criteria\": \"\",\n" +
     "    \"issuer\": {\n" +
     "      \"type\": [\n" +
     "        \"Issuer\",\n" +
     "        \"uport_client_id\"\n" +
     "      ],\n" +
-    "      \"id\": \"2ojKNym3x16kUNQPq32CNcRpuo8MDH5w5vQ\",\n" +
-    "      \"name\": \"Rijksuniversiteit Groningen\",\n" +
-    "      \"image\": \"https://ipfs.io/ipfs/QmewkrDQHJpLf4cfGo1QF9v7ppvrBXWkt7r3uYaTP97Brf\",\n" +
-    "      \"url\": \"https://www.rug.nl/\",\n" +
-    "      \"email\": \"communicatie@rug.nl\"\n" +
+    "      \"id\": \"\",\n" +
+    "      \"name\": \"\",\n" +
+    "      \"image\": \"\",\n" +
+    "      \"url\": \"\",\n" +
+    "      \"email\": \"\"\n" +
     "    }\n" +
     "  }\n" +
     "}";
-
-//Run code
-createBadge(assertion_string, issuer_string, badgeclass_string, recipient_string);
 
 
 function getRecipient(recipient_string) {
@@ -145,5 +141,30 @@ function removeRecipientDataFromOB(open_badge_string) {
 }
 
 
+function createBadge() {
+    let openBadgetemplate = JSON.parse(openBadgeTemplate);
+    let metadataData = JSON.parse(sessionStorage.getItem("metadataData"));
+    let recipientData = JSON.parse(sessionStorage.getItem("recipientData"));
+    let issuerData = JSON.parse(sessionStorage.getItem("issuerData"));
+    let badgeData = JSON.parse(sessionStorage.getItem("badgeData"));
+
+    openBadgetemplate['type'][1] = metadataData['metadataInput1'];
+    openBadgetemplate['id'] = metadataData['metadataInput2'];
+    openBadgetemplate['recipient']['identity'] = hashRecipientIdentity(recipientData['recipientId'], recipientData['recipientSalt']);
+    openBadgetemplate['recipient']['salt'] = recipientData['recipientSalt'];
 
 
+
+    console.log(openBadgetemplate);
+
+
+//    extract assertion part from template
+//
+
+
+}
+
+function createRandomUUID() {
+
+    return uuid;
+}

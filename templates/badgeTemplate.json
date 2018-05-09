@@ -1,0 +1,38 @@
+{
+  "@context": "https://w3id.org/openbadges/v2",
+  "type": [
+    "Assertion",
+    ""
+  ],
+  "id": "",
+  "recipient": {
+    "type": "uport_client_id",
+    "hashed": true,
+    "salt": "",
+    "identity": ""
+  },
+  "evidence": "",
+  "issuedOn": "",
+  "badge": {
+    "type": [
+      "BadgeClass",
+      ""
+    ],
+    "id": "",
+    "name": "",
+    "description": "",
+    "image": "",
+    "criteria": "",
+    "issuer": {
+      "type": [
+        "Issuer",
+        "uport_client_id"
+      ],
+      "id": "",
+      "name": "",
+      "image": "",
+      "url": "",
+      "email": ""
+    }
+  }
+}

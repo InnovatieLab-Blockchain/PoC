@@ -18,6 +18,8 @@
 
     <!--script files-->
     <script src="../js/issue.js"></script>
+    <script src="../js/combineBadge.js"></script>
+    <script src="../js/hashing.js"></script>
     <script src="../js/ethereum.js"></script>
     <script src="https://wzrd.in/standalone/buffer"></script>
     <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
@@ -201,7 +203,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="badgeCriteria" class="control-label">Criteria:</label>
-                                            <input type="email" class="form-control" id="badgeCriteria">
+                                            <input type="text" class="form-control" id="badgeCriteria">
                                         </div>
                                         <div class="form-group">
                                             <label for="badgeImage" class="control-label">Image:</label>
@@ -437,9 +439,9 @@
         <!-- /.row -->
 
         <div class="card text-white bg-info my-4 text-center">
-            <div class="card-body">
-                <p class="text-white m-0">Below you can store the hash of the OpenBadge on the blockchain.</p>
-            </div>
+            <button class="card-body btn btn-primary" onclick="createBadge()">
+                <h1 class="text-white  m-0">ISSUE BADGE</h1>
+            </button>
         </div>
 
 
@@ -455,6 +457,7 @@
                     <div class="card-footer">
                         <a href="#" onclick="storeBadgeOnBlockchain()" class="btn btn-primary">Store!</a>
                     </div>
+
                 </div>
             </div>
 
