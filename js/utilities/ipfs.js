@@ -45,7 +45,7 @@ const createIpfsUrlForBadgeImage = () => {
     reader.readAsArrayBuffer(issuerImage.files[0]); // Read Provided File
 };
 
-
+// TODO: create generic ipfsuploader
 // FOR LATER
 // function createIpfsUrl(datastring, datatype) {
 //     let created_ipfs_url = null;
