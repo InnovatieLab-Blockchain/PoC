@@ -505,6 +505,14 @@
     </div>
 
     <!-- /.row -->
+    <!-- Call to Action Well -->
+    <div class="card text-white bg-info my-4 text-center">
+        <div class="card-body">
+            <p class="text-white m-0">Hash of last stored badge: <span id="badgehash"></span></p>
+            <script type='text/javascript'>document.getElementById("badgehash").innerHTML = sessionStorage.getItem('Badgehash');</script>
+        </div>
+    </div>
+
     <div class="card text-white bg-info my-4 text-center">
         <button class="card-body btn btn-warning text-white" data-toggle="modal"
                 data-target="#showCreatedBadge" onclick="createBadge()">

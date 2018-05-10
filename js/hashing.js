@@ -10,6 +10,22 @@ function createSalt() {
 
 function hashOpenBadge(open_badge) {
     return Sha256.hash(open_badge);
+    
+}
+
+function hashJson(evt) {
+    //Retrieve the first (and only!) File from the FileList object
+    var myFile = evt.target.files[0];
+    var reader = new FileReader();
+    reader.readAsText(myFile);
+    reader.onload = function () {
+        var hash2 = Sha256.hash(reader.result);
+        sessionStorage.setItem("hashfile", hash2);
+        document.getElementById("hashValue").innerHTML = sessionStorage.getItem('hashfile');
+        
+    }
+    document.getElementById('upload').addEventListener('change', hashJson, false);
+    
 }
 
 

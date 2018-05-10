@@ -26,7 +26,7 @@
             integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
             crossorigin="anonymous"></script>
     <script src="../js/utilities/ipfs.js"></script>
-
+    
 </head>
 
 <body>
@@ -66,6 +66,17 @@
                 <form>
 
                     <!--Change field to file upload-->
+                    <label for="revokeHash" class="control-label"> Select Badge:</label>
+                    
+                    <input type="file" class="form-control" name="upload" id="upload">
+                    </form>
+                    <label for="hashValue" class="form-label">Hash of file</label>
+                    <div id="hashValue" class="form-control">
+                    <script type='text/javascript'>
+                    document.getElementById("hashValue").innerHTML = sessionStorage.getItem('hashfile');</script></div>
+                    
+                    <form>
+                    
                     <label for="revokeHash" class="control-label">OpenBadge / Hash to be revoked</label>
                     <input type="text" class="form-control" id="revokeHash">
                     <label for="revokeTime" class="control-label">Datum van de revocation</label>
@@ -88,7 +99,10 @@
     </div>
 </div>
 <br>
-
+<script>
+    document.getElementById('upload').addEventListener('change', hashJson, false);
+   
+</script>
 <!-- /.container -->
 
 <!-- Footer -->

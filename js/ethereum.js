@@ -28,7 +28,9 @@ function storeBadgeOnBlockchain() {
         function (error, result) {
             if (!error) {
                 console.log(result);
-                alert('Badge hash has been stored on the blockchain.');
+                alert('Badge hash has been stored on the blockchain.\n The hash of the badge is ' + hash);
+                sessionStorage.setItem('Badgehash', hash);
+
             } else {
                 console.error(error);
                 alert('Error during assertion of badge hash.');
