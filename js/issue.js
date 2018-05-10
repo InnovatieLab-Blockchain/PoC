@@ -114,12 +114,23 @@ const displayRecipient = () => {
 };
 
 const storeMetaData = () => {
+    let metadataInputX = document.getElementById("metadataInputX").value;
+    let metadataInputY = document.getElementById("metadataInputY").value;
     let metadataInput1 = document.getElementById("metadataInput1").value;
     let metadataInput2 = document.getElementById("metadataInput2").value;
+    let metadataInput3 = document.getElementById("metadataInput3").value;
+    let metadataInput4 = document.getElementById("metadataInput4").value;
+    let metadataInput5 = document.getElementById("metadataInput5").value;
+
 
     let metadatadata = {
+        metadataInputX: metadataInputX,
+        metadataInputY: metadataInputY,
         metadataInput1: metadataInput1,
         metadataInput2: metadataInput2,
+        metadataInput3: metadataInput3,
+        metadataInput4: metadataInput4,
+        metadataInput5: metadataInput5,
 
     };
 
@@ -137,3 +148,18 @@ const displayMetaData = () => {
     document.getElementById("hiddenMetaData").style.display = "inline";
     document.getElementById("toggleMetaData").innerHTML = created_metadata_text;
 };
+
+
+//TODO: Download open badge to file werkend maken
+// function download(content, fileName, contentType) {
+//     let a = document.createElement("a");
+//     let file = new Blob([content], {type: contentType});
+//     a.href = URL.createObjectURL(file);
+//     a.download = fileName;
+//     a.click();
+//     setTimeout(function () {  // fixes firefox html removal bug
+//         window.URL.revokeObjectURL(a.href);
+//         a.remove();
+//     }, 500);
+//     console.log("Succes!")
+// }

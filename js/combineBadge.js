@@ -52,8 +52,8 @@ function createBadge() {
     openBadgetemplate['badge']['issuer']['email'] = issuerData['issuerEmail'];
 
     //fill assertion part
-    openBadgetemplate['type'][1] = metadataData['metadataInput1'];
-    openBadgetemplate['id'] = metadataData['metadataInput2'];
+    openBadgetemplate['type'][1] = metadataData['metadataInputX'];
+    openBadgetemplate['id'] = metadataData['metadataInputY'];
     openBadgetemplate['evidence'] = issuerData['issuerSmartcontractAddress'];
     openBadgetemplate['issuedOn'] = new Date().toLocaleString();
 
@@ -63,15 +63,23 @@ function createBadge() {
 
     console.log(openBadgetemplate);
 
-    sessionStorage.setItem("openBadge", JSON.stringify(openBadgetemplate));
+    let stringifiedOpenBadge = JSON.stringify(openBadgetemplate);
+
+    sessionStorage.setItem("openBadge", stringifiedOpenBadge);
+
+    document.getElementById('showCreatedOpenBadgeValue').value = JSON.stringify(openBadgetemplate, undefined, 4);
+
     createDeidentifiedOpenBadge();
 
+    //TODO: zie 'download in issue.js'
+    // download(stringifiedOpenBadge, 'json.txt', 'text/plain');
 
 //    extract assertion part from template
 //
 
 
 }
+
 
 
 //Example of OpenBadge for reference

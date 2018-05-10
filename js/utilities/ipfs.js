@@ -6,16 +6,16 @@ const createIpfsUrlForIssuerImage = () => {
     reader.onloadend = function () {
         const ipfs = window.IpfsApi({host: 'ipfs.infura.io', port: 5001, protocol: 'https'});
 
-        const buf = buffer.Buffer(reader.result) // Convert data into buffer
+        const buf = buffer.Buffer(reader.result); // Convert data into buffer
         ipfs.files.add(buf, (err, result) => { // Upload buffer to IPFS
             if (err) {
-                console.error(err)
+                console.error(err);
                 return
             }
-            issuerIpfsUrlGlobal = `https://ipfs.io/ipfs/${result[0].hash}`
-            console.log(`${issuerIpfsUrlGlobal}`)
-            document.getElementById("issuerIpfsUrl").innerHTML = issuerIpfsUrlGlobal
-            document.getElementById("issuerIpfsUrl").href = issuerIpfsUrlGlobal
+            issuerIpfsUrlGlobal = `https://ipfs.io/ipfs/${result[0].hash}`;
+            console.log(`${issuerIpfsUrlGlobal}`);
+            document.getElementById("issuerIpfsUrl").innerHTML = issuerIpfsUrlGlobal;
+            document.getElementById("issuerIpfsUrl").href = issuerIpfsUrlGlobal;
             // document.getElementById("output").src = url
         })
     };
@@ -28,16 +28,16 @@ const createIpfsUrlForBadgeImage = () => {
     reader.onloadend = function () {
         const ipfs = window.IpfsApi({host: 'ipfs.infura.io', port: 5001, protocol: 'https'});
 
-        const buf = buffer.Buffer(reader.result) // Convert data into buffer
+        const buf = buffer.Buffer(reader.result); // Convert data into buffer
         ipfs.files.add(buf, (err, result) => { // Upload buffer to IPFS
             if (err) {
-                console.error(err)
+                console.error(err);
                 return
             }
-            badgeIpfsUrlGlobal = `https://ipfs.io/ipfs/${result[0].hash}`
-            console.log(`${badgeIpfsUrlGlobal}`)
-            document.getElementById("badgeIpfsUrl").innerHTML = badgeIpfsUrlGlobal
-            document.getElementById("badgeIpfsUrl").href = badgeIpfsUrlGlobal
+            badgeIpfsUrlGlobal = `https://ipfs.io/ipfs/${result[0].hash}`;
+            console.log(`${badgeIpfsUrlGlobal}`);
+            document.getElementById("badgeIpfsUrl").innerHTML = badgeIpfsUrlGlobal;
+            document.getElementById("badgeIpfsUrl").href = badgeIpfsUrlGlobal;
             // document.getElementById("output").src = url
         })
     };

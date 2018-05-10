@@ -136,7 +136,8 @@
                                         </label>
                                         <div class="form-control">
                                             <input type="file" name="issuerImage" id="issuerImage">
-                                            <button type="button" class="btn btn-primary" onclick="createIpfsUrlForIssuerImage();">Upload
+                                            <button type="button" class="btn btn-primary"
+                                                    onclick="createIpfsUrlForIssuerImage();">Upload
                                             </button>
                                         </div>
                                     </div>
@@ -348,6 +349,7 @@
                 <div class="card-footer">
                     <button type="button" class="btn btn-success btn-lg" data-toggle="modal"
                             data-target="#createMetaDataModal">New
+                    </button>
                 </div>
             </div>
         </div>
@@ -369,12 +371,32 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="metadataInput1" class="control-label">Input 1</label>
+                            <label for="metadataInputX" class="control-label">Open Badge Assertion Type</label>
+                            <input type="text" class="form-control" id="metadataInputX">
+                        </div>
+                        <div class="form-group">
+                            <label for="metadataInputY" class="control-label">Open Badge Assertion Id</label>
+                            <input type="text" class="form-control" id="metadataInputY">
+                        </div>
+                        <div class="form-group">
+                            <label for="metadataInput1" class="control-label">Geslacht</label>
                             <input type="text" class="form-control" id="metadataInput1">
                         </div>
                         <div class="form-group">
-                            <label for="metadataInput2" class="control-label">Input 2</label>
+                            <label for="metadataInput2" class="control-label">Gemiddeld cijfer</label>
                             <input type="text" class="form-control" id="metadataInput2">
+                        </div>
+                        <div class="form-group">
+                            <label for="metadataInput3" class="control-label">Cum laude (J/N)</label>
+                            <input type="text" class="form-control" id="metadataInput3">
+                        </div>
+                        <div class="form-group">
+                            <label for="metadataInput4" class="control-label">Nationaliteit</label>
+                            <input type="text" class="form-control" id="metadataInput4">
+                        </div>
+                        <div class="form-group">
+                            <label for="metadataInput5" class="control-label">Leeftijd</label>
+                            <input type="text" class="form-control" id="metadataInput5">
                         </div>
 
                     </form>
@@ -483,54 +505,66 @@
     </div>
 
     <!-- /.row -->
+    <div class="card text-white bg-info my-4 text-center">
+        <button class="card-body btn btn-warning text-white" data-toggle="modal"
+                data-target="#showCreatedBadge" onclick="createBadge()">
+            <h1 class="text-white  m-0">CREATE BADGE</h1>
+            <p>Create Open Badge and check for validity.</p>
+        </button>
+    </div>
+
+    <!-- Show Created Badge Modal -->
+    <div class="modal fade" id="showCreatedBadge" tabindex="-1" role="dialog" aria-labelledby="showCreatedBadge">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="showCreatedBadgeLabel"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <textarea type="text" rows="24" class="form-control" id="showCreatedOpenBadgeValue"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="card text-white bg-info my-4 text-center">
-        <button class="card-body btn btn-primary" onclick="createBadge()">
+        <button class="card-body btn btn-primary" onclick="storeBadgeOnBlockchain()">
             <h1 class="text-white  m-0">ISSUE BADGE</h1>
+            <p>Store the created badge on the ethereum blockchain.</p>
+        </button>
+    </div>
+
+    <div class="card text-white bg-info my-4 text-center">
+        <button class="card-body btn btn-success" onclick="verifyBadgeOnBlockchain()">
+            <h1 class="text-white  m-0">VERIFY BADGE</h1>
+            <p>Verify that the Open Badge is stored on the ethereum blockchain.</p>
         </button>
     </div>
 
 
-    <!-- /.row -->
-    <div class="row">
-        <!--Create Store Badge block-->
-        <div class="col-md-6 mb-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Store badge</h2>
-                    <p class="card-text">Store the created badge on the ethereum blockchain.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" onclick="storeBadgeOnBlockchain()" class="btn btn-primary">Store!</a>
-                </div>
-
-            </div>
-        </div>
-
-        <!--Create Store Badge block-->
-        <div class="col-md-6 mb-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Check badge</h2>
-                    <p class="card-text">Check the created badge on the ethereum blockchain.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" onclick="verifyBadgeOnBlockchain()" class="btn btn-primary">Check</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <br>
-
-
-</div>
-<!-- /.container -->
 
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white"><a href="https://rinkeby.etherscan.io/address/0x093d5e586E10F57C5006df83a957cf0094758Ff4" target="_blank">InnovatieLab Blockchain 2018</a></p>
+        <p class="m-0 text-center text-white"><a
+                href="https://rinkeby.etherscan.io/address/0x093d5e586E10F57C5006df83a957cf0094758Ff4" target="_blank">InnovatieLab
+            Blockchain 2018</a></p>
 
 
     </div>
