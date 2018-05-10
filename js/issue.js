@@ -155,7 +155,7 @@ const displayMetaData = () => {
 function saveTextAsFile() {
   let textToWrite = sessionStorage.getItem('openBadge');
   let textFileAsBlob = new Blob([ textToWrite ], { type: 'text/plain' });
-  let fileNameToSaveAs = "openBadge.txt";
+  let fileNameToSaveAs = "openBadge.json";
 
   let downloadLink = document.createElement("a");
   downloadLink.download = fileNameToSaveAs;

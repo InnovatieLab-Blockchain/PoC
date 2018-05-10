@@ -37,9 +37,8 @@ function storeBadgeOnBlockchain() {
 }
 
 function revokeBadgeOnBlockchain() {
-    // var hash = prompt("Voer de hash in");
-    // var time = "2018-05-07T12:22:30";
-    // var reason = "Reden van intrekken";
+    //TODO: extract json from uploaded file and hash
+    // let hash = Sha256.hash(getJsonFromUrl(document.getElementById("revokeHash").value));
 
     let hash = document.getElementById("revokeHash").value;
     let time = document.getElementById("revokeTime").value;
@@ -61,6 +60,8 @@ function revokeBadgeOnBlockchain() {
 }
 
 function verifyBadgeOnBlockchain() {
+    //TODO: extract json from uploaded file and hash
+    // let hash = Sha256.hash(getJsonFromUrl(document.getElementById("verifyJson").value));
     let hash = prompt("Voer de hash in");
 
     contract.verify.call(hash, {

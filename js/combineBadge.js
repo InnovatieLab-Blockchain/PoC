@@ -1,8 +1,9 @@
 //Function used to get badge parts from (ipfs)url if needed
-function getJsonFromUrl(ipfs_url) {
+function getJsonFromUrl(data) {
     let Httpreq = new XMLHttpRequest();
-    Httpreq.open("GET", ipfs_url, false);
+    Httpreq.open("GET", data, false);
     Httpreq.send(null);
+    console.log(Httpreq.responseText);
     return Httpreq.responseText;
 }
 
