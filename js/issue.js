@@ -150,16 +150,32 @@ const displayMetaData = () => {
 };
 
 
-//TODO: Download open badge to file werkend maken
-// function download(content, fileName, contentType) {
-//     let a = document.createElement("a");
-//     let file = new Blob([content], {type: contentType});
-//     a.href = URL.createObjectURL(file);
-//     a.download = fileName;
-//     a.click();
-//     setTimeout(function () {  // fixes firefox html removal bug
-//         window.URL.revokeObjectURL(a.href);
-//         a.remove();
-//     }, 500);
-//     console.log("Succes!")
-// }
+
+//Download openBadge
+function saveTextAsFile() {
+  let textToWrite = sessionStorage.getItem('openBadge');
+  let textFileAsBlob = new Blob([ textToWrite ], { type: 'text/plain' });
+  let fileNameToSaveAs = "openBadge.txt";
+
+  let downloadLink = document.createElement("a");
+  downloadLink.download = fileNameToSaveAs;
+  downloadLink.innerHTML = "Download File";
+  if (window.webkitURL != null) {
+    // Chrome allows the link to be clicked without actually adding it to the DOM.
+    downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+  } else {
+    // Firefox requires the link to be added to the DOM before it can be clicked.
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+  }
+
+  downloadLink.click();
+}
+
+//Destroy temporary element
+function destroyClickedElement(event) {
+  // remove the link from the DOM
+  document.body.removeChild(event.target);
+}

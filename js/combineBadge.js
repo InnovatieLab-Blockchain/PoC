@@ -71,15 +71,10 @@ function createBadge() {
 
     createDeidentifiedOpenBadge();
 
-    //TODO: zie 'download in issue.js'
-    // download(stringifiedOpenBadge, 'json.txt', 'text/plain');
+    saveTextAsFile();
 
-//    extract assertion part from template
-//
-
-
+    //TODO: put deidentified open badge on IPFS
 }
-
 
 
 //Example of OpenBadge for reference
