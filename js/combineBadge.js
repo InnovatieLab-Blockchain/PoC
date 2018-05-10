@@ -78,6 +78,8 @@ function createBadge() {
 }
 
 
+
+
 //Example of OpenBadge for reference
 const openBadgeTemplate = "{\n" +
     "  \"@context\": \"https://w3id.org/openbadges/v2\",\n" +
