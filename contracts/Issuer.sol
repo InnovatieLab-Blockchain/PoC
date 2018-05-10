@@ -7,19 +7,19 @@ import './OCW.sol';
 contract Issuer is BadgeContract, Profile {
 
     event LogCreation(string, string, string, string, string);
-    event LogStorage(string, bytes32);
-    event LogRevocation(string, bytes32, string);
+    event LogStorage(string, string);
+    event LogRevocation(string, string, string);
     event LogStatistics(string, string);
-    event LogVerification(string, bytes32, string);
+    event LogVerification(string, string, string);
 
-    mapping (bytes32 => BadgeInfo) badgeInfoMap;
-    address ocwAddress = 0xbdC882e000F12dc65E176Ef7587F7Bd5E76e2a14;
+    mapping (string => BadgeInfo) badgeInfoMap;
+    address ocwAddress = 0xA68E8aB9Ae51beCE48cA73d15a9b9fBEA1253937;
 
     constructor(string id, string typeOB, string name, string url, string email) Profile(id, typeOB, name, url, email) public {
         emit LogCreation("Issuer created. Data: ", name, id, url, email);
     }
 
-    function store(bytes32 hash, string assertionTime, string statistics) external {
+    function store(string hash, string assertionTime, string statistics) external {
         badgeInfoMap[hash] = BadgeInfo(assertionTime, false, "", "");
         emit LogStorage("Stored a badge with hash:", hash);
 
@@ -28,7 +28,7 @@ contract Issuer is BadgeContract, Profile {
         emit LogStatistics("Statistical data:", statistics);
     }
 
-    function revoke(bytes32 hash, string time, string reason) external {
+    function revoke(string hash, string time, string reason) external {
         BadgeInfo storage info = badgeInfoMap[hash];
 
         if(info.revoked) {
@@ -43,7 +43,7 @@ contract Issuer is BadgeContract, Profile {
         }
     }
 
-    function verify(bytes32 hash) external returns (bool) {
+    function verify(string hash) external returns (bool) {
         BadgeInfo storage info = badgeInfoMap[hash];
 
         if(info.revoked) {
