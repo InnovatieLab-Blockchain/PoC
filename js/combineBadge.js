@@ -73,6 +73,7 @@ function createBadge() {
     createDeidentifiedOpenBadge();
 
     saveTextAsFile();
+    downloadAttest();
 
     //TODO: put deidentified open badge on IPFS
 }

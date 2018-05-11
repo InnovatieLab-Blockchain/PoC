@@ -184,15 +184,17 @@ function destroyClickedElement(event) {
 function downloadAttest() {
 
 
-    
+    let deidentifiedOpenBadge = sessionStorage.getItem("deidentifiedOpenBadge")   
     let recipientData = JSON.parse(sessionStorage.getItem("recipientData"));
     let issuerData = JSON.parse(sessionStorage.getItem("issuerData"));
     let badgeData = JSON.parse(sessionStorage.getItem("badgeData"));
     let ipfsUrl = sessionStorage.getItem("ipfsDeidentiefiedOpenBadge")
+    let hash = hashOpenBadge(sessionStorage.getItem("openBadge"));
 
     //fill recipient part
     recipientID = recipientData['recipientId'];
     recipientSalt = recipientData['recipientSalt'];
+
 
     //fill badge part
 
@@ -204,21 +206,29 @@ function downloadAttest() {
     //fill issuer part
 
     issuerName = issuerData['issuerName'];
+    issuerSC = issuerData['issuerSmartcontractAddress']
 
 
     let textToWrite = 
         "Attest information to share for verify\n" +
         "---------------------------------------------\n" +
-        "Badgename: " + badgeName + "; " +
-        "Badge description: " + badgeDescription + ";\n" +
-        "Issuer Name: " + issuerName + ";\n" +
+        "Badgename: " + badgeName + "\n" +
+        "Badge description: " + badgeDescription + "\n" +
+        "Issuer Name: " + issuerName + "\n" +
+        "Badge hash " + hash + "\n" +
         "---------------------------------------------\n" +
         "Actual information for verifying\n" +
         "---------------------------------------------\n" +
-        "RecipientID: " + recipientID + ";\n" +
-        "RecipientSalt: " + recipientSalt + ";\n" +
-        "Ipfs url: " + ipfsUrl + ";\n" +
-        "---------------------------------------------\n" 
+        "RecipientID: " + recipientID + "\n" +
+        "RecipientSalt: " + recipientSalt + "\n" +
+        "Ipfs url: " + ipfsUrl + "\n" +
+        "Smart Contract Addres: " + issuerSC +  "\n" +
+        "---------------------------------------------\n" +
+        "Json string of the deidentified openbadge\n" +
+        "---------------------------------------------\n" +
+        deidentifiedOpenBadge
+
+
 
     
     let textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
