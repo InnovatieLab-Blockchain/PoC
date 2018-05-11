@@ -179,3 +179,71 @@ function destroyClickedElement(event) {
   // remove the link from the DOM
   document.body.removeChild(event.target);
 }
+
+//Download attest
+function downloadAttest() {
+
+
+    
+    let recipientData = JSON.parse(sessionStorage.getItem("recipientData"));
+    let issuerData = JSON.parse(sessionStorage.getItem("issuerData"));
+    let badgeData = JSON.parse(sessionStorage.getItem("badgeData"));
+    let ipfsUrl = sessionStorage.getItem("ipfsDeidentiefiedOpenBadge")
+
+    //fill recipient part
+    recipientID = recipientData['recipientId'];
+    recipientSalt = recipientData['recipientSalt'];
+
+    //fill badge part
+
+    badgeName = badgeData['badgeName'];
+    badgeDescription = badgeData['badgeDescription'];
+
+
+
+    //fill issuer part
+
+    issuerName = issuerData['issuerName'];
+
+
+    let textToWrite = 
+        "Attest information to share for verify\n" +
+        "---------------------------------------------\n" +
+        "Badgename: " + badgeName + "; " +
+        "Badge description: " + badgeDescription + ";\n" +
+        "Issuer Name: " + issuerName + ";\n" +
+        "---------------------------------------------\n" +
+        "Actual information for verifying\n" +
+        "---------------------------------------------\n" +
+        "RecipientID: " + recipientID + ";\n" +
+        "RecipientSalt: " + recipientSalt + ";\n" +
+        "Ipfs url: " + ipfsUrl + ";\n" +
+        "---------------------------------------------\n" 
+
+    
+    let textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
+    let fileNameToSaveAs = badgeName + "attest.txt";
+
+    let downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    if (window.webkitURL != null) {
+        // Chrome allows the link to be clicked without actually adding it to the DOM.
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    } else {
+        // Firefox requires the link to be added to the DOM before it can be clicked.
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    }
+
+    downloadLink.click();
+}
+
+//Destroy temporary element
+function destroyClickedElement(event) {
+    // remove the link from the DOM
+    document.body.removeChild(event.target);
+}
+
