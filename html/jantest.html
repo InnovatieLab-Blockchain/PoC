@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/hashing.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="recipientID" class="control-label">ID:</label>
+                <input type="text" class="form-control" id="recipientID">
+            </div>
+            <div class="form-group">
+                <label for="recipientSalt" class="control-label">salt:</label>
+                <input type="text" class="form-control" id="recipientSalt">
+            </div>
+            <div class="form-group">
+                <label for="jsonDataInput" class="control-label">JSON:</label>
+                <input type="textarea" class="form-control" id="jsonDataInput">
+            </div>
+            
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="displayRecipient()">
+            Close
+        </button>
+        <button type="button" class="btn btn-primary" onclick="createBadge();">Create hash</button>
+    </div>
+
+
+</body>
+</html>
+
+<script>
+
+
+
+
+    function createBadge() {
+        let recipientID = document.getElementById("recipientID").value;
+        let recipientSalt = document.getElementById("recipientSalt").value;
+
+        let hashedID = hashRecipientIdentity(recipientID, recipientSalt);
+        let jsonDataInput = document.getElementById("jsonDataInput").value;
+        sessionStorage.setItem("jsonDataInput", JSON.stringify(jsonDataInput));
+
+        var data = sessionStorage.getItem("jsonDataInput")
+        var data2 = JSON.parse(data);
+        alert(data2);
+        console.log(data2);
+        alert(data2.issuedOn)
+
+   
+        let inputJSON = JSON.parse(sessionStorage.getItem("jsonDataInput"));
+         
+       console.log(inputJSON);
+
+        let openBadgetemplate = JSON.parse(openBadgeTemplate);
+        // let inputJSON = JSON.parse(sessionStorage.getItem("jsonDataOutput"));
+   
+        
+
+        //fill recipient part
+        openBadgetemplate['recipient']['identity'] = hashedID
+        openBadgetemplate['recipient']['salt'] = recipientSalt;
+
+
+
+        //fill badge part
+        openBadgetemplate['badge']['type'][1] = inputJSON['badgeType'];
+        openBadgetemplate['badge']['id'] = inputJSON['badgeId'];
+        openBadgetemplate['badge']['name'] = inputJSON['badgeName'];
+        openBadgetemplate['badge']['description'] = inputJSON['badgeDescription'];
+        openBadgetemplate['badge']['criteria'] = inputJSON['badgeCriteria'];
+        openBadgetemplate['badge']['image'] = inputJSON['badgeImage'];
+
+        // if (inputJSON['badgeImage'] === "") {
+        //     openBadgetemplate['badge']['image'] = inputJSON['badgeUrl'];
+        //
+        // } else {
+        //     let badgeImageIpfsUrl = createIpfsUrl(inputJSON['badgeImage'], "file");
+        //     console.log(badgeImageIpfsUrl);
+        //     openBadgetemplate['badge']['image'] = badgeImageIpfsUrl;
+        // }
+
+        //fill issuer part
+        openBadgetemplate['badge']['issuer']['id'] = inputJSON['issuerId'];
+        openBadgetemplate['badge']['issuer']['name'] = inputJSON['issuerName'];
+        openBadgetemplate['badge']['issuer']['image'] = inputJSON['issuerImage'];
+        openBadgetemplate['badge']['issuer']['url'] = inputJSON['issuerUrl'];
+        openBadgetemplate['badge']['issuer']['email'] = inputJSON['issuerEmail'];
+
+        //fill assertion part
+        openBadgetemplate['type'][1] = inputJSON['metadataInputX'];
+        openBadgetemplate['id'] = inputJSON['metadataInputY'];
+        openBadgetemplate['evidence'] = inputJSON['issuerSmartcontractAddress'];
+        openBadgetemplate['issuedOn'] = inputJSON['issuedOn'];
+
+
+        //fill issuer part
+
+
+        console.log(openBadgetemplate);
+
+        let stringifiedOpenBadge = JSON.stringify(openBadgetemplate);
+
+        sessionStorage.setItem("recreateOpenBadge", stringifiedOpenBadge);
+
+        saveTextAsFile();
+
+       
+
+        //TODO: put deidentified open badge on IPFS
+    }
+
+
+//Example of OpenBadge for reference
+const openBadgeTemplate = "{\n" +
+    "  \"@context\": \"https://w3id.org/openbadges/v2\",\n" +
+    "  \"type\": [\n" +
+    "    \"Assertion\",\n" +
+    "    \"\"\n" +
+    "  ],\n" +
+    "  \"id\": \"\",\n" +
+    "  \"recipient\": {\n" +
+    "    \"type\": \"uport_client_id\",\n" +
+    "    \"hashed\": true,\n" +
+    "    \"salt\": \"\",\n" +
+    "    \"identity\": \"\"\n" +
+    "  },\n" +
+    "  \"evidence\": \"\",\n" +
+    "  \"issuedOn\": \"\",\n" +
+    "  \"badge\": {\n" +
+    "    \"type\": [\n" +
+    "      \"BadgeClass\",\n" +
+    "      \"\"\n" +
+    "    ],\n" +
+    "    \"id\": \"\",\n" +
+    "    \"name\": \"\",\n" +
+    "    \"description\": \"\",\n" +
+    "    \"image\": \"\",\n" +
+    "    \"criteria\": \"\",\n" +
+    "    \"issuer\": {\n" +
+    "      \"type\": [\n" +
+    "        \"Issuer\",\n" +
+    "        \"uport_client_id\"\n" +
+    "      ],\n" +
+    "      \"id\": \"\",\n" +
+    "      \"name\": \"\",\n" +
+    "      \"image\": \"\",\n" +
+    "      \"url\": \"\",\n" +
+    "      \"email\": \"\"\n" +
+    "    }\n" +
+    "  }\n" +
+    "}";
+
+
+    //Download openBadge
+        function saveTextAsFile() {
+            let textToWrite = sessionStorage.getItem('recreateOpenBadge');
+            let textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
+            let fileNameToSaveAs = "recreateOpenBadge.json";
+
+            let downloadLink = document.createElement("a");
+            downloadLink.download = fileNameToSaveAs;
+            downloadLink.innerHTML = "Download File";
+            if (window.webkitURL != null) {
+                // Chrome allows the link to be clicked without actually adding it to the DOM.
+                downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+            } else {
+                // Firefox requires the link to be added to the DOM before it can be clicked.
+                downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+                downloadLink.onclick = destroyClickedElement;
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+            }
+
+            downloadLink.click();
+        }
+
+        //Destroy temporary element
+        function destroyClickedElement(event) {
+            // remove the link from the DOM
+            document.body.removeChild(event.target);
+        }
+
+</script>
+
+
