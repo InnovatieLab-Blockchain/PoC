@@ -2,10 +2,10 @@ pragma solidity ^0.4.23;
 
 interface BadgeContract {
 
-    function store(bytes32 hash, string timestamp, string statistics) external;
+    function store(string hash, string timestamp, string statistics) external;
 
-    function revoke(bytes32 hash, string timestamp, string revocationReason) external;
+    function revoke(string hash, string timestamp, string revocationReason) external;
 
-    function verify(bytes32 hash) external returns (bool);
+    function verify(string hash) external returns (bool, string, string);
 
 }
