@@ -39,3 +39,15 @@ const uportConnect = function () {
         document.getElementById("ophalen").style = "display:block;";
     })
 };
+
+const uportAttest = function () {
+    atheneumConnect.attestCredentials({
+        sub: user_data.uportId,
+        claim: {'Atheneum diploma': {naam: 'Atheneum diploma', description: 'Atheneum diploma'}},
+        exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000,
+    }).then((attestation) => {
+        console.log("Attestation = " + attestation);
+        window.location.href = "student2.html";
+        // alert("Atheneum diploma opgehaald")
+    })
+};
