@@ -150,89 +150,11 @@ const displayMetaData = () => {
 };
 
 
-
 //Download openBadge
-function saveTextAsFile() {
-  let textToWrite = sessionStorage.getItem('openBadge');
-  let textFileAsBlob = new Blob([ textToWrite ], { type: 'text/plain' });
-  let fileNameToSaveAs = "openBadge.json";
-
-  let downloadLink = document.createElement("a");
-  downloadLink.download = fileNameToSaveAs;
-  downloadLink.innerHTML = "Download File";
-  if (window.webkitURL != null) {
-    // Chrome allows the link to be clicked without actually adding it to the DOM.
-    downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-  } else {
-    // Firefox requires the link to be added to the DOM before it can be clicked.
-    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-    downloadLink.onclick = destroyClickedElement;
-    downloadLink.style.display = "none";
-    document.body.appendChild(downloadLink);
-  }
-
-  downloadLink.click();
-}
-
-//Destroy temporary element
-function destroyClickedElement(event) {
-  // remove the link from the DOM
-  document.body.removeChild(event.target);
-}
-
-//Download attest
-function downloadAttest() {
-
-
-    let deidentifiedOpenBadge = sessionStorage.getItem("deidentifiedOpenBadge")   
-    let recipientData = JSON.parse(sessionStorage.getItem("recipientData"));
-    let issuerData = JSON.parse(sessionStorage.getItem("issuerData"));
-    let badgeData = JSON.parse(sessionStorage.getItem("badgeData"));
-    let ipfsUrl = sessionStorage.getItem("ipfsDeidentiefiedOpenBadge")
-    let hash = hashOpenBadge(sessionStorage.getItem("openBadge"));
-
-    //fill recipient part
-    recipientID = recipientData['recipientId'];
-    recipientSalt = recipientData['recipientSalt'];
-
-
-    //fill badge part
-
-    badgeName = badgeData['badgeName'];
-    badgeDescription = badgeData['badgeDescription'];
-
-
-
-    //fill issuer part
-
-    issuerName = issuerData['issuerName'];
-    issuerSC = issuerData['issuerSmartcontractAddress']
-
-
-    let textToWrite = 
-        "Attest information to share for verify\n" +
-        "---------------------------------------------\n" +
-        "Badgename: " + badgeName + "\n" +
-        "Badge description: " + badgeDescription + "\n" +
-        "Issuer Name: " + issuerName + "\n" +
-        "Badge hash " + hash + "\n" +
-        "---------------------------------------------\n" +
-        "Actual information for verifying\n" +
-        "---------------------------------------------\n" +
-        "RecipientID: " + recipientID + "\n" +
-        "RecipientSalt: " + recipientSalt + "\n" +
-        "Ipfs url: " + ipfsUrl + "\n" +
-        "Smart Contract Addres: " + issuerSC +  "\n" +
-        "---------------------------------------------\n" +
-        "Json string of the deidentified openbadge\n" +
-        "---------------------------------------------\n" +
-        deidentifiedOpenBadge
-
-
-
-    
-    let textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
-    let fileNameToSaveAs = badgeName + "attest.txt";
+function saveOpenBadgeAsFile() {
+    let textToWrite = sessionStorage.getItem('openBadge');
+    let textFileAsBlob = new Blob([textToWrite], {type: 'text/plain'});
+    let fileNameToSaveAs = "openBadge.json";
 
     let downloadLink = document.createElement("a");
     downloadLink.download = fileNameToSaveAs;
@@ -257,3 +179,70 @@ function destroyClickedElement(event) {
     document.body.removeChild(event.target);
 }
 
+//Download attest
+function downloadAttest() {
+
+
+    let deidentifiedOpenBadge = sessionStorage.getItem("deidentifiedOpenBadge")
+    let recipientData = JSON.parse(sessionStorage.getItem("recipientData"));
+    let issuerData = JSON.parse(sessionStorage.getItem("issuerData"));
+    let badgeData = JSON.parse(sessionStorage.getItem("badgeData"));
+    let ipfsUrl = sessionStorage.getItem("ipfsDeidentiefiedOpenBadge")
+    let hash = hashOpenBadge(sessionStorage.getItem("openBadge"));
+
+    //fill recipient part
+    recipientID = recipientData['recipientId'];
+    recipientSalt = recipientData['recipientSalt'];
+
+
+    //fill badge part
+
+    badgeName = badgeData['badgeName'];
+    badgeDescription = badgeData['badgeDescription'];
+
+
+    //fill issuer part
+
+    issuerName = issuerData['issuerName'];
+    issuerSC = issuerData['issuerSmartcontractAddress']
+
+
+    let textToWrite =
+        "Attest information to share for verify\n" +
+        "---------------------------------------------\n" +
+        "Badgename: " + badgeName + "\n" +
+        "Badge description: " + badgeDescription + "\n" +
+        "Issuer Name: " + issuerName + "\n" +
+        "Badge hash " + hash + "\n" +
+        "---------------------------------------------\n" +
+        "Actual information for verifying\n" +
+        "---------------------------------------------\n" +
+        "RecipientID: " + recipientID + "\n" +
+        "RecipientSalt: " + recipientSalt + "\n" +
+        "Ipfs url: " + ipfsUrl + "\n" +
+        "Smart Contract Addres: " + issuerSC + "\n" +
+        "---------------------------------------------\n" +
+        "Json string of the deidentified openbadge\n" +
+        "---------------------------------------------\n" +
+        deidentifiedOpenBadge
+
+
+    let textFileAsBlob = new Blob([textToWrite], {type: 'text/plain'});
+    let fileNameToSaveAs = badgeName + "attest.txt";
+
+    let downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    if (window.webkitURL != null) {
+        // Chrome allows the link to be clicked without actually adding it to the DOM.
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    } else {
+        // Firefox requires the link to be added to the DOM before it can be clicked.
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    }
+
+    downloadLink.click();
+}

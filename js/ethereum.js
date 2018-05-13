@@ -54,11 +54,13 @@ function revokeBadgeOnBlockchain() {
 }
 
 function verifyBadgeOnBlockchain() {
+    let hash = verify(document.getElementById("verifyJson").value);
+    console.log(hash);
     //TODO: extract json from uploaded file and hash
     // let hash = Sha256.hash(getJsonFromUrl(document.getElementById("verifyJson").value));
-    let hash = prompt("Voer de hash in");
+    // let hash = prompt("Voer de hash in");
 
-    alert("Kijk in je console voor de response.");
+    // alert("Kijk in je console voor de response.");
 
     contract.verify.call(hash, {
             from: web3.eth.accounts[0],
