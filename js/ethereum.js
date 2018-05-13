@@ -82,7 +82,12 @@ function verifyBadgeOnBlockchain(source) {
                 //TODO
                 console.log(result);
                 console.log(result[0], result[1], result[2]);
-                alert(result)
+
+                if(result[0]) {
+                    alert('The badge with hash ' + result[2] + ' is valid.');
+                } else {
+                    alert(result[1]);
+                }
             } else {
                 console.error(error);
                 alert.error(error);
