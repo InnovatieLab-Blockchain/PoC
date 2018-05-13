@@ -54,24 +54,15 @@ function revokeBadgeOnBlockchain() {
 }
 
 function verifyBadgeOnBlockchain(source) {
-
     let hash = null;
 
-    if (source === "issuepage"){
+    if (source === "issuepage") {
         hash = sessionStorage.getItem("Badgehash");
-
     }
     else {
         hash = verify(document.getElementById("verifyJson").value);
-
     }
-
     console.log(hash);
-    //TODO: extract json from uploaded file and hash
-    // let hash = Sha256.hash(getJsonFromUrl(document.getElementById("verifyJson").value));
-    // let hash = prompt("Voer de hash in");
-
-    // alert("Kijk in je console voor de response.");
 
     contract.verify.call(hash, {
             from: web3.eth.accounts[0],
@@ -79,14 +70,16 @@ function verifyBadgeOnBlockchain(source) {
         },
         function (error, result) {
             if (!error) {
-                //TODO
-                console.log(result);
                 console.log(result[0], result[1], result[2]);
 
                 if(result[0]) {
                     alert('The badge with hash ' + result[2] + ' is valid.');
                 } else {
-                    alert(result[1]);
+                    if(result[1] === 'Invalid badge. Badge not found.') {
+                        alert(result[1] + ' (' + result[2] + ')');
+                    } else {
+                        alert(result[1] + ' ' + result[2]);
+                    }
                 }
             } else {
                 console.error(error);
