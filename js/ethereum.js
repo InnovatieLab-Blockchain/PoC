@@ -82,6 +82,7 @@ function verifyBadgeOnBlockchain(source) {
                 //TODO
                 console.log(result);
                 console.log(result[0], result[1], result[2]);
+                alert("Badge VALID")
             } else {
                 console.error(error);
             }
