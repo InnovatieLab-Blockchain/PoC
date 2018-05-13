@@ -183,11 +183,11 @@ function destroyClickedElement(event) {
 function downloadAttest() {
 
 
-    let deidentifiedOpenBadge = sessionStorage.getItem("deidentifiedOpenBadge")
+    let deidentifiedOpenBadge = sessionStorage.getItem("deidentifiedOpenBadge");
     let recipientData = JSON.parse(sessionStorage.getItem("recipientData"));
     let issuerData = JSON.parse(sessionStorage.getItem("issuerData"));
     let badgeData = JSON.parse(sessionStorage.getItem("badgeData"));
-    let ipfsUrl = sessionStorage.getItem("ipfsDeidentiefiedOpenBadge")
+    let ipfsUrl = sessionStorage.getItem("ipfsDeidentiefiedOpenBadge");
     let hash = hashOpenBadge(sessionStorage.getItem("openBadge"));
 
     //fill recipient part
@@ -204,7 +204,7 @@ function downloadAttest() {
     //fill issuer part
 
     issuerName = issuerData['issuerName'];
-    issuerSC = issuerData['issuerSmartcontractAddress']
+    issuerSC = issuerData['issuerSmartcontractAddress'];
 
 
     let textToWrite =
@@ -224,7 +224,7 @@ function downloadAttest() {
         "---------------------------------------------\n" +
         "Json string of the deidentified openbadge\n" +
         "---------------------------------------------\n" +
-        deidentifiedOpenBadge
+        deidentifiedOpenBadge;
 
 
     let textFileAsBlob = new Blob([textToWrite], {type: 'text/plain'});
