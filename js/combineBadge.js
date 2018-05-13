@@ -58,11 +58,7 @@ function createBadge() {
     openBadgetemplate['evidence'] = issuerData['issuerSmartcontractAddress'];
     openBadgetemplate['issuedOn'] = new Date().toLocaleString();
 
-
-    //fill issuer part
-
-
-    console.log(openBadgetemplate);
+    // console.log(openBadgetemplate);
 
     let stringifiedOpenBadge = JSON.stringify(openBadgetemplate);
 
@@ -72,13 +68,14 @@ function createBadge() {
 
     createDeidentifiedOpenBadge();
 
-    saveTextAsFile();
+    saveOpenBadgeAsFile();
+
+    putDeidentifiedOpenBadgeOnIpfs();
+
     downloadAttest();
 
     //TODO: put deidentified open badge on IPFS
 }
-
-
 
 
 //Example of OpenBadge for reference

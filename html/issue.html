@@ -87,7 +87,7 @@
                             data-target="#createIssuerModal">New
                     </button>
                     <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ipfsModal">-->
-                        <!--From IPFS-->
+                    <!--From IPFS-->
                     <!--</button>-->
                 </div>
 
@@ -107,29 +107,36 @@
                                 <form>
                                     <div class="form-group">
                                         <label for="issuerType" class="control-label">Type:</label>
-                                        <input type="text" class="form-control" id="issuerType">
+                                        <input type="text" class="form-control" id="issuerType"
+                                               placeholder="fe. https://lod.duo.nl/term/ErkendeOnderwijsinstelling">
                                     </div>
                                     <div class="form-group">
                                         <label for="issuerId" class="control-label">Id:</label>
-                                        <input type="text" class="form-control" id="issuerId">
+                                        <input type="text" class="form-control" id="issuerId"
+                                               placeholder="fe. 2ojKNym3x16kUNQPq32CNcRpuo8MDH5w5vQ">
                                     </div>
                                     <div class="form-group">
                                         <label for="issuerName" class="control-label">Name:</label>
-                                        <input type="text" class="form-control" id="issuerName">
+                                        <input type="text" class="form-control" id="issuerName"
+                                               placeholder="fe. Rijksuniversiteit Groningen">
                                     </div>
                                     <div class="form-group">
                                         <label for="issuerUrl" class="control-label">URL:</label>
-                                        <input type="text" class="form-control" id="issuerUrl">
+                                        <input type="text" class="form-control" id="issuerUrl"
+                                               placeholder="fe. www.rug.nl">
                                     </div>
                                     <div class="form-group">
                                         <label for="issuerEmail" class="control-label">Email:</label>
-                                        <input type="email" class="form-control" id="issuerEmail">
+                                        <input type="email" class="form-control" id="issuerEmail"
+                                               placeholder="fe. donotuse@rug.nl">
                                     </div>
                                     <div class="form-group">
                                         <label for="issuerSmartcontractAddress" class="control-label">Smart Contract
                                             Address:
                                         </label>
-                                        <input type="text" class="form-control" id="issuerSmartcontractAddress">
+                                        <input type="text" class="form-control" id="issuerSmartcontractAddress"
+                                               placeholder="0x350BdAfafD67309687946Ff910eb5a6064d96C05"
+                                               value="0x350BdAfafD67309687946Ff910eb5a6064d96C05">
                                     </div>
                                     <div class="form-group">
                                         <label for="issuerImage" class="control-label">Image:
@@ -156,7 +163,9 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal"
                                         onclick="displayIssuer();">Close
                                 </button>
-                                <button type="button" class="btn btn-primary" onclick="storeIssuer();">Store Issuer info
+                                <button type="button" class="btn btn-primary" onclick="storeIssuer();">Store Issuer
+                                    info
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -182,7 +191,7 @@
                             data-target="#createBadgeModal">New
                     </button>
                     <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ipfsModal">-->
-                        <!--From IPFS-->
+                    <!--From IPFS-->
                     <!--</button>-->
                 </div>
 
@@ -202,23 +211,28 @@
                                 <form>
                                     <div class="form-group">
                                         <label for="badgeType" class="control-label">Type:</label>
-                                        <input type="text" class="form-control" id="badgeType">
+                                        <input type="text" class="form-control" id="badgeType"
+                                               placeholder="fe. https://lod.duo.nl/term/Masteropleiding">
                                     </div>
                                     <div class="form-group">
                                         <label for="badgeId" class="control-label">Id:</label>
-                                        <input type="text" class="form-control" id="badgeId">
+                                        <input type="text" class="form-control" id="badgeId"
+                                               placeholder="fe. https://lod.duo.nl/term/Masteropleiding/THPHYS">
                                     </div>
                                     <div class="form-group">
                                         <label for="badgeName" class="control-label">Name:</label>
-                                        <input type="text" class="form-control" id="badgeName">
+                                        <input type="text" class="form-control" id="badgeName"
+                                               placeholder="fe. Master in theoretical physics">
                                     </div>
                                     <div class="form-group">
                                         <label for="badgeDescription" class="control-label">Description:</label>
-                                        <input type="text" class="form-control" id="badgeDescription">
+                                        <input type="text" class="form-control" id="badgeDescription"
+                                               placeholder="The aim of this curriculum for a student is to be able to understand all parts of physics">
                                     </div>
                                     <div class="form-group">
                                         <label for="badgeCriteria" class="control-label">Criteria:</label>
-                                        <input type="text" class="form-control" id="badgeCriteria">
+                                        <input type="text" class="form-control" id="badgeCriteria"
+                                               placeholder="Mechanics, quantum mechanics and relativity theory">
                                     </div>
 
                                     <div class="form-group">
@@ -273,7 +287,7 @@
                             data-target="#createRecipientModal">New
                     </button>
                     <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ipfsModal">-->
-                        <!--From IPFS-->
+                    <!--From IPFS-->
                     <!--</button>-->
                 </div>
 
@@ -297,23 +311,28 @@
                         <form>
                             <div class="form-group">
                                 <label for="recipientType" class="control-label">Type:</label>
-                                <input type="text" class="form-control" id="recipientType">
+                                <input type="text" class="form-control" id="recipientType"
+                                       placeholder="fe. uport_client_id" value="uport_client_id">
                             </div>
                             <div class="form-group">
                                 <label for="recipientId" class="control-label">Id:</label>
-                                <input type="text" class="form-control" id="recipientId">
+                                <input type="text" class="form-control" id="recipientId"
+                                       placeholder="fe. 2ohupr9RpmvYbkdSdffenMyeXrWSYWyfEa5">
                             </div>
                             <div class="form-group">
                                 <label for="recipientSalt" class="control-label">Salt:</label>
-                                <input type="text" class="form-control" id="recipientSalt">
+                                <input type="text" class="form-control" id="recipientSalt"
+                                       placeholder="fe. randomnumber randomcity">
                             </div>
                             <div class="form-group">
                                 <label for="recipientHashed" class="control-label">Hashed</label>
-                                <input type="text" class="form-control" id="recipientHashed">
+                                <input type="text" class="form-control" id="recipientHashed"
+                                       placeholder="true" value="true">
                             </div>
                             <div class="form-group">
                                 <label for="recipientEmail" class="control-label">Email:</label>
-                                <input type="email" class="form-control" id="recipientEmail">
+                                <input type="email" class="form-control" id="recipientEmail"
+                                       placeholder="fe. studentemail@rug.nl">
                             </div>
                             <!-- <div class="form-group">
                                 <label for="recipientImage" class="control-label">Image:</label>
@@ -329,7 +348,8 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="displayRecipient()">
                             Close
                         </button>
-                        <button type="button" class="btn btn-primary" onclick="storeRecipient();">Store recipient info</button>
+                        <button type="button" class="btn btn-primary" onclick="storeRecipient();">Store recipient info
+                        </button>
                     </div>
                 </div>
             </div>
@@ -371,31 +391,38 @@
                     <form>
                         <div class="form-group">
                             <label for="metadataInputX" class="control-label">Open Badge Assertion Type</label>
-                            <input type="text" class="form-control" id="metadataInputX">
+                            <input type="text" class="form-control" id="metadataInputX"
+                                   placeholder="https://lod.duo.nl/cdm/def/Diploma">
                         </div>
                         <div class="form-group">
                             <label for="metadataInputY" class="control-label">Open Badge Assertion Id</label>
-                            <input type="text" class="form-control" id="metadataInputY">
+                            <input type="text" class="form-control" id="metadataInputY"
+                                   placeholder="https://lod.duo.nl/cdm/def/VerklaringseenheidOpleiding-v01.1/Eindoordeel">
                         </div>
                         <div class="form-group">
                             <label for="metadataInput1" class="control-label">Geslacht</label>
-                            <input type="text" class="form-control" id="metadataInput1">
+                            <input type="text" class="form-control" id="metadataInput1"
+                                   placeholder="fe. Man">
                         </div>
                         <div class="form-group">
                             <label for="metadataInput2" class="control-label">Gemiddeld cijfer</label>
-                            <input type="text" class="form-control" id="metadataInput2">
+                            <input type="text" class="form-control" id="metadataInput2"
+                                   placeholder="fe. 8.6">
                         </div>
                         <div class="form-group">
-                            <label for="metadataInput3" class="control-label">Cum laude (J/N)</label>
-                            <input type="text" class="form-control" id="metadataInput3">
+                            <label for="metadataInput3" class="control-label">Cum laude (Ja/Nee)</label>
+                            <input type="text" class="form-control" id="metadataInput3"
+                                   placeholder="fe. Ja">
                         </div>
                         <div class="form-group">
                             <label for="metadataInput4" class="control-label">Nationaliteit</label>
-                            <input type="text" class="form-control" id="metadataInput4">
+                            <input type="text" class="form-control" id="metadataInput4"
+                                   placeholder="fe. NL">
                         </div>
                         <div class="form-group">
                             <label for="metadataInput5" class="control-label">Leeftijd</label>
-                            <input type="text" class="form-control" id="metadataInput5">
+                            <input type="text" class="form-control" id="metadataInput5"
+                                   placeholder="fe. 23">
                         </div>
 
                     </form>
@@ -404,7 +431,8 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="displayMetaData()">
                         Close
                     </button>
-                    <button type="button" class="btn btn-primary" onclick="storeMetaData();">Store MetaData info</button>
+                    <button type="button" class="btn btn-primary" onclick="storeMetaData();">Store MetaData info
+                    </button>
                 </div>
             </div>
         </div>
@@ -504,13 +532,13 @@
     </div>
 
     <!-- /.row -->
-    <!-- Call to Action Well -->
-    <div class="card text-white bg-info my-4 text-center">
-        <div class="card-body">
-            <p class="text-white m-0">Hash of last stored badge: <span id="badgehash"></span></p>
-            <script type='text/javascript'>document.getElementById("badgehash").innerHTML = sessionStorage.getItem('Badgehash');</script>
-        </div>
-    </div>
+    <!--&lt;!&ndash; Call to Action Well &ndash;&gt;-->
+    <!--<div class="card text-white bg-info my-4 text-center">-->
+    <!--<div class="card-body">-->
+    <!--<p class="text-white m-0">Hash of last stored badge: <span id="badgehash"></span></p>-->
+    <!--<script type='text/javascript'>document.getElementById("badgehash").innerHTML = sessionStorage.getItem('Badgehash');</script>-->
+    <!--</div>-->
+    <!--</div>-->
 
     <div class="card text-white bg-info my-4 text-center">
         <button class="card-body btn btn-warning text-white" data-toggle="modal"

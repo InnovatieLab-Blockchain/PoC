@@ -111,7 +111,7 @@
 
         sessionStorage.setItem("recreateOpenBadge", stringifiedOpenBadge);
 
-        saveTextAsFile();
+        saveTextAsFileJan();
 
        
 
@@ -161,7 +161,7 @@ const openBadgeTemplate = "{\n" +
 
 
     //Download openBadge
-        function saveTextAsFile() {
+        function saveTextAsFileJan() {
             let textToWrite = sessionStorage.getItem('recreateOpenBadge');
             let textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
             let fileNameToSaveAs = "recreateOpenBadge.json";
