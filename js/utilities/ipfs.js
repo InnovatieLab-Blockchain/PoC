@@ -13,7 +13,7 @@ const createIpfsUrlForIssuerImage = () => {
                 return
             }
             issuerIpfsUrlGlobal = `https://ipfs.io/ipfs/${result[0].hash}`;
-            console.log(`${issuerIpfsUrlGlobal}`);
+            // console.log(`${issuerIpfsUrlGlobal}`);
             document.getElementById("issuerIpfsUrl").innerHTML = issuerIpfsUrlGlobal;
             document.getElementById("issuerIpfsUrl").href = issuerIpfsUrlGlobal;
             // document.getElementById("output").src = url
@@ -35,7 +35,7 @@ const createIpfsUrlForBadgeImage = () => {
                 return
             }
             badgeIpfsUrlGlobal = `https://ipfs.io/ipfs/${result[0].hash}`;
-            console.log(`${badgeIpfsUrlGlobal}`);
+            // console.log(`${badgeIpfsUrlGlobal}`);
             document.getElementById("badgeIpfsUrl").innerHTML = badgeIpfsUrlGlobal;
             document.getElementById("badgeIpfsUrl").href = badgeIpfsUrlGlobal;
             // document.getElementById("output").src = url

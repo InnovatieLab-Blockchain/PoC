@@ -53,8 +53,19 @@ function revokeBadgeOnBlockchain() {
         });
 }
 
-function verifyBadgeOnBlockchain() {
-    let hash = verify(document.getElementById("verifyJson").value);
+function verifyBadgeOnBlockchain(source) {
+
+    let hash = null;
+
+    if (source === "issuepage"){
+        hash = sessionStorage.getItem("Badgehash");
+
+    }
+    else {
+        hash = verify(document.getElementById("verifyJson").value);
+
+    }
+
     console.log(hash);
     //TODO: extract json from uploaded file and hash
     // let hash = Sha256.hash(getJsonFromUrl(document.getElementById("verifyJson").value));

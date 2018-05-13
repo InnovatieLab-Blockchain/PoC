@@ -5,9 +5,11 @@ function verify(url) {
     let recipientID = document.getElementById("verifyId").value;
     let recipientSalt = document.getElementById("verifySalt").value;
 
-    deidentifiedBadge['recipient']['identity'] = hashRecipientIdentity(recipientID, recipientSalt);
     deidentifiedBadge['recipient']['salt'] = recipientSalt;
-    console.log(deidentifiedBadge);
+    deidentifiedBadge['recipient']['identity'] = hashRecipientIdentity(recipientID, recipientSalt);
+    console.log(hashRecipientIdentity(recipientID, recipientSalt));
+    let stringifiedFullBadge = JSON.stringify(deidentifiedBadge);
+    console.log(stringifiedFullBadge);
 
-    return hashOpenBadge(deidentifiedBadge);
+    return hashOpenBadge(stringifiedFullBadge);
 }

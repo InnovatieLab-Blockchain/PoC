@@ -72,7 +72,7 @@ function createBadge() {
 
     putDeidentifiedOpenBadgeOnIpfs();
 
-    downloadAttest();
+    // downloadAttest();
 
     //TODO: put deidentified open badge on IPFS
 }

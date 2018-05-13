@@ -21,6 +21,7 @@
     <script src="../js/combineBadge.js"></script>
     <script src="../js/hashing.js"></script>
     <script src="../js/ethereum.js"></script>
+    <script src="../js/verify.js"></script>
     <script src="https://wzrd.in/standalone/buffer"></script>
     <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"
             integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
@@ -584,7 +585,14 @@
     </div>
 
     <div class="card text-white bg-info my-4 text-center">
-        <button class="card-body btn btn-success" onclick="verifyBadgeOnBlockchain()">
+        <button class="card-body btn btn-danger" onclick="downloadAttest()">
+            <h1 class="text-white  m-0">ATTEST BADGE</h1>
+            <p>Download the de-identified OpenBadge.</p>
+        </button>
+    </div>
+
+    <div class="card text-white bg-info my-4 text-center">
+        <button class="card-body btn btn-success" onclick='verifyBadgeOnBlockchain("issuepage")'>
             <h1 class="text-white  m-0">VERIFY BADGE</h1>
             <p>Verify that the Open Badge is stored on the ethereum blockchain.</p>
         </button>
