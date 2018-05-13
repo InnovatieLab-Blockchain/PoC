@@ -82,3 +82,25 @@ const createIpfsUrlForBadgeImage = () => {
 //
 //     }
 // }
+
+
+
+const putDeidentifiedOpenBadgeOnIpfs = () => {
+
+    let deidentifiedOpenBadge= sessionStorage.getItem('deidentifiedOpenBadge');
+    const ipfs = window.IpfsApi({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
+    const buf = buffer.Buffer(deidentifiedOpenBadge); // Convert data into buffer
+    ipfs.files.add(buf, (err, result) => { // Upload buffer to IPFS
+        if (err) {
+            console.error(err);
+            return
+        }
+        ipfsDeidentiefiedOpenBadge = `https://ipfs.io/ipfs/${result[0].hash}`;
+        console.log(`${ipfsDeidentiefiedOpenBadge}`);
+        
+        sessionStorage.setItem("ipfsDeidentiefiedOpenBadge", ipfsDeidentiefiedOpenBadge);
+        
+        
+    })
+
+};
