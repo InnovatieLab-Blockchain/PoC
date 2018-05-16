@@ -114,24 +114,22 @@ const displayRecipient = () => {
 };
 
 const storeMetaData = () => {
-    let metadataInputX = document.getElementById("metadataInputX").value;
-    let metadataInputY = document.getElementById("metadataInputY").value;
-    let metadataInput1 = document.getElementById("metadataInput1").value;
-    let metadataInput2 = document.getElementById("metadataInput2").value;
-    let metadataInput3 = document.getElementById("metadataInput3").value;
-    let metadataInput4 = document.getElementById("metadataInput4").value;
-    let metadataInput5 = document.getElementById("metadataInput5").value;
+    let metadataInputAge = document.getElementById("metadataInputAge").value;
+    let metadataInputSex = document.getElementById("metadataInputSex").value;
+    let metadataIssuerType = document.getElementById("issuerType").value;
+    let metadataBadgeType = document.getElementById("badgeType").value;
+    let metadataInputTimestamp = new Date();
+;
+    
 
 
     let metadatadata = {
-        metadataInputX: metadataInputX,
-        metadataInputY: metadataInputY,
-        metadataInput1: metadataInput1,
-        metadataInput2: metadataInput2,
-        metadataInput3: metadataInput3,
-        metadataInput4: metadataInput4,
-        metadataInput5: metadataInput5,
-
+        metadataInputAge: metadataInputAge,
+        metadataInputSex: metadataInputSex,
+        metadataInputIssuerType: metadataIssuerType,
+        metadataInputbadgeType: metadataBadgeType,
+        metadataInputTimestamp: metadataInputTimestamp,
+    
     };
 
     // store array data to the session storage
