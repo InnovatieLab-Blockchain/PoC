@@ -87,3 +87,21 @@ function verifyBadgeOnBlockchain(source) {
             }
         });
 }
+
+function getStatisticalData() {
+    //TODO: extract json from uploaded file and hash
+    // let hash = Sha256.hash(getJsonFromUrl(document.getElementById("revokeHash").value));
+
+    let address_issuer = "0x350BdAfafD67309687946Ff910eb5a6064d96C05";
+    contract.getStatisticsFor.call(address_issuer, {
+        from: web3.eth.accounts[0],
+        gas: 4000000
+    },
+        function (error, result) {
+            if (!error) {
+                console.log(result);
+            } else {
+                console.error(error);
+            }
+        });
+}

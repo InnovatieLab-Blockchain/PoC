@@ -27,6 +27,10 @@
             integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
             crossorigin="anonymous"></script>
     <script src="../js/utilities/ipfs.js"></script>
+<script src="https://unpkg.com/uport-connect/dist/uport-connect.js"></script>
+
+<script src="../../node_modules/uport-connect/dist/uport-connect.js"></script>
+<script src="../js/uport.js"></script>
 
 </head>
 
@@ -583,6 +587,13 @@
             <p>Download the de-identified OpenBadge.</p>
         </button>
     </div>
+
+        <div class="card text-white bg-info my-4 text-center">
+            <button class="card-body btn btn-danger" onclick="uportAttest()">
+                <h1 class="text-white  m-0">3.5 - ATTEST BADGE</h1>
+                <p>Download the de-identified OpenBadge.</p>
+            </button>
+        </div>
 
     <div class="card text-white bg-info my-4 text-center">
         <button class="card-body btn btn-success" onclick='verifyBadgeOnBlockchain("issuepage")'>
