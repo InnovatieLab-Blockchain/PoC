@@ -14,7 +14,7 @@ let contract = web3.eth.contract(abi).at(contractAddress);
 function storeBadgeOnBlockchain() {
     let hash = hashOpenBadge(sessionStorage.getItem("openBadge"));
     let time = new Date().toLocaleString();
-    let statistics = sessionStorage.getItem("metadataData");
+    let statistics = sessionStorage.getItem("metadataDataStatistics");
 
     console.log(hash, time, statistics);
     contract.store.sendTransaction(hash, time, statistics, {
