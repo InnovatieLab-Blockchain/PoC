@@ -114,26 +114,39 @@ const displayRecipient = () => {
 };
 
 const storeMetaData = () => {
+    let metadataInputX = document.getElementById("metadataInputX").value;
+    let metadataInputY = document.getElementById("metadataInputY").value;
     let metadataInputAge = document.getElementById("metadataInputAge").value;
     let metadataInputSex = document.getElementById("metadataInputSex").value;
     let metadataIssuerType = document.getElementById("issuerType").value;
     let metadataBadgeType = document.getElementById("badgeType").value;
     let metadataInputTimestamp = new Date();
-;
-    
-
+    ;
 
     let metadatadata = {
+        metadataInputX: metadataInputX,
+        metadataInputY: metadataInputY,
         metadataInputAge: metadataInputAge,
         metadataInputSex: metadataInputSex,
         metadataInputIssuerType: metadataIssuerType,
         metadataInputbadgeType: metadataBadgeType,
         metadataInputTimestamp: metadataInputTimestamp,
-    
+
     };
+
+    let metadataDataStatistics = {
+        metadataInputAge: metadataInputAge,
+        metadataInputSex: metadataInputSex,
+        metadataInputIssuerType: metadataIssuerType,
+        metadataInputbadgeType: metadataBadgeType,
+        metadataInputTimestamp: metadatadata['metadataInputTimestamp'],
+
+    };
+
 
     // store array data to the session storage
     sessionStorage.setItem("metadataData", JSON.stringify(metadatadata));
+    sessionStorage.setItem("metadataDataStatistics", JSON.stringify(metadataDataStatistics));
 };
 
 const displayMetaData = () => {
@@ -180,6 +193,8 @@ function destroyClickedElement(event) {
 //Download attest
 function downloadAttest() {
 
+    // uportAttest();
+    //call to uport attest with recipient id
 
     let deidentifiedOpenBadge = sessionStorage.getItem("deidentifiedOpenBadge");
     let recipientData = JSON.parse(sessionStorage.getItem("recipientData"));
