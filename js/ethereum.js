@@ -54,6 +54,7 @@ function revokeBadgeOnBlockchain() {
 }
 
 function verifyBadgeOnBlockchain(source) {
+    // TODO: create full badge from deidentified badge and input
     let hash = null;
 
     if (source === "issuepage") {
