@@ -6,7 +6,7 @@ interface BadgeContract {
 
     function revoke(string hash, uint timestamp, string revocationReason) external;
 
-    function verify(string hash) external returns (bool, string, string);
+    function verify(string hash, uint timestamp) external returns (bool, string, string);
 
 }
 

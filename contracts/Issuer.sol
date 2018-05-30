@@ -7,8 +7,9 @@ import './OCW.sol';
 contract Issuer is BadgeContract, Profile {
 
     event LogCreation(string, string, string, string, string);
-    event Log(string, string, string);
-    event Log(string, string);
+    event LogStorage(string hash, uint timestamp);
+    event LogRevocation(string hash, uint timestamp, string reason, string result);
+    event LogVerification(string hash, uint timestamp, bool valid, string result);
 
     mapping (string => BadgeInfo) badgeInfoMap;
     address ocwAddress = 0x0457173093Bec092E0ea8b8f8b93930850cFA99E;
@@ -23,33 +24,40 @@ contract Issuer is BadgeContract, Profile {
         OCW ocw = OCW(ocwAddress);
         ocw.storeStatistics(gender, age, badgeClassId, issuerId, timestamp);
 
-        emit Log("The badge hash and statistics have been stored.", hash);
+        emit LogStorage(hash, timestamp);
     }
 
-    function revoke(string hash, uint time, string reason) external {
+    function revoke(string hash, uint timestamp, string reason) external {
         BadgeInfo storage info = badgeInfoMap[hash];
 
         if(info.revoked) {
-            emit Log("The badge has already been revoked with reason: ", info.revocationReason);
+            emit LogRevocation(hash, timestamp, reason, "The badge has already been revoked.");
         } else if(info.assertionTime == 0) {
-            emit Log("Badge not found: ", hash);
+            emit LogRevocation(hash, timestamp, reason, "Badge not found on blockchain.");
         } else {
             info.revoked = true;
             info.revocationReason = reason;
-            info.revocationTime = time;
-            emit Log("The badge has been revoked:", hash, reason);
+            info.revocationTime = timestamp;
+            emit LogRevocation(hash, timestamp, reason, "Succesfully revoked the badge.");
         }
     }
 
-    function verify(string hash) external returns (bool, string, string) {
+    function verify(string hash, uint timestamp) external returns (bool, string, string) {
         BadgeInfo storage info = badgeInfoMap[hash];
+        string memory message;
 
         if(info.revoked) {
-            return (false, "Invalid badge. The badge exists, but has been revoked:", info.revocationReason);
+            message = "Invalid badge. The badge exists, but has been revoked.";
+            emit LogVerification(hash, timestamp, false, message);
+            return (false, message, info.revocationReason);
         } else if(info.assertionTime == 0) {
-            return (false, "Invalid badge. Badge not found.", hash);
+            message = "Badge not found.";
+            emit LogVerification(hash, timestamp, false, message);
+            return (false, message, hash);
         } else {
-            return (true, "Valid badge.", hash);
+            message = "Valid badge";
+            emit LogVerification(hash, timestamp, true, message);
+            return (true, message, hash);
         }
     }
 

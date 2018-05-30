@@ -45,7 +45,7 @@
 
 <div class="container">
     <br>
-    <div class="col-md-6 mb-6 offset-3">
+    <div class="col-md-12 mb-6 offset-0">
         <div class="card h-100">
             <div class="card-body">
                 <h2 class="card-title">Live blockchain activities</h2>
@@ -66,21 +66,23 @@
 
             <div class="card-footer">
                 <h4>Revocations</h4>
-                <table>
+                <table id="revocationTable">
                     <tr>
                         <th>Badge hash</th>
                         <th>Timestamp</th>
                         <th>Reason</th>
+                        <th>Result</th>
                     </tr>
                 </table>
             </div>
 
             <div class="card-footer">
                 <h4>Verifications</h4>
-                <table>
+                <table id="verificationTable">
                     <tr>
                         <th>Badge hash</th>
                         <th>Timestamp</th>
+                        <th>Valid</th>
                         <th>Result</th>
                     </tr>
                 </table>
