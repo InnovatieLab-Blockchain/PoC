@@ -7,40 +7,28 @@ if (typeof web3 !== 'undefined') {
 }
 web3 = new Web3(web3Provider);
 
-let abi = [{ "constant": false, "inputs": [{ "name": "data", "type": "string" }], "name": "storeStatistics", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "issuer", "type": "address" }], "name": "getStatisticsFor", "outputs": [{ "name": "", "type": "string[]" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "", "type": "string" }, { "indexed": false, "name": "", "type": "address" }, { "indexed": false, "name": "", "type": "string" }], "name": "LogStoreStatistics", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "name": "", "type": "string" }, { "indexed": false, "name": "", "type": "address" }], "name": "LogGetStatistics", "type": "event" }];
-let contractAddress = "0xA68E8aB9Ae51beCE48cA73d15a9b9fBEA1253937";
+let abi = JSON.parse("[{\"anonymous\": false,\"inputs\": [{\"indexed\": false,\"name\": \"gender\",\"type\": \"string\"},{\"indexed\": false,\"name\": \"age\",\"type\": \"uint256\"},{\"indexed\": false,\"name\": \"badgeClassId\",\"type\": \"string\"},{\"indexed\": false,\"name\": \"issuerId\",\"type\": \"string\"},{\"indexed\": false,\"name\": \"timestamp\",\"type\": \"uint256\"},{\"indexed\": false,\"name\": \"issuer\",\"type\": \"address\"}],\"name\": \"LogStatistics\",\"type\": \"event\"},{\"constant\": false,\"inputs\": [{\"name\": \"gender\",\"type\": \"string\"},{\"name\": \"age\",\"type\": \"uint256\"},{\"name\": \"badgeClassId\",\"type\": \"string\"},{\"name\": \"issuerId\",\"type\": \"string\"},{\"name\": \"timestamp\",\"type\": \"uint256\"}],\"name\": \"storeStatistics\",\"outputs\": [],\"payable\": false,\"stateMutability\": \"nonpayable\",\"type\": \"function\"}]");
+let contractAddress = "0x0457173093Bec092E0ea8b8f8b93930850cFA99E";
 let contract = web3.eth.contract(abi).at(contractAddress);
 
-function getStatisticalData() {
-    //TODO: extract json from uploaded file and hash
-    // let hash = Sha256.hash(getJsonFromUrl(document.getElementById("revokeHash").value));
 
-    let address_issuer = "0x350BdAfafD67309687946Ff910eb5a6064d96C05";
-    contract.getStatisticsFor.call(address_issuer, {
-        from: web3.eth.accounts[0],
-        gas: 4000000
-    },
-        function (error, result) {
-            if (!error) {
-                console.log(result);
-                
-                sessionStorage.setItem("createdMetaData", JSON.stringify(result));
-                displayContractMetaData();
-            } else {
-                console.error(error);
-            }
-        });
+function getStatisticalData() {
+
+    contract.LogStatistics({}, {
+        fromBlock: 0,
+        toBlock: 'latest'
+    }, function (error, result) {
+        if (!error) {
+            console.log('Geslacht: ' + result.args.gender);
+            console.log('Leeftijd: ' + result.args.age);
+            console.log('BadgeClassID: ' + result.args.badgeClassId);
+            console.log('IssuerID: ' + result.args.issuerId);
+            console.log('Tijd: ' + result.args.timestamp);
+            console.log('Issuer: ' + result.args.issuer);
+        } else {
+            console.log(error);
+        }
+    });
+
 }
 
-
-
-const displayContractMetaData = () => {
-    let displayMetaData = JSON.parse(sessionStorage.createdMetaData);
-    let created_metadata_text = "";
-    for (let key in displayMetaData) {
-        created_metadata_text += key + ": " + displayMetaData[key] + "<br>";
-    }
-    
-    document.getElementById("createdMetaData").innerHTML = created_metadata_text;
-
-};
