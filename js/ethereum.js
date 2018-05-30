@@ -13,13 +13,16 @@ let contract = web3.eth.contract(abi).at(contractAddress);
 
 function storeBadgeOnBlockchain() {
     let hash = hashOpenBadge(sessionStorage.getItem("openBadge"));
-    //let time = new Date().toLocaleString();
-    //let statistics = sessionStorage.getItem("metadataDataStatistics");
-    let gender = "Male";
-    let age = 60;
-    let badgeClassId = "bcId";
-    let issuerId = "iId";
-    let time = new Date() * 1;
+
+    let metadataData = JSON.parse(sessionStorage.getItem("metadataData"));
+    let issuerData = JSON.parse(sessionStorage.getItem("issuerData"));
+    let badgeData = JSON.parse(sessionStorage.getItem("badgeData"));
+
+    let gender = metadataData['metadataInputSex'];
+    let age = metadataData['metadataInputAge'];
+    let badgeClassId = badgeData['badgeId'];
+    let issuerId = issuerData['issuerId'];
+    let time = new Date() * 1;   //Ok
 
     console.log(hash, gender, age, badgeClassId, issuerId, time);
 

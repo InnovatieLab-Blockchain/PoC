@@ -25,6 +25,7 @@ function getStatisticalData() {
             console.log('IssuerID: ' + result.args.issuerId);
             console.log('Tijd: ' + result.args.timestamp);
             console.log('Issuer: ' + result.args.issuer);
+            console.log(' ');
         } else {
             console.log(error);
         }
