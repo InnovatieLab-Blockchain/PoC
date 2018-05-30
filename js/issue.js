@@ -233,7 +233,7 @@ function downloadAttest() {
         "RecipientID: " + recipientID + "\n" +
         "RecipientSalt: " + recipientSalt + "\n" +
         "Ipfs url: " + ipfsUrl + "\n" +
-        "Smart Contract Addres: " + issuerSC + "\n" +
+        "Smart Contract Address: " + issuerSC + "\n" +
         "---------------------------------------------\n" +
         "Json string of the deidentified openbadge\n" +
         "---------------------------------------------\n" +

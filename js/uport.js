@@ -80,7 +80,7 @@ const uportAttest = function () {
         },
         notifications: true,
         // callbackUrl: 'student2.html',
-        exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
+        // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
         // uriHandler: (log) => { console.log(log)}
 
     })
