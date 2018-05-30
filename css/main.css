@@ -7,3 +7,18 @@ body {
     padding-top: 56px;
   }
 }
+
+
+table {
+    border-spacing: 5px;
+    border: 1px solid black;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 15px;
+}
+
+th {
+    text-align: left;
+}
