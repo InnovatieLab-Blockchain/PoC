@@ -1,0 +1,22 @@
+{"@context":"https://w3id.org/openbadges/v2","type":["Assertion","https://lod.duo.nl/cdm/def/Diploma"],"id":"https://lod.duo.nl/cdm/def/VerklaringseenheidOpleiding-v01.1/Eindoordeel","recipient":{"type":"uport_client_id","hashed":true,"salt":"groningen","identity":"3ca58e65ac37462be0aff029b72f61c89d3e935c80c2b08ce04036d762907ee0"},"evidence":"0x350BdAfafD67309687946Ff910eb5a6064d96C05","issuedOn":"5/31/2018, 12:22:01 PM","badge":{"type":["BadgeClass","https://lod.duo.nl/term/Bacheloropleiding"],"id":"http://lod.duo.nl/rio/id/opleidingseenheid/88991","name":"HBO Journalistiek","description":"Een journalist of journaliste is een beroepsbeoefenaar die nieuwsfeiten verzamelt over recente gebeurtenissen van algemeen belang, die deze feiten onderzoekt of analyseert en daarover publiceert in een actueel (nieuws)medium.","image":"http://openbadges.nl/std/badgeImage/ho/def/v0/hoJOU.png","criteria":"\"diploma\", \"nlqf-6\", \"hbo\", \"cultuur\", \"maatschappij\", \"journalistiek\"","issuer":{"type":["Issuer","uport_client_id"],"id":"2onTmcUmv8dAYUFtDyMXXF9SRquLsbWL5FE","name":"Hogeschool Utrecht","image":"https://ipfs.io/ipfs/QmY7YUnEg9Xp6d34YwhU9D2a8Rt7SebcyYS5TZMz1hfdEg","url":"www.hu.nl","email":"donotuse@hu.nl"}}}
+
+
+{
+    "issuerType": "https://lod.duo.nl/rio/doc/erkendeonderwijsinstelling/25DW",
+    "issuerId": "2onTmcUmv8dAYUFtDyMXXF9SRquLsbWL5FE",
+    "issuerName": "",
+    "issuerUrl": "www.hu.nl",
+    "issuerEmail": "donotuse@rug.nl",
+    "issuerSmartcontractAddress": "0x350bdafafd67309687946ff910eb5a6064d96c05",
+    "issuerImage": "https://ipfs.io/ipfs/QmY7YUnEg9Xp6d34YwhU9D2a8Rt7SebcyYS5TZMz1hfdEg"
+}
+
+
+{
+    "badgeType": "https://lod.duo.nl/term/Bacheloropleiding",
+    "badgeId": "http://lod.duo.nl/rio/id/opleidingseenheid/88991",
+    "badgeName": "HBO Journalistiek",
+    "badgeDescription": "Een journalist of journaliste is een beroepsbeoefenaar die nieuwsfeiten verzamelt over recente gebeurtenissen van algemeen belang, die deze feiten onderzoekt of analyseert en daarover publiceert in een actueel (nieuws)medium.",
+    "badgeCriteria": "\"diploma\", \"nlqf-6\", \"hbo\", \"cultuur\", \"maatschappij\", \"journalistiek\"",
+    "badgeImage": "http://openbadges.nl/std/badgeImage/ho/def/v0/hoJOU.png"
+}
