@@ -71,7 +71,7 @@ const uportLogin = function () {
 // let id = '2ougf8BY4MbyJJDkjEULoXHr95ziFEXQ94V';
 
 const uportAttestLogin = function () {
-    universiteitConnect.requestCredentials({
+    huConnect.requestCredentials({
         requested: ['name', 'phone', 'country', 'avatar'],
         notifications: true
     }).then((credentials) => {
@@ -204,7 +204,7 @@ function login2() {
         var recipientID = sessionStorage.getItem('uportID');
         let ipfsUrl = "https://ipfs.io/ipfs/QmUWzctECC3hAJcJEMHdiuijqb3Y8dEq6bADrKFbgxe7Km";
 
-        universiteitConnect.attestCredentials({
+        huConnect.attestCredentials({
                 sub: recipientID,
                 claim: {
                     DIPLOMA: {
