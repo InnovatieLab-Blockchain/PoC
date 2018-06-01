@@ -216,14 +216,12 @@ function login2() {
                     }
                 },
                 notifications: true,
-                // callbackUrl: 'student2.html',
-                // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
-                // uriHandler: (log) => { console.log(log)}
+                
 
             })
             .then(function (attestation) {
                 console.log("Attestation = " + attestation);
-                // document.getElementById("scoreboard").style.display = "inline";
+              
 
             })
 
@@ -249,7 +247,7 @@ function verifyUport() {
         .then((profile) => {
             console.log(profile)
             sessionStorage.setItem("profile", JSON.stringify(profile));
-            alert('Bedankt voor het delen');
+            alert('Thanks for sharing!');
             // console.log("Rabocred:", raboCredentials.settings.address)
             raboCredentials.lookup(raboCredentials.settings.address).then(prof => {
                 console.log("Rabo:", prof)
