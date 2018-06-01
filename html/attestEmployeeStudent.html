@@ -22,10 +22,17 @@
         <!-- Custom styles for this template -->
         <link href="../css/main.css" rel="stylesheet">
 
+        <!--script files-->
+        <script src="../js/issue.js"></script>
+        <script src="../js/combineBadge.js"></script>
+        <script src="../js/hashing.js"></script>
+        <script src="../js/ethereum.js"></script>
 
-
-
-
+        <script src="../js/verify.js"></script>
+        <script src="https://wzrd.in/standalone/buffer"></script>
+        <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+            crossorigin="anonymous"></script>
+        <script src="../js/utilities/ipfs.js"></script>
 
         <script src="../node_modules/uport-connect/dist/uport-connect.js"></script>
         <script src="../js/uport.js"></script>
@@ -59,28 +66,26 @@
         </nav>
 
         <div class="container">
-            <center>
-                <h1>Welcome!</h1>
-            </center>
+            <center><h1>Welcome!</h1></center>
             <br>
             <div class="row">
                 <div class="col-md-3 mb-3 offset-3">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">HBO Accountancy</h2>
+                            <h2 class="card-title">HU Employee</h2>
                             <p class="card-text">
                                 <span id="">
                             </p>
 
                         </div>
 
-                        Claim hier het diploma HBO Accountancy
+                        Claim your employee attest
 
-
+                        <!-- Navigation -->
 
                         <div class="card-footer">
                             <center>
-                                <button type="button" class="btn btn-primary" onclick="attestAccountancy();">Attest</button>
+                                <button type="button" class="btn btn-primary" onclick="employeeAttest();">Attest Employee</button>
                             </center>
 
 
@@ -91,21 +96,21 @@
                 <div class="col-md-3 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">HBO Journalistiek</h2>
+                            <h2 class="card-title">Student attest</h2>
                             <p class="card-text">
                                 <span id="">
                             </p>
 
                         </div>
 
-                        Claim hier het diploma HBO Journalistiek
+                        Claim your student attest
 
 
 
 
                         <div class="card-footer">
                             <center>
-                                <button type="button" class="btn btn-danger" onclick="attestJournalistiek();">Attest</button>
+                                <button type="button" class="btn btn-danger" onclick="studentAttest();">Attest Student</button>
                             </center>
 
                         </div>

@@ -2,6 +2,7 @@ function verify(url) {
 //    get the deidentified badge from field or ipfs
     let deidentifiedBadgeString = "" + getJsonFromUrl(url) + "";
     let deidentifiedBadge = JSON.parse(deidentifiedBadgeString);
+    console.log("JAN", deidentifiedBadge)
     let recipientID = document.getElementById("verifyId").value;
     let recipientSalt = document.getElementById("verifySalt").value;
 
@@ -9,7 +10,10 @@ function verify(url) {
     deidentifiedBadge['recipient']['identity'] = hashRecipientIdentity(recipientID, recipientSalt);
     console.log(hashRecipientIdentity(recipientID, recipientSalt));
     let stringifiedFullBadge = JSON.stringify(deidentifiedBadge);
-    console.log(stringifiedFullBadge);
-
+    console.log("JAN2",stringifiedFullBadge);
+    console.log(hashOpenBadge(stringifiedFullBadge));
     return hashOpenBadge(stringifiedFullBadge);
+
+    
+    
 }

@@ -52,20 +52,36 @@ const huConnect = new Connect('Hogeschool Utrecht', {
 const user_data = {};
 
 const uportLogin = function () {
-    universiteitConnect.requestCredentials({
-        requested: ['name', 'phone', 'country', 'avatar'],
-        notifications: true
-    }).then((credentials) => {
-        console.log("Credentials:", credentials);
+    let loginJson = localStorage.getItem('loginHU')
+    let loginUsers = JSON.parse(loginJson);
+    var login = sessionStorage.getItem('uportID');
+    // var login = "2ougf8BY4MbyJJDkjEULoXHr95ziFEXQ94V";
 
-        user_data.uportId = credentials.address;
-        user_data.uportName = credentials.name;
-        user_data.uportCountry = credentials.country;
-        user_data.uportPhone = credentials.phone;
-        sessionStorage.setItem("uportID", user_data.uportId);
-        sessionStorage.setItem("uportName", user_data.uportName);
-        window.location.href = "issue.html";
-    })
+
+    loginId = loginUsers[login];
+
+
+    if (loginId == login) {
+
+
+        huConnect.requestCredentials({
+            requested: ['name', 'phone', 'country', 'avatar'],
+            notifications: true
+        }).then((credentials) => {
+            console.log("Credentials:", credentials);
+
+            user_data.uportId = credentials.address;
+            user_data.uportName = credentials.name;
+            user_data.uportCountry = credentials.country;
+            user_data.uportPhone = credentials.phone;
+            sessionStorage.setItem("uportID", user_data.uportId);
+            sessionStorage.setItem("uportName", user_data.uportName);
+            window.location.href = "issue.html";
+        })
+    }
+    else {
+        alert('Your not entitled to issue badges');
+    }
 };
 
 // let id = '2ougf8BY4MbyJJDkjEULoXHr95ziFEXQ94V';
@@ -87,6 +103,23 @@ const uportAttestLogin = function () {
     })
 };
 
+
+const uportAttestCredentialLogin = function () {
+    huConnect.requestCredentials({
+        requested: ['name', 'phone', 'country', 'avatar'],
+        notifications: true
+    }).then((credentials) => {
+        console.log("Credentials:", credentials);
+
+        user_data.uportId = credentials.address;
+        user_data.uportName = credentials.name;
+        user_data.uportCountry = credentials.country;
+        user_data.uportPhone = credentials.phone;
+        sessionStorage.setItem("uportID", user_data.uportId);
+        sessionStorage.setItem("uportName", user_data.uportName);
+        window.location.href = "attestEmployeeStudent.html";
+    })
+};
 
 const uportAttest = function () {
 
@@ -111,22 +144,22 @@ const uportAttest = function () {
 
 
     universiteitConnect.attestCredentials({
-            sub: recipientID,
-            claim: {
-                DIPLOMA: {
-                    naam: '' + badgeName,
-                    description: '' + badgeDescription,
-                    salt: '' + recipientSalt,
-                    id: '' + recipientID,
-                    url: '' + ipfsUrl
-                }
-            },
-            notifications: true,
-            // callbackUrl: 'student2.html',
-            // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
-            // uriHandler: (log) => { console.log(log)}
+        sub: recipientID,
+        claim: {
+            DIPLOMA: {
+                naam: '' + badgeName,
+                description: '' + badgeDescription,
+                salt: '' + recipientSalt,
+                id: '' + recipientID,
+                url: '' + ipfsUrl
+            }
+        },
+        notifications: true,
+        // callbackUrl: 'student2.html',
+        // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
+        // uriHandler: (log) => { console.log(log)}
 
-        })
+    })
         .then(function (attestation) {
             console.log("Attestation = " + attestation);
             // document.getElementById("scoreboard").style.display = "inline";
@@ -137,14 +170,12 @@ const uportAttest = function () {
         })
 };
 
-function login() {
-    //    get the deidentified badge from field or ipfs
-    let loginJson = localStorage.getItem('login2')
+function attestAccountancy() {
+    
+    let loginJson = localStorage.getItem('loginAccountancy')
     let loginUsers = JSON.parse(loginJson);
     var login = sessionStorage.getItem('uportID');
-    // var login = "2ougf8BY4MbyJJDkjEULoXHr95ziFEXQ94V";
-
-
+  
 
     loginId = loginUsers[login];
     loginSalt = loginUsers['salt'];
@@ -156,110 +187,193 @@ function login() {
         let ipfsUrl = "https://ipfs.io/ipfs/QmbQ2qLv87RxBJCdF7RXNVpmzwd7WWRdJNBEkbfpXe3faH";
 
         huConnect.attestCredentials({
-                sub: recipientID,
-                claim: {
-                    DIPLOMA: {
-                        naam: 'HBO_Accountancy',
-                        description: 'De opleiding Accountancy bereidt je voor op een carrière als registeraccountant of accountant-administratieconsulent.',
-                        salt: '' + loginSalt,
-                        id: '' + recipientID,
-                        url: '' + ipfsUrl
-                    }
-                },
-                notifications: true,
-                // callbackUrl: 'student2.html',
-                // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
-                // uriHandler: (log) => { console.log(log)}
+            sub: recipientID,
+            claim: {
+                HBO_Accountancy: {
+                    naam: 'HBO_Accountancy',
+                    description: 'De opleiding Accountancy bereidt je voor op een carrière als registeraccountant of accountant-administratieconsulent.',
+                    salt: '' + loginSalt,
+                    id: '' + recipientID,
+                    url: '' + ipfsUrl,
 
-            })
+                }
+            },
+            notifications: true,
+            // callbackUrl: 'student2.html',
+            // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
+            // uriHandler: (log) => { console.log(log)}
+
+        })
             .then(function (attestation) {
                 console.log("Attestation = " + attestation);
-                // document.getElementById("scoreboard").style.display = "inline";
+          
 
             })
 
     } else {
-        alert('Je hebt geen recht op diploma!')
+        alert('Your not entitled to claim this credential')
     }
 
 
 }
 
-function login2() {
-    //    get the deidentified badge from field or ipfs
-    let loginJson = localStorage.getItem('login')
+function attestJournalistiek() {
+
+    let loginJson = localStorage.getItem('loginJournalistiek')
     let loginUsers = JSON.parse(loginJson);
     var login = sessionStorage.getItem('uportID');
-    // var login = "2ougf8BY4MbyJJDkjEULoXHr95ziFEXQ94V";
-
-
 
     loginId = loginUsers[login];
     loginSalt = loginUsers['salt'];
 
 
     if (loginId == login) {
+        var recipientID = loginId;
 
-
-        var recipientID = sessionStorage.getItem('uportID');
-        let ipfsUrl = "https://ipfs.io/ipfs/QmUWzctECC3hAJcJEMHdiuijqb3Y8dEq6bADrKFbgxe7Km";
-
+        let ipfsUrl = "https://ipfs.io/ipfs/Qmb8Dy8kDrniSgGHoZ8xGi9Y5pUwBWyVfTFyHxExwgfNhS";
+        
         huConnect.attestCredentials({
-                sub: recipientID,
-                claim: {
-                    DIPLOMA: {
-                        naam: 'HBO_Journalistiek',
-                        description: 'Een journalist of journaliste is een beroepsbeoefenaar die nieuwsfeiten verzamelt over recente gebeurtenissen van algemeen belang, die deze feiten onderzoekt of analyseert en daarover publiceert in een actueel (nieuws)medium.',
-                        salt: '' + loginSalt,
-                        id: '' + recipientID,
-                        url: '' + ipfsUrl
-                    }
-                },
-                notifications: true,
-                
-
-            })
+            sub: recipientID,
+            claim: {
+                HBO_Journalistiek: {
+                    naam: 'HBO_Journalistiek',
+                    description: 'Een journalist of journaliste is een beroepsbeoefenaar die nieuwsfeiten verzamelt over recente gebeurtenissen van algemeen belang, die deze feiten onderzoekt of analyseert en daarover publiceert in een actueel (nieuws)medium.',
+                    salt: '' + loginSalt,
+                    id: '' + recipientID,
+                    url: '' + ipfsUrl,
+                }
+            },
+            notifications: true,
+            
+        })
             .then(function (attestation) {
                 console.log("Attestation = " + attestation);
-              
-
             })
-
     } else {
-        alert('Je hebt geen recht op diploma!')
+        alert('Your not entitled to claim this credential')
     }
-
-
 }
-
 
 function verifyUport() {
     var e = document.getElementById('diploma');
     var diploma = e.options[e.selectedIndex].text;
-    
+
 
 
     raboConnect.requestCredentials({
-            requested: [diploma],
-            
-            notifications: true
-        })
+        verified: [diploma, 'name', 'email'],
+        notifications: true
+    })
         .then((profile) => {
-            console.log(profile)
+            console.log("inloguser", profile)
             sessionStorage.setItem("profile", JSON.stringify(profile));
-            alert('Thanks for sharing!');
+            alert(profile.name + '\n'
+                + 'Thanks for sharing! \n'
+                + 'Your ' + diploma + ' credential. \n'
+                + 'You will hear from us soon!'
+            )
             // console.log("Rabocred:", raboCredentials.settings.address)
             raboCredentials.lookup(raboCredentials.settings.address).then(prof => {
                 console.log("Rabo:", prof)
                 console.log("userAddress:", profile.address)
             })
-            // raboCredentials.lookup(profile.verified[0].iss).then(prof => {
-            //     console.log(prof)
+            raboCredentials.lookup(profile.verified[0].iss).then(profIss => {
+                console.log("Issuer:", profIss)
+                console.log("Issuer:", profIss.name)
 
-            // })
+            })
+
         })
 
 
+};
+
+function employeeAttest() {
+    var recipientID = '2oeBs78G1SYZeLJtF1A3yAXqKyiaffcNfa8';
+    // var recipientID = sessionStorage.getItem('uportID');
+    huConnect.attestCredentials({
+
+        sub: recipientID,
+        claim: {
+            HU_employee: {
+                naam: 'Employee of the Hogeschool Utrecht',
+            }
+        },
+        notifications: true,
+
+
+    })
+        .then(function (attestation) {
+            console.log("Attestation = " + attestation);
+
+
+        })
+
+}
+
+function studentAttest() {
+    // var recipientID = sessionStorage.getItem('uportID');
+    var recipientID = '2oeBs78G1SYZeLJtF1A3yAXqKyiaffcNfa8';
+    huConnect.attestCredentials({
+        sub: recipientID,
+        claim: {
+            HU_student: {
+                naam: 'Student of the Hogeschool Utrecht',
+            }
+        },
+        notifications: true,
+
+
+    })
+        .then(function (attestation) {
+            console.log("Attestation = " + attestation);
+
+
+        })
 }
 
 
+
+function inlogStudent() {
+
+    huConnect.requestCredentials({
+        verified: ['HU_student'],
+        
+
+    })
+        .then((profile) => {
+            user_data.uportId = profile.address;
+            sessionStorage.setItem("uportID", user_data.uportId);
+
+            console.log(profile)
+            if (profile.HU_student.naam == 'Student of the Hogeschool Utrecht') {
+                window.location.href = "student.html";
+            }
+            else {
+                alert('Sorry')
+            }
+        })
+
+
+};
+
+function inlogEmployee() {
+    huConnect.requestCredentials({
+        verified: ['HU_employee'],
+       
+
+    })
+        .then((profile) => {
+
+            console.log(profile)
+            user_data.uportId = profile.address;
+            sessionStorage.setItem("uportID", user_data.uportId);
+            if (profile.HU_employee.naam == 'Employee of the Hogeschool Utrecht') {
+                window.location.href = "employee.html";
+            } else {
+                alert('Sorry')
+            }
+        })
+
+
+};
