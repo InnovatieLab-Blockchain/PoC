@@ -1,131 +1,33 @@
-const Connect = uportconnect.Connect;
-const SimpleSigner = uportconnect.SimpleSigner;
-const Credentials = uportconnect.Credentials;
-
-console.log(Credentials);
-
-// var uportconnect = window.uportconnect
-// var uport = new uportconnect.Connect('MyDApp')
 
 
-const universiteitCredentials = new Credentials({
-    appName: 'RUG',
-    address: '2ojKNym3x16kUNQPq32CNcRpuo8MDH5w5vQ',
-    network: 'rinkeby',
-    signer: SimpleSigner('11cba7f19bce365f70b85e029f048f5c4cc73ad3232db828af5107dbb865e2b6')
-});
+const addEntry = () => {
+    let e = document.getElementById('diploma');
+    let studienaam = e.options[e.selectedIndex].text;
+    let salt = 'groningen';
 
+    let jsonObj = JSON.parse(localStorage.getItem(studienaam));
+    let newId = document.getElementById("entryId").value;
+    let newValue = document.getElementById("entryId").value;
+    jsonObj.studie.studenten[newId] = newValue;
 
-
-const universiteitConnect = new Connect('RUG', {
-    clientId: '2ojKNym3x16kUNQPq32CNcRpuo8MDH5w5vQ',
-    network: 'rinkeby',
-    signer: SimpleSigner('11cba7f19bce365f70b85e029f048f5c4cc73ad3232db828af5107dbb865e2b6')
-});
-
-
-function login() {
-    //    get the deidentified badge from field or ipfs
-    let loginJson = sessionStorage.getItem('login')
-    let loginUsers = JSON.parse(loginJson);
-    var login = sessionStorage.getItem('uportID');
-    // var login = "2ougf8BY4MbyJJDkjEULoXHr95ziFEXQ94V";
-
-    
-
-    loginId = loginUsers[login];
-    loginSalt =loginUsers['salt'];
-    
-
-    if (loginId == login) {
-        
-    
-    var recipientID = sessionStorage.getItem('uportID');
-    let ipfsUrl = "www.nu.nl";
-
-    universiteitConnect.attestCredentials({
-            sub: recipientID,
-            claim: {
-                DIPLOMA: {
-                    naam: 'Master',
-                    description: 'Master in economics',
-                    salt: 'test',
-                    id: 'uportID',
-                    url: '' + ipfsUrl
-                }
-            },
-            notifications: true,
-            // callbackUrl: 'student2.html',
-            // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
-            // uriHandler: (log) => { console.log(log)}
-
-        })
-        .then(function (attestation) {
-            console.log("Attestation = " + attestation);
-            // document.getElementById("scoreboard").style.display = "inline";
-
-        })
-
-    }
-    else {
-        alert('het lukt niet')
-    }
-
-    
-}
-
-const aTEST = function () {
-    var recipientID = sessionStorage.getItem('uportID');
-    let ipfsUrl = "www.nu.nl";
-
-    universiteitConnect.attestCredentials({
-            sub: recipientID,
-            claim: {
-                DIPLOMA: {
-                    naam: 'Master',
-                    description: 'Master in economics',
-                    salt: 'test',
-                    id: 'uportID',
-                    url: '' + ipfsUrl
-                }
-            },
-            notifications: true,
-            // callbackUrl: 'student2.html',
-            // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
-            // uriHandler: (log) => { console.log(log)}
-
-        })
-        .then(function (attestation) {
-            console.log("Attestation = " + attestation);
-            // document.getElementById("scoreboard").style.display = "inline";
-
-        })
+    console.log(jsonObj)
+    localStorage.setItem(studienaam, JSON.stringify(jsonObj))
+    alert('id: ' + newId + '\n' + 'salt: ' + newValue + '\n' + 'added to: ' + studienaam);
 };
 
-const bTEST = function () {
-    var recipientID = sessionStorage.getItem('uportID');
-    let ipfsUrl = "www.nu.nl";
 
-    universiteitConnect.attestCredentials({
-            sub: recipientID,
-            claim: {
-                DIPLOMA: {
-                    naam: 'Master',
-                    description: 'Master in economics',
-                    salt: 'test',
-                    id: 'uportID',
-                    url: '' + ipfsUrl
-                }
-            },
-            notifications: true,
-            // callbackUrl: 'student2.html',
-            // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
-            // uriHandler: (log) => { console.log(log)}
 
-        })
-        .then(function (attestation) {
-            console.log("Attestation = " + attestation);
-            // document.getElementById("scoreboard").style.display = "inline";
+const deleteEntry = () => {
+    let e = document.getElementById('diploma');
+    let studienaam = e.options[e.selectedIndex].text;
+    let salt = 'groningen';
 
-        })
+    let jsonObj = JSON.parse(localStorage.getItem(studienaam));
+
+    var key = document.getElementById("entryId").value;
+    delete jsonObj.studie.studenten[key];
+
+    console.log(jsonObj)
+    localStorage.setItem(studienaam, JSON.stringify(jsonObj))
+    alert('id: ' + key + '\n' + 'deleted from: ' + studienaam);
 };
