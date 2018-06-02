@@ -142,7 +142,7 @@ const uportAttest = function () {
     // issuerSC = issuerData['issuerSmartcontractAddress'];
 
 
-   
+}
 
 
 function verifyUport() {
@@ -358,5 +358,6 @@ function attestAccountancy() {
         alert('Your not entitled to claim this credential')
     }
 
+};
 
-}
+
