@@ -156,8 +156,10 @@ function verifyUport() {
             notifications: true
         })
         .then((profile) => {
-            console.log("inloguser", profile)
-            sessionStorage.setItem("profile", JSON.stringify(profile));
+            console.log(diploma);               
+            localStorage.setItem("profile", JSON.stringify(profile));
+                             
+                      
             alert(profile.name + '\n' +
                 'Thanks for sharing! \n' +
                 'Your ' + diploma + ' credential. \n' +
@@ -171,6 +173,8 @@ function verifyUport() {
             raboCredentials.lookup(profile.verified[0].iss).then(profIss => {
                 console.log("Issuer:", profIss)
                 console.log("Issuer:", profIss.name)
+                sessionStorage.setItem("issuerCredential:", profIss.name);
+                localStorage.setItem("issuerCredential:", profIss.name);
 
             })
 

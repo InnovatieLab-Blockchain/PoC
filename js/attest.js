@@ -31,3 +31,21 @@ const deleteEntry = () => {
     localStorage.setItem(studienaam, JSON.stringify(jsonObj))
     alert('id: ' + key + '\n' + 'deleted from: ' + studienaam);
 };
+
+
+const addStudy = () => {
+    
+    let studieAdd = JSON.parse(localStorage.getItem('studies'));
+    let study = document.getElementById('studyName').value;
+    
+    let ipfsUrl = document.getElementById('ipfsUrl').value;
+  
+
+    studieAdd[study] = ipfsUrl;
+    localStorage.setItem('studies', JSON.stringify(studieAdd));
+    console.log(studieAdd)
+}
+
+
+// accountancy = "https: //ipfs.io/ipfs/QmbQ2qLv87RxBJCdF7RXNVpmzwd7WWRdJNBEkbfpXe3faH"
+// journalistiek = "https://ipfs.io/ipfs/Qmb8Dy8kDrniSgGHoZ8xGi9Y5pUwBWyVfTFyHxExwgfNhS";
