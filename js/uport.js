@@ -157,7 +157,7 @@ function verifyUport() {
         })
         .then((profile) => {
             console.log(diploma);               
-            localStorage.setItem("profile", JSON.stringify(profile));
+            localStorage.setItem(diploma, JSON.stringify(profile));
                              
                       
             alert(profile.name + '\n' +

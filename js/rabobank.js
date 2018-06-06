@@ -4,7 +4,7 @@ function showCredential() {
     
     
     
-    let credential = JSON.parse(localStorage.getItem("profile"));
+    let credential = JSON.parse(localStorage.getItem(diploma));
     let credentialName = credential['name'];
     let credentialEmail = credential['email'];
     let credentialNaam = credential[diploma]['naam'];    
