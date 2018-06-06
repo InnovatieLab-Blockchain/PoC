@@ -41,6 +41,35 @@ function storeBadgeOnBlockchain() {
         });
 }
 
+function issueBadgeOnBlockchain() {
+    let ipfsUrl = document.getElementById("deidentifiedBadges").value;
+    let hash = verify(ipfsUrl);
+
+    let deidentifiedBadgeString = "" + getJsonFromUrl(ipfsUrl) + "";
+    let deidentifiedBadge = JSON.parse(deidentifiedBadgeString);
+
+    let gender = document.getElementById("genderSelect").value;
+    let age = document.getElementById("ageSelect").value;
+    let badgeClassId = deidentifiedBadge['badge']['id'];
+    let issuerId = deidentifiedBadge['badge']['issuer']['id'];
+    let time = new Date() * 1;
+
+    console.log(hash, gender, age, badgeClassId, issuerId, time);
+
+    contract.store.sendTransaction(hash, gender, age, badgeClassId, issuerId, time, {
+            from: web3.eth.accounts[0],
+            gas: 4000000
+        },
+        function (error, result) {
+            if (!error) {
+                console.log(result);
+
+            } else {
+                console.error(error);
+            }
+        });
+}
+
 function revokeBadgeOnBlockchain() {
     let hash = document.getElementById("revokeHash").value;
     let time = document.getElementById("revokeTime").value * 1;

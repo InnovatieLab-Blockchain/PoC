@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Proof of Concept Micro-Credentials</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/main.css" rel="stylesheet">
+
+    <!--script files-->
+    <script src="../js/issue.js"></script>
+    <script src="../js/combineBadge.js"></script>
+    <script src="../js/hashing.js"></script>
+    <script src="../js/ethereum.js"></script>
+    <script src="../js/verify.js"></script>
+    <script src="https://wzrd.in/standalone/buffer"></script>
+    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"
+            integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+            crossorigin="anonymous"></script>
+    <script src="../js/utilities/ipfs.js"></script>
+
+    <script src="../node_modules/uport-connect/dist/uport-connect.js"></script>
+    <script src="../js/uport.js"></script>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Proof of Concept Micro-credentials</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Call to Action Well -->
+    <div class="card text-white bg-info my-4 text-center">
+        <div class="card-body">
+            <p class="text-white m-0">Below you can find the different forms that need to be filled to create and issue
+                your OpenBadge.</p>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!--Create Issuer block-->
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Authorize (create) Issuer</h2>
+                    <p class="card-text">Authorize a school or university so they can issue badges to their
+                        students.</p>
+                </div>
+
+                <!-- Button trigger modal issuer -->
+                <div class="card-footer">
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                            data-target="#createIssuerModal">New
+                    </button>
+                    <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ipfsModal">-->
+                    <!--From IPFS-->
+                    <!--</button>-->
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Create Issuer Modal -->
+        <div class="modal fade" id="createIssuerModal" tabindex="-1" role="dialog"
+             aria-labelledby="createIssuerModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="createIssuerModalLabel">New issuer creation</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="issuerType" class="control-label">Type:</label>
+                                <input type="text" class="form-control" id="issuerType"
+                                       placeholder="fe. https://lod.duo.nl/term/ErkendeOnderwijsinstelling">
+                            </div>
+                            <div class="form-group">
+                                <label for="issuerId" class="control-label">Id:</label>
+                                <input type="text" class="form-control" id="issuerId"
+                                       placeholder="fe. 2ojKNym3x16kUNQPq32CNcRpuo8MDH5w5vQ">
+                            </div>
+                            <div class="form-group">
+                                <label for="issuerName" class="control-label">Name:</label>
+                                <input type="text" class="form-control" id="issuerName"
+                                       placeholder="fe. Rijksuniversiteit Groningen">
+                            </div>
+                            <div class="form-group">
+                                <label for="issuerUrl" class="control-label">URL:</label>
+                                <input type="text" class="form-control" id="issuerUrl"
+                                       placeholder="fe. www.rug.nl">
+                            </div>
+                            <div class="form-group">
+                                <label for="issuerEmail" class="control-label">Email:</label>
+                                <input type="email" class="form-control" id="issuerEmail"
+                                       placeholder="fe. donotuse@rug.nl">
+                            </div>
+                            <div class="form-group">
+                                <label for="issuerSmartcontractAddress" class="control-label">Smart Contract
+                                    Address:
+                                </label>
+                                <input type="text" class="form-control" id="issuerSmartcontractAddress"
+                                       placeholder="0x350BdAfafD67309687946Ff910eb5a6064d96C05"
+                                       value="0x350BdAfafD67309687946Ff910eb5a6064d96C05">
+                            </div>
+                            <div class="form-group">
+                                <label for="issuerImage" class="control-label">Image:
+                                </label>
+                                <div class="form-control">
+                                    <input type="file" name="issuerImage" id="issuerImage">
+                                    <button type="button" class="btn btn-primary"
+                                            onclick="createIpfsUrlForIssuerImage();">Upload
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="issuerIpfsUrl">IPFS image url</label>
+                                <a id="issuerIpfsUrl" target="_blank" class="form-control">url of IPFS after
+                                    upload</a>
+                            </div>
+                            <div class="form-group">
+                                <label for="issuerImageUrlSelf" class="control-label">Image url:</label>
+                                <input type="url" class="form-control" id="issuerImageUrlSelf">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"
+                                onclick="displayIssuer();">Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="storeIssuer();">Store Issuer
+                            info
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Create Badge block-->
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Create BadgeClass</h2>
+                    <p class="card-text">Make a new badgeClass so the registered issuers can send it to their students.
+                        A badgeclass is a category for a certain kind of badge. For instance a high school degree.
+                    </p>
+                </div>
+                <!-- Button trigger modal badge -->
+                <div class="card-footer">
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                            data-target="#createBadgeModal">New
+                    </button>
+                    <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ipfsModal">-->
+                    <!--From IPFS-->
+                    <!--</button>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Badge Modal -->
+        <div class="modal fade" id="createBadgeModal" tabindex="-1" role="dialog"
+             aria-labelledby="createBadgeModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="createBadgeModalLabel">New badge creation</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="badgeType" class="control-label">Type:</label>
+                                <input type="text" class="form-control" id="badgeType"
+                                       placeholder="fe. https://lod.duo.nl/term/Masteropleiding">
+                            </div>
+                            <div class="form-group">
+                                <label for="badgeId" class="control-label">Id:</label>
+                                <input type="text" class="form-control" id="badgeId"
+                                       placeholder="fe. https://lod.duo.nl/term/Masteropleiding/THPHYS">
+                            </div>
+                            <div class="form-group">
+                                <label for="badgeName" class="control-label">Name:</label>
+                                <input type="text" class="form-control" id="badgeName"
+                                       placeholder="fe. Master in theoretical physics">
+                            </div>
+                            <div class="form-group">
+                                <label for="badgeDescription" class="control-label">Description:</label>
+                                <input type="text" class="form-control" id="badgeDescription"
+                                       placeholder="The aim of this curriculum for a student is to be able to understand all parts of physics">
+                            </div>
+                            <div class="form-group">
+                                <label for="badgeCriteria" class="control-label">Criteria:</label>
+                                <input type="text" class="form-control" id="badgeCriteria"
+                                       placeholder="Mechanics, quantum mechanics and relativity theory">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="badgeImage" class="control-label">Image:
+                                </label>
+                                <div class="form-control">
+                                    <input type="file" name="issuerImage" id="badgeImage">
+                                    <button type="button" class="btn btn-primary"
+                                            onclick="createIpfsUrlForBadgeImage();">Upload
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="badgeIpfsUrl">IPFS image url</label>
+                                <a id="badgeIpfsUrl" target="_blank" class="form-control">url of IPFS after
+                                    upload</a>
+                            </div>
+                            createIpfsUrlForBadge
+                            <div class="form-group">
+                                <label for="badgeImageUrl" class="control-label">Image url:</label>
+                                <input type="url" class="form-control" id="badgeImageUrl">
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"
+                                onclick="displayBadge()">Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="storeBadge();">Store badge info
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Create Recipient block-->
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Create Recipient</h2>
+                    <p class="card-text">Register your student so they can start receiving your badges.</p>
+                </div>
+                <!-- Button trigger modal badge -->
+                <div class="card-footer">
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                            data-target="#createRecipientModal">New
+                    </button>
+                    <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ipfsModal">-->
+                    <!--From IPFS-->
+                    <!--</button>-->
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Create recipient Modal -->
+        <div class="modal fade" id="createRecipientModal" tabindex="-1" role="dialog"
+             aria-labelledby="createRecipientModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="createrecipientModalLabel">New recipient creation</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipientType" class="control-label">Type:</label>
+                                <input type="text" class="form-control" id="recipientType"
+                                       placeholder="fe. uport_client_id" value="uport_client_id">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipientId" class="control-label">Id:</label>
+                                <input type="text" class="form-control" id="recipientId"
+                                       placeholder="fe. 2ohupr9RpmvYbkdSdffenMyeXrWSYWyfEa5">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipientSalt" class="control-label">Salt:</label>
+                                <input type="text" class="form-control" id="recipientSalt"
+                                       placeholder="fe. randomnumber randomcity">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipientHashed" class="control-label">Hashed</label>
+                                <input type="text" class="form-control" id="recipientHashed"
+                                       placeholder="true" value="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipientEmail" class="control-label">Email:</label>
+                                <input type="email" class="form-control" id="recipientEmail"
+                                       placeholder="fe. studentemail@rug.nl">
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="recipientImage" class="control-label">Image:</label>
+                                <input type="file" class="form-control" id="recipientImage">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipientImageUrlSelf" class="control-label">Image url:</label>
+                                <input type="url" class="form-control" id="recipientImageUrlSelf">
+                            </div> -->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="displayRecipient()">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="storeRecipient();">Store recipient info
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Create MetaData block-->
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Create MetaData</h2>
+                    <p class="card-text">Combine metadata for statistical analysis with the assertion of a badge.</p>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                            data-target="#createMetaDataModal">New
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Meta Data Modal -->
+        <div class="modal fade" id="createMetaDataModal" tabindex="-1" role="dialog"
+             aria-labelledby="createMetaDataModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title" id="createmetadataModalLabel">New metadata creation</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+
+                            <h3>Open Badge Assertion Meta Data</h3>
+                            <div class="form-group">
+                                <label for="metadataInputX" class="control-label">Open Badge Assertion Type</label>
+                                <input type="text" class="form-control" id="metadataInputX"
+                                       placeholder="https://lod.duo.nl/cdm/def/Diploma">
+                            </div>
+                            <div class="form-group">
+                                <label for="metadataInputY" class="control-label">Open Badge Assertion Id</label>
+                                <input type="text" class="form-control" id="metadataInputY"
+                                       placeholder="https://lod.duo.nl/cdm/def/VerklaringseenheidOpleiding-v01.1/Eindoordeel">
+                            </div>
+                            <br>
+                            <h3>Open Badge Recipient MetaData</h3>
+                            <div class="form-group">
+                                <label for="metadataInputAge" class="control-label">Age</label>
+                                <input type="text" class="form-control" id="metadataInputAge"
+                                       placeholder="fe. 18">
+                            </div>
+                            <div class="form-group">
+                                <label for="metadataInputSex" class="control-label">Male/Female</label>
+                                <input type="text" class="form-control" id="metadataInputSex"
+                                       placeholder="Male/Female">
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="displayMetaData()">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="storeMetaData();">Store MetaData info
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.row new created blocks initial hidden -->
+    <div class="row">
+
+        <!--Issuer Created block-->
+        <div class="col-md-3 mb-3 offset-0">
+            <div style="display:none" id="hiddenIssuer">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Created Issuer</h2>
+                        <p class="card-text"></p>
+                        <span class="collapse" id="toggleIssuer"></span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success btn-lg" data-toggle="collapse" data-target="#toggleIssuer"
+                                onclick="displayIssuer();">Show
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--BadgeClass Created block-->
+        <div class="col-md-3 mb-3">
+            <div style="display:none" id="hiddenBadge">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Created BadgeClass</h2>
+                        <p class="card-text"></p>
+                        <span class="collapse" id="toggleBadge"></span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success btn-lg" data-toggle="collapse" data-target="#toggleBadge"
+                                onclick="displayBadgeClass();">Show
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Recipient Created block-->
+        <div class="col-md-3 mb-3">
+            <div style="display:none" id="hiddenRecipient">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Created Recipient</h2>
+                        <p class="card-text"></p>
+                        <span class="collapse" id="toggleRecipient"></span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success btn-lg" data-toggle="collapse" data-target="#toggleRecipient"
+                                onclick="displayRecipient();">Show
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--MetaData Created block-->
+        <div class="col-md-3 mb-3">
+            <div style="display:none" id="hiddenMetaData">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Created MetaData</h2>
+                        <p class="card-text"></p>
+                        <span class="collapse" id="toggleMetaData"></span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success btn-lg" data-toggle="collapse" data-target="#toggleMetaData"
+                                onclick="displayMetaData();">Show
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Create badge-->
+    <div class="card text-white bg-info my-4 text-center">
+        <button class="card-body btn btn-warning text-white" data-toggle="modal"
+                data-target="#showCreatedBadge" onclick="createBadge()">
+            <h1 class="text-white  m-0">1 - CREATE BADGE</h1>
+            <p>Create Open Badge and check for validity.</p>
+        </button>
+    </div>
+
+    <!-- Show Created Badge Modal -->
+    <div class="modal fade" id="showCreatedBadge" tabindex="-1" role="dialog" aria-labelledby="showCreatedBadge">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="showCreatedBadgeLabel"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <textarea type="text" rows="24" class="form-control" id="showCreatedOpenBadgeValue"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Issue badge-->
+    <div class="card text-white bg-info my-4 text-center">
+        <button class="card-body btn btn-primary" onclick="storeBadgeOnBlockchain()">
+            <h1 class="text-white  m-0">2 - ISSUE BADGE</h1>
+            <p>Store the created badge on the ethereum blockchain.</p>
+        </button>
+    </div>
+
+
+
+
+    <!--Attest badge-->
+    <div class="card text-white bg-info my-4 text-center">
+        <button class="card-body btn btn-danger" onclick="downloadAttest()">
+            <h1 class="text-white  m-0">3 - ATTEST BADGE</h1>
+            <p>Download the de-identified OpenBadge.</p>
+        </button>
+    </div>
+
+    <!--Verify badge-->
+    <div class="card text-white bg-info my-4 text-center">
+        <button class="card-body btn btn-success" onclick='verifyBadgeOnBlockchain("issuepage")'>
+            <h1 class="text-white  m-0">4 - VERIFY BADGE</h1>
+            <p>Verify that the Open Badge is stored on the ethereum blockchain.</p>
+        </button>
+    </div>
+</div>
+<br>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white"><a
+                href="https://rinkeby.etherscan.io/address/0x350bdafafd67309687946ff910eb5a6064d96c05" target="_blank">InnovatieLab
+            Blockchain 2018</a></p>
+    </div>
+    <span class="m-0 text-center text-white"></span>
+    <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../js/modals.js"></script>
+
+</body>
+
+</html>
