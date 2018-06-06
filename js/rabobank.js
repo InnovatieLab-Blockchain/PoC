@@ -1,7 +1,6 @@
 function showCredential() {
     var e = document.getElementById('diploma');
-    let diploma = e.options[e.selectedIndex].text;
-    
+    let diploma = e.options[e.selectedIndex].text; 
     
     
     
@@ -9,18 +8,19 @@ function showCredential() {
     let credentialName = credential['name'];
     let credentialEmail = credential['email'];
     let credentialNaam = credential[diploma]['naam'];    
-    let credentialId = credential[diploma]['id'];
-    let credentialSalt = credential[diploma]['salt'];
-    let credentialUrl = credential[diploma]['url'];
+    let verifyId = credential[diploma]['id'];
+    let verifySalt = credential[diploma]['salt'];
+    let verifyJson = credential[diploma]['url'];
 
 
     
-    document.getElementById("credentialIssuer").innerHTML = localStorage.getItem("issuerCredential:");
-    document.getElementById("credentialName").innerHTML = credentialName;
+    document.getElementById("credentialIssuer").value = localStorage.getItem("issuerCredential:");
+    document.getElementById("credentialName").value = credentialName;
     
-    document.getElementById("credentialEmail").innerHTML = credentialEmail;
-    document.getElementById("credentialNaam").innerHTML = credentialNaam;
-    document.getElementById("credentialId").innerHTML = credentialId;
-    document.getElementById("credentialSalt").innerHTML = credentialSalt;
-    document.getElementById("credentialUrl").innerHTML = credentialUrl;
+    document.getElementById("credentialEmail").value = credentialEmail;
+    document.getElementById("credentialNaam").value = credentialNaam;
+    document.getElementById("verifyId").value = verifyId;
+    document.getElementById("verifySalt").value = verifySalt;
+    document.getElementById("verifyJson").value = verifyJson;
 }
+

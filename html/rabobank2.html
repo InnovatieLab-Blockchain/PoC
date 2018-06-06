@@ -29,8 +29,20 @@
 
 
         <script src="../node_modules/uport-connect/dist/uport-connect.js"></script>
+        <script src="../js/issue.js"></script>
+        <script src="../js/combineBadge.js"></script>
+        <script src="../js/hashing.js"></script>
+        <script src="../js/ethereum.js"></script>
+        <script src="../js/verify.js"></script>
+
+        <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+            crossorigin="anonymous"></script>
+        <script src="../js/utilities/ipfs.js"></script>
         <script src="../js/uport.js"></script>
         <script src="../js/rabobank.js"></script>
+
+
+
 
     </head>
 
@@ -64,28 +76,28 @@
             <center>
                 <img src="https://ipfs.io/ipfs/Qmd6SMErTRVYcTjtyCrNmbc7JHFMwCAupYX2TshKwsAZKG" alt="Rabobank">
                 <h1>Welcome! Employee,
-                    <br>Select and look at the shared credentials</h1>
+                    <br>Select and verify the shared credentials</h1>
 
                 <br>
 
 
 
-                            <select class="custom-select mr-sm-2" id="diploma">
-                                <option selected>Choose...</option>
-                                <option value="1">HBO_Journalistiek</option>
-                                <option value="2">HBO_Accountancy</option>
+                <select class="custom-select mr-sm-2" id="diploma">
+                    <option selected>Choose...</option>
+                    <option value="1">HBO_Journalistiek</option>
+                    <option value="2">HBO_Accountancy</option>
 
-                            </select>
-
-
+                </select>
 
 
-                            <center>
-                                <button type="button" class="btn btn-warning" onclick="showCredential();">Show Credential</button>
 
-                            </center>
 
-               
+                <center>
+                    <button type="button" class="btn btn-warning" onclick="showCredential();">Show Credential</button>
+
+                </center>
+
+
 
 
 
@@ -94,30 +106,44 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title" id='credentialNaam'></h2>
-                            <h5>uitgegeven door:<br></h5>
+                            <h5>Issued by:
+                                <br>
+                            </h5>
                             <h2 id='credentialIssuer'></h2>
                             <p class="card-text">
-                                <table>
+<table class="col-md-12 mb-12">
                                     <tr>
                                         <td>Naam:</td>
-                                        <td id='credentialName'></td>
+                                        <td id='credential1'>
+                                            <input type="text" class="form-control" id="credentialName">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Email:</td>
-                                        <td id='credentialEmail'></td>
+                                        <td id='credential2'>
+                                            <input type="text" class="form-control" id="credentialEmail">
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <td>Id:</td>
-                                        <td id='credentialId'></td>
+                                        <td id='verify1'>
+                                            <input type="text" class="form-control" id="verifyId">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Salt:</td>
-                                        <td id='credentialSalt'></td>
+                                        <td id='verify2'>
+                                            <input type="text" class="form-control" id="verifySalt">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Url:</td>
-                                        <td id='credentialUrl'></td>
+                                        <td id="url">
+                                            <input type="text" class="form-control" id="verifyJson">
+                                        </td>
+
+                                        </td>
                                     </tr>
                                 </table>
 
@@ -128,7 +154,7 @@
                         <div class="card-footer">
                             <center>
 
-                                <div id='credentialIssuer'>Gecontroleerde data</div>
+                                <button type="button" class="btn btn-warning" onclick="verifyBadgeOnBlockchain();">Verify credential</button>
                             </center>
 
                         </div>

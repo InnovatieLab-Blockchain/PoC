@@ -60,12 +60,13 @@ function revokeBadgeOnBlockchain() {
 }
 
 function verifyBadgeOnBlockchain(source) {
-    let hash = null;
+    let hash = null; 
     let time = new Date() * 1;
 
     if (source === "issuepage") {
         hash = sessionStorage.getItem("Badgehash");
     } else {
+        
         hash = verify(document.getElementById("verifyJson").value);
     }
     console.log(hash);
