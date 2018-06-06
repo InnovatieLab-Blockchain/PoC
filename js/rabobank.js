@@ -22,5 +22,8 @@ function showCredential() {
     document.getElementById("verifyId").value = verifyId;
     document.getElementById("verifySalt").value = verifySalt;
     document.getElementById("verifyJson").value = verifyJson;
+
+    document.getElementById("alertBoxGood").style = "display: none";
+    document.getElementById("alertBoxBad").style = "display: none";
 }
 
