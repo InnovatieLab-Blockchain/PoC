@@ -11,7 +11,7 @@ function showCredential() {
     let verifyId = credential[diploma]['id'];
     let verifySalt = credential[diploma]['salt'];
     let verifyJson = credential[diploma]['url'];
-
+document.getElementById("link").setAttribute("href",verifyJson);
 
     
     document.getElementById("credentialIssuer").value = localStorage.getItem("issuerCredential:");

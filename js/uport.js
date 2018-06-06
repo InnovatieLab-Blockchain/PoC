@@ -277,12 +277,15 @@ function studentAttest() {
 
 function attestJournalistiek() {
 
-    let loginJson = localStorage.getItem('HBO_Journalistiek')
-    let loginUsers = JSON.parse(loginJson);
+    // let loginJson = localStorage.getItem('HBO_Journalistiek_attest')
+    // let loginUsers = JSON.parse(loginJson);
     var login = sessionStorage.getItem('uportID');
 
-    loginId = loginUsers.studie.studenten[login];
-    loginSalt = loginUsers.studie.studieSalt;
+    loginId = "2oeBs78G1SYZeLJtF1A3yAXqKyiaffcNfa8";
+    loginSalt = "groningen";
+    
+    // loginId = loginUsers.studie.studenten[login];
+    // loginSalt = loginUsers.studie.studieSalt;
 
     console.log(loginId);
 
@@ -304,26 +307,31 @@ function attestJournalistiek() {
                         url: '' + ipfsUrl,
                     }
                 },
-                notifications: true,
+                // notifications: true,
 
             })
             .then(function (attestation) {
                 console.log("Attestation = " + attestation);
             })
     } else {
-        alert('Your not entitled to claim this credential')
+        alert('You are not entitled to claim this credential')
     }
 }
 
 
 function attestAccountancy() {
 
-    let loginJson = localStorage.getItem('HBO_Accountancy')
-    let loginUsers = JSON.parse(loginJson);
+    // let loginJson = localStorage.getItem('HBO_Accountancy')
+    // let loginUsers = JSON.parse(loginJson);
+        
+
+        
     var login = sessionStorage.getItem('uportID');
 
-    loginId = loginUsers.studie.studenten[login];
-    loginSalt = loginUsers.studie.studieSalt;
+    // loginId = loginUsers.studie.studenten[login];
+    // loginSalt = loginUsers.studie.studieSalt;
+    loginId = "2oeBs78G1SYZeLJtF1A3yAXqKyiaffcNfa";
+    loginSalt = "hasselt";
 
     console.log(loginId);
 
@@ -346,7 +354,7 @@ function attestAccountancy() {
 
                     }
                 },
-                notifications: true,
+                // notifications: true,
                 // callbackUrl: 'student2.html',
                 // exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000, // 30 days from now
                 // uriHandler: (log) => { console.log(log)}
@@ -359,7 +367,7 @@ function attestAccountancy() {
             })
 
     } else {
-        alert('Your not entitled to claim this credential')
+        alert('You are not entitled to claim this credential')
     }
 
 };

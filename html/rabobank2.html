@@ -96,25 +96,19 @@
                     <button type="button" class="btn btn-warning" onclick="showCredential();">Show Credential</button>
 
                 </center>
-
-
-
-
-
-
                 <div class="col-md-12 mb-12">
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title" id='credentialNaam'></h2>
-                    
-                         
+
+
                             <p class="card-text">
-<table class="col-md-12 mb-12">
-                                   <tr>
-                                    <td>Issuer:</td>
-                                    <td id='credential1'>
-                                    <input type="text" class="form-control" id="credentialIssuer">
-                                    </td>
+                                <table class="col-md-12 mb-12">
+                                    <tr>
+                                        <td>Issuer:</td>
+                                        <td id='credential1'>
+                                            <input type="text" class="form-control" id="credentialIssuer">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Name:</td>
@@ -144,7 +138,7 @@
                                     <tr>
                                         <td>Url:</td>
                                         <td id="url">
-                                            <input type="text" class="form-control" id="verifyJson">
+                                            <a id="link" target="_blank"><input type="text" class="form-control" id="verifyJson"></a>
                                         </td>
 
                                         </td>
@@ -156,12 +150,12 @@
                         </div>
 
                         <div id="alertBoxGood" style="display: none">
-                            <div class="alertGood" >
+                            <div class="alertGood">
                                 <strong id="verifyMessageGood">verification result</strong>
                             </div>
                         </div>
                         <div id="alertBoxBad" style="display: none">
-                            <div class="alertBad" >
+                            <div class="alertBad">
                                 <strong id="verifyMessageBad">verification result</strong>
                             </div>
                         </div>

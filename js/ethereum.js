@@ -110,7 +110,7 @@ function verifyBadgeOnBlockchain(source) {
 
                 if(result[0]) {
                     document.getElementById("alertBoxGood").style = "display: block";
-                    document.getElementById("verifyMessageGood").innerHTML = "The badge is valid and validated against issuer contract 0x861e60CA218728Cf8736C70fa7895d098719465d";
+                    document.getElementById("verifyMessageGood").innerHTML = "The badge is valid and validated against blockchain issuer contract 0x861e60CA218728Cf8736C70fa7895d098719465d";
                 } else {
                     document.getElementById("alertBoxBad").style = "display: block";
 
