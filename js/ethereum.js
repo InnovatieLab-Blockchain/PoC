@@ -47,6 +47,7 @@ function issueBadgeOnBlockchain() {
 
     let deidentifiedBadgeString = "" + getJsonFromUrl(ipfsUrl) + "";
     let deidentifiedBadge = JSON.parse(deidentifiedBadgeString);
+    alert(JSON.stringify(deidentifiedBadge));
 
     let gender = document.getElementById("genderSelect").value;
     let age = document.getElementById("ageSelect").value;
@@ -95,7 +96,6 @@ function verifyBadgeOnBlockchain(source) {
     if (source === "issuepage") {
         hash = sessionStorage.getItem("Badgehash");
     } else {
-        
         hash = verify(document.getElementById("verifyJson").value);
     }
     console.log(hash);
@@ -109,12 +109,15 @@ function verifyBadgeOnBlockchain(source) {
                 console.log(result[0], result[1], result[2]);
 
                 if(result[0]) {
-                    alert('The badge with hash ' + result[2] + ' is valid.');
+                    document.getElementById("alertBoxGood").style = "display: block";
+                    document.getElementById("verifyMessageGood").innerHTML = "The badge is valid and validated against issuer contract 0x861e60CA218728Cf8736C70fa7895d098719465d";
                 } else {
+                    document.getElementById("alertBoxBad").style = "display: block";
+
                     if(result[1] === 'Invalid badge. Badge not found.') {
-                        alert(result[1] + ' (' + result[2] + ')');
+                        document.getElementById("verifyMessageBad").innerHTML = result[1] + ' (' + result[2] + ')';
                     } else {
-                        alert(result[1] + ' ' + result[2]);
+                        document.getElementById("verifyMessageBad").innerHTML = result[1] + ' Reason: ' + result[2];
                     }
                 }
             } else {
