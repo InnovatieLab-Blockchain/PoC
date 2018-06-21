@@ -21,7 +21,7 @@ const addEntry = () => {
 
     console.log(jsonObj)
     localStorage.setItem(studienaam, JSON.stringify(jsonObj))
-    alert('id: ' + newId + '\n' + 'salt: ' + newValue + '\n' + 'added to: ' + studienaam);
+    alert('id: ' + newId + '\n' + 'salt waarde: ' + newValue + '\n' + 'toegevoegd aan: ' + studienaam);
     }    
     ;
 
@@ -39,7 +39,7 @@ const deleteEntry = () => {
 
     console.log(jsonObj)
     localStorage.setItem(studienaam, JSON.stringify(jsonObj))
-    alert('id: ' + key + '\n' + 'deleted from: ' + studienaam);
+    alert('id: ' + key + '\n' + 'verwijderd van: ' + studienaam);
 };
 
 

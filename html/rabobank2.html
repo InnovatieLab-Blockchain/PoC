@@ -24,10 +24,6 @@
 
         <!--script files-->
 
-
-
-
-
         <script src="../node_modules/uport-connect/dist/uport-connect.js"></script>
         <script src="../js/issue.js"></script>
         <script src="../js/combineBadge.js"></script>
@@ -62,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="#">Over ons</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
@@ -75,25 +71,21 @@
         <div class="container">
             <center>
                 <img src="https://ipfs.io/ipfs/Qmd6SMErTRVYcTjtyCrNmbc7JHFMwCAupYX2TshKwsAZKG" alt="Rabobank">
-                <h1>Welcome! Employee,
-                    <br>Select and verify the shared credentials</h1>
+                <h1>Welkom medewerker,
+                    <br>Selecteer en verifieer de gedeelde credentials</h1>
 
                 <br>
 
-
-
                 <select class="custom-select mr-sm-2" id="diploma">
-                    <option selected>Choose...</option>
+                    <option selected>Kies...</option>
                     <option value="1">HBO_Journalistiek</option>
                     <option value="2">HBO_Accountancy</option>
 
                 </select>
 
 
-
-
                 <center>
-                    <button type="button" class="btn btn-warning" onclick="showCredential();">Show Credential</button>
+                    <button type="button" class="btn btn-warning" onclick="showCredential();">Toon credential</button>
 
                 </center>
                 <div class="col-md-12 mb-12">
@@ -105,13 +97,13 @@
                             <p class="card-text">
                                 <table class="col-md-12 mb-12">
                                     <tr>
-                                        <td>Issuer:</td>
+                                        <td>Instelling:</td>
                                         <td id='credential1'>
                                             <input type="text" class="form-control" id="credentialIssuer">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Name:</td>
+                                        <td>Naam:</td>
                                         <td id='credential1'>
                                             <input type="text" class="form-control" id="credentialName">
                                         </td>
@@ -130,7 +122,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Salt:</td>
+                                        <td>Zout-waarde:</td>
                                         <td id='verify2'>
                                             <input type="text" class="form-control" id="verifySalt">
                                         </td>
@@ -162,7 +154,7 @@
                         <div class="card-footer">
                             <center>
 
-                                <button type="button" class="btn btn-warning" onclick="verifyBadgeOnBlockchain();">Verify credential</button>
+                                <button type="button" class="btn btn-warning" onclick="verifyBadgeOnBlockchain();">Verifieer credential</button>
                             </center>
 
                         </div>

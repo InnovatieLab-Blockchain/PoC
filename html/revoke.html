@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">Over ons</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -61,29 +61,29 @@
     <div class="col-md-6 mb-6 offset-3">
         <div class="card h-100">
             <div class="card-body">
-                <h2 class="card-title">Revoke Badge</h2>
+                <h2 class="card-title">Intrekken badge</h2>
                 <p class="card-text">
                 <form>
 
                     <!--Change field to file upload-->
-                    <label for="revokeHash" class="control-label"> Select Badge:</label>
+                    <label for="revokeHash" class="control-label"> Selecteer Badge:</label>
                     
                     <input type="file" class="form-control" name="upload" id="upload">
                     </form>
-                    <label for="hashValue" class="form-label">Hash of file</label>
+                    <label for="hashValue" class="form-label">Digitale vingerafdruk</label>
                     <div id="hashValue" class="form-control">
                     <script type='text/javascript'>
                     document.getElementById("hashValue").innerHTML = sessionStorage.getItem('hashfile');</script></div>
                     
                     <form>
                     
-                    <label for="revokeHash" class="control-label">OpenBadge / Hash to be revoked</label>
+                    <label for="revokeHash" class="control-label">OpenBadge / Intrekken digitale vingerafdruk</label>
                     <input type="text" class="form-control" id="revokeHash">
-                    <label for="revokeTime" class="control-label">Datum van de revocation</label>
+                    <label for="revokeTime" class="control-label">Datum van de intrekking</label>
                     <input type="date" class="form-control" id="revokeTime">
 
 
-                    <label for="revokeReason" class="control-label">Revoke reason:</label>
+                    <label for="revokeReason" class="control-label">Intrekkingsreden:</label>
                     <input type="text" class="form-control" id="revokeReason">
                 </form>
             </div>
@@ -92,7 +92,7 @@
             <div class="card-footer">
 
                 <button type="button" class="btn btn-primary btn-lg" onclick="revokeBadgeOnBlockchain()">
-                    Revoke Badge
+                    Intrekken Badge
                 </button>
             </div>
         </div>

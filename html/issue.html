@@ -13,6 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- Custom styles for this template -->
     <link href="../css/main.css" rel="stylesheet">
 
@@ -48,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">Over ons</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
@@ -63,36 +64,36 @@
     <div class="col-md-6 mb-6 offset-3">
         <div class="card h-100">
             <div class="card-body">
-                <h2 class="card-title">Issue Badge</h2>
+                <h2 class="card-title">Toekennen Badge</h2>
                 <p class="card-text">
                     <form>
 
                         <select id="deidentifiedBadges" class="custom-select mr-sm-2">
-                            <option selected>Select a badge</option>
+                            <option selected>Selecteer een badge</option>
                             <option value="https://ipfs.io/ipfs/Qmb8Dy8kDrniSgGHoZ8xGi9Y5pUwBWyVfTFyHxExwgfNhS">HBO_Journalistiek</option>
                             <option value="https://ipfs.io/ipfs/QmbQ2qLv87RxBJCdF7RXNVpmzwd7WWRdJNBEkbfpXe3faH">HBO_Accountancy</option>
                         </select>
                 <p/>
-                <label for="verifyId" class="control-label">(uPort)ID of student</label>
+                <label for="verifyId" class="control-label">(uPort)ID van de student</label>
                 <input type="text" class="form-control" id="verifyId">
 
-                <label for="verifySalt" class="control-label">Salt value of student</label>
+                <label for="verifySalt" class="control-label">Unieke (salt) waarde van de student</label>
                 <input type="text" class="form-control" id="verifySalt">
 
                 <p></p>
                 <select id="genderSelect" class="custom-select mr-sm-2">
-                    <option selected>Gender of student</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option selected>Geslacht</option>
+                    <option value="male">Man</option>
+                    <option value="female">Vrouw</option>
                 </select>
 
-                <label for="ageSelect" class="control-label">Age of student</label>
+                <label for="ageSelect" class="control-label">Leefijd van de student</label>
                 <input type="text" class="form-control" id="ageSelect">
             </div>
 
             <div class="card-footer">
                 <button type="button" class="btn btn-primary btn-lg" onclick="issueBadgeOnBlockchain();">
-                    Issue badge
+                    Toekennen badge
                 </button>
             </div>
         </div>
